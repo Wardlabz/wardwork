@@ -1,6 +1,9 @@
-![Banner_WARDWORK](https://github.com/user-attachments/assets/43947941-48c8-4505-82cc-f09795793ff4)
 
-# 🌟 WARDWORK | Decentralized Freelance Platform  
+
+![Banner_WARDWORK](https://github.com/user-attachments/assets/d55b55b0-4a1e-454b-9eda-43ac1da8593f)
+
+
+ 🌟 WARDWORK | Decentralized Freelance Platform  
 
 Welcome to **WARDWORK**! This platform aims to revolutionize the freelance marketplace by leveraging **blockchain technology**, **cryptocurrency payments**, and **smart contracts** to create a secure and efficient environment for freelancers and clients worldwide.  
 
