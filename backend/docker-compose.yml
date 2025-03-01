@@ -1,42 +1,46 @@
+version: '3.8'
+
 services:
-  postgres:
+  wardwork_database:
     image: postgres:15
-    container_name: backend_postgres
+    container_name: wardwork_database
     restart: always
     environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: admin
-      POSTGRES_DB: offerhub
+      POSTGRES_USER: offerhub_admin
+      POSTGRES_PASSWORD: offerhub_pass
+      POSTGRES_DB: wardwork_database
     ports:
-      - "5432:5432"
+      - "5432:5432"  
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - wardwork_db_data:/var/lib/postgresql/data
 
-  postgrest:
-    image: postgrest/postgrest
-    container_name: backend_postgrest
-    restart: always
-    environment:
-      PGRST_DB_URI: postgres://admin:admin@postgres:5432/offerhub
-      PGRST_DB_SCHEMA: public
-      PGRST_DB_ANON_ROLE: anon
-    depends_on:
-      - postgres
-    ports:
-      - "3000:3000"
-
-  hasura:
+  wardwork_hasura:
     image: hasura/graphql-engine:v2.40.0
-    container_name: backend_hasura
+    container_name: wardwork_hasura
     restart: always
     environment:
-      HASURA_GRAPHQL_DATABASE_URL: postgres://admin:admin@postgres:5432/offerhub
+      HASURA_GRAPHQL_DATABASE_URL: postgres://offerhub_admin:offerhub_pass@wardwork_database:5432/wardwork_database
       HASURA_GRAPHQL_ENABLE_CONSOLE: "true"
-      HASURA_GRAPHQL_ADMIN_SECRET: myadminsecret
+      HASURA_GRAPHQL_ADMIN_SECRET: offerhub_secret
     depends_on:
-      - postgres
+      - wardwork_database
     ports:
       - "8080:8080"
 
+  wardwork_backend:
+    build: .
+    container_name: wardwork_backend
+    restart: always
+    environment:
+      DATABASE_HOST: wardwork_database
+      DATABASE_PORT: 5432
+      DATABASE_USER: offerhub_admin
+      DATABASE_PASSWORD: offerhub_pass
+      DATABASE_NAME: wardwork_database
+    depends_on:
+      - wardwork_database
+    ports:
+      - "3001:3001"  
+
 volumes:
-  postgres_data: {}
+  wardwork_db_data: {}

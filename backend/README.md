@@ -1,21 +1,19 @@
 # 🚀 WARDWORK Backend
 
-Welcome to the **WARDWORK** backend, a blockchain-based freelance services platform using Stellar.
-
-This backend is built with **NestJS** and configured with **Docker + PostgreSQL**, ready for future **Hasura** integration.
+Backend for **WARDWORK**, a blockchain-based freelance services platform using Stellar.
 
 ---
 
 ## 📌 **Prerequisites**
-Before getting started, ensure you have the following installed:
 
 - **Node.js** (LTS recommended)
-- **PNPM** (or `npm`/`yarn`)
+- **NPM** or `yarn`
 - **Docker & Docker Compose**
 
 ---
 
-## ⚡ **Installation & Setup**
+## ⚡ **Setup & Installation**
+
 ### 1️⃣ **Clone the repository**
 ```sh
 git clone https://github.com/user/wardwork.git  
@@ -28,59 +26,64 @@ npm install
 ```
 
 ### 3️⃣ **Set up environment variables**
-Create a `.env` file in `backend/` with the following content:
-
+Create a `.env` file in `backend/` with:
 ```sh
-NODE_ENV=development  
-PORT=3000  
-DATABASE_URL=postgres://postgres:postgres@postgres:5432/offerhub_db  
-JWT_SECRET=your_jwt_secret  
-STELLAR_SECRET_KEY=your_stellar_secret  
-STELLAR_PUBLIC_KEY=your_stellar_public  
-```
-### 4️⃣ **Start PostgreSQL with Docker**
-```sh
-pnpm docker:up  
-```
-This will initialize **PostgreSQL** in the background, ready for future **Hasura** integration.
-
-### 5️⃣ **Run the backend in development mode**
-```sh
-pnpm build 
-```
-This command compiles the TypeScript code
-
-### 6️⃣ **Run the backend in development mode**
-```sh
-pnpm start:dev  
+DATABASE_HOST=wardwork_database
+DATABASE_PORT=5432
+DATABASE_USER=offerhub_admin
+DATABASE_PASSWORD=offerhub_pass
+DATABASE_NAME=wardwork_database
+DOCKER_ENV=true
+PORT=3002
+HASURA_GRAPHQL_DATABASE_URL=postgres://${DATABASE_USER}:${DATABASE_PASSWORD}@${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_NAME}
+HASURA_GRAPHQL_ADMIN_SECRET=offerhub_secret
 ```
 
-This will start **NestJS** in development mode with live reload.
+---
+
+## 🛠 **Starting Backend & Database**
+
+### 1️⃣ **Start Database & Hasura**
+```sh
+docker-compose up --build -d  
+```
+
+### 2️⃣ **Verify Database**
+```sh
+docker logs wardwork_database  
+```
+
+### 3️⃣ **Run Backend**
+```sh
+npm run start:dev  
+```
+
+To run in production:
+```sh
+npm run start  
+```
 
 ---
 
 ## ✅ **Useful Commands**
-| Command               | Description |
-|-----------------------|-------------|
-| pnpm install        | Install dependencies |
-| pnpm start:dev      | Start the backend in development mode |
-| pnpm build         | Build the backend for production |
-| pnpm lint          | Check for code errors |
-| pnpm format        | Format the code |
-| pnpm docker:up     | Start PostgreSQL in Docker |
-| pnpm docker:down   | Stop PostgreSQL |
+
+| Command                     | Description                     |
+|-----------------------------|---------------------------------|
+| `npm install`               | Install dependencies           |
+| `npm run start:dev`         | Start backend (dev mode)       |
+| `npm run start`             | Run backend (production)       |
+| `docker-compose up -d`      | Start database & Hasura        |
+| `docker logs wardwork_database` | Check database logs |
+| `npm run docker:down`       | Stop all Docker containers     |
+| `npm run migrations:run`    | Apply database migrations      |
+| `npm run migrations:revert` | Revert last migration         |
 
 ---
 
-## 🛠 **Stopping or Restarting the Backend**
-When finished working, stop the containers with:  
-```sh
-pnpm docker:down  
-```
-To clear NestJS cache and rebuild:  
-```sh
-rm -rf dist && pnpm build  
-```
----
+## 🎯 **Next Steps**
 
-Thank you for contributing to **WARDWORK**! 🚀
+- Set up **GraphQL APIs** in Hasura
+- Configure **authentication & authorization**
+- Implement **Stellar blockchain transactions**
+
+🚀 **WARDWORK** development in progress! 🚀
