@@ -35,7 +35,7 @@ services:
       DATABASE_HOST: wardwork_database
       DATABASE_PORT: 5432
       DATABASE_USER: offerhub_admin
-      DATABASE_PASSWORD: BN
+      DATABASE_PASSWORD: offerhub_pass
       DATABASE_NAME: wardwork_database
     depends_on:
       - wardwork_database
