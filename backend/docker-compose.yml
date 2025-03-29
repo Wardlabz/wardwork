@@ -1,5 +1,5 @@
-version: "3.8"
 
+version: "3.8"
 services:
   wardwork_database:
     image: postgres:15
@@ -40,7 +40,14 @@ services:
     depends_on:
       - wardwork_database
     ports:
-      - "3001:3001"
+      - "3001:3001" 
+
+  redis:
+    image: redis:6
+    container_name: redis_cache
+    ports:
+      - "6379:6379"
+    restart: always
 
   wardwork_minio:
     image: minio/minio
