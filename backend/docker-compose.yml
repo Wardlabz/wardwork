@@ -6,8 +6,8 @@ services:
     container_name: wardwork_database
     restart: always
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
+      POSTGRES_USER: offerhub_admin
+      POSTGRES_PASSWORD: offerhub_pass
       POSTGRES_DB: wardwork_database
     ports:
       - "5432:5432"
@@ -34,8 +34,8 @@ services:
     environment:
       DATABASE_HOST: wardwork_database
       DATABASE_PORT: 5432
-      DATABASE_USER: postgres
-      DATABASE_PASSWORD: password
+      DATABASE_USER: offerhub_admin
+      DATABASE_PASSWORD: offerhub_pass
       DATABASE_NAME: wardwork_database
     depends_on:
       - wardwork_database
