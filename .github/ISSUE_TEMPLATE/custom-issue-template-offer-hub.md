@@ -1,18 +1,18 @@
 ---
 name: Custom issue template WARDWORK
 about: Describe this issue template's purpose here.
-title: ''
-labels: ''
-assignees: ''
-
+title: ""
+labels: ""
+assignees: ""
 ---
 
 ## 📘 Description
+
 -
 
 ## ✅ Acceptance Criteria
--
 
+-
 
 ⚠ Do not apply until the ODHack begins, if you apply before we will not review your applications.
 
