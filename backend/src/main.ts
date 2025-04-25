@@ -11,7 +11,7 @@ dotenv.config();
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  const port = process.env.PORT || 3000;
+  const port = process.env.PORT || 3001;
   
   app.use(express.json({ limit: '50mb' }));
   app.use(express.urlencoded({ extended: true, limit: '50mb' }));
@@ -34,10 +34,11 @@ async function bootstrap() {
     .setTitle('WardWork API Gateway')
     .setDescription('API Gateway for WardWork services')
     .setVersion('1.0')
+    .addTag('Search', 'Search service endpoints')
     .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api/docs', app, document);
+  SwaggerModule.setup('api', app, document);
 
 
   await app.listen(port);
@@ -46,7 +47,7 @@ async function bootstrap() {
   console.log("🚀 WARDWORK Server is running!");
   console.log("=======================================");
   console.log(`🌍 URL: http://localhost:${port}`);
-  console.log(`📚 API Documentation: http://localhost:${port}/api/docs`);
+  console.log(`📚 API Documentation: http://localhost:${port}/api`);
   console.log(`📅 Started at: ${new Date().toLocaleString()}`);
   console.log("=======================================\n");
 }
