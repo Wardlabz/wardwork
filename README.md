@@ -2,7 +2,7 @@
   <img src="https://github.com/user-attachments/assets/7799a3c4-ccec-42fc-80d0-226309b8169b" alt="O-H" width="200">
 </div>
 
-🌟 WARDWORK | Decentralized Freelance Platform
+# 🌟 WARDWORK | Decentralized Freelance Platform
 
 Welcome to **WARDWORK**! This platform aims to revolutionize the freelance marketplace by leveraging **blockchain technology**, **cryptocurrency payments**, and **smart contracts** to create a secure and efficient environment for freelancers and clients worldwide.
 
@@ -10,57 +10,75 @@ Our mission is to remove intermediaries, reduce fees, and empower users with too
 
 ---
 
-## **Getting Started**
+## 📘 Getting Started
 
-### Please read carefully and follow our contribution guide step by step, this will allow everything to flow in the best way
+Please read carefully and follow our contribution guide step by step — this will allow everything to flow in the best way:
 
-[CONTRIBUTORS_GUIDELINE.md](https://github.com/WARDWORK/wardwork/blob/main/docs/CONTRIBUTORS_GUIDELINE.md)
-
-### **🚀 Prerequisites**
-
-Before contributing, ensure your system meets these requirements:
-
-- **Node.js**: v23.3.0
-- **pnpm**: v9.15.2
+👉 [CONTRIBUTORS\_GUIDELINE.md](https://github.com/WARDWORK/wardwork/blob/main/docs/CONTRIBUTORS_GUIDELINE.md)
 
 ---
 
-### **📥 Installation Guide**
+## 🚀 Prerequisites
+
+Before contributing, ensure your system meets these requirements:
+
+* **Node.js**: v23.3.0
+* **npm**: v10+
+
+---
+
+## 🛠 Installation Guide
 
 1️⃣ **Fork this repository** to your GitHub account.
 
-2️⃣ Clone the repository\*\* to your local machine:
+2️⃣ Clone your forked repo locally:
 
 ```bash
 git clone https://github.com/<your_user>/wardwork
 ```
 
-3️⃣ Set up the upstream repository to keep your fork updated:
-
-```bash
-git remote add upstream https://github.com/WARDWORK/wardwork.git
-```
-
-4️⃣ Navigate to the project directory:
+3️⃣ Navigate into the project directory:
 
 ```bash
 cd wardwork
 ```
 
-5️⃣ Install dependencies:
+4️⃣ Install frontend dependencies:
 
 ```bash
-pnpm i
+npm install
 ```
 
-7️⃣ Run the development server:
+5️⃣ Run the development server:
 
 ```bash
-pnpm dev
+npm run dev
 ```
 
-8️⃣ Open the app in your browser at:
+6️⃣ Open the app in your browser at:
 
-```bash
+```
 http://localhost:3000
 ```
+
+---
+
+## 🧩 Backend Setup
+
+The backend lives in the `/backend` folder and includes all APIs and database migration logic using **Supabase**.
+
+👉 For full instructions, refer to the dedicated backend guide:
+[`/backend/README.md`](./backend/README.md)
+
+---
+
+## 💬 Need Help?
+
+If you get stuck or want to discuss implementation ideas, open an issue or start a discussion in the repo. Let's build something amazing together 💫
+
+---
+
+## 🧠 Maintained by
+
+**[@Josué](https://github.com/Josue1908)** 
+**[@Kevin](https://github.com/KevinMB0220)** 
