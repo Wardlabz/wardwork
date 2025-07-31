@@ -1,19 +1,24 @@
----
-name: Custom issue template WARDWORK
-about: Describe this issue template's purpose here.
-title: ""
-labels: ""
-assignees: ""
----
+## 🔧 Title: 
 
 ## 📘 Description
 
--
+[Provide a clear description of what needs to be implemented and why it's needed]
 
 ## ✅ Acceptance Criteria
 
--
+- [ ] [Specific requirement 1]
+- [ ] [Specific requirement 2]
+- [ ] [Specific requirement 3]
+- [ ] Maintain compatibility with existing contract interfaces
+- [ ] Add unit tests for new functionalities
+- [ ] Update documentation if needed
 
-⚠ Do not apply until the ODHack begins, if you apply before we will not review your applications.
+## 🔧 Technical Details
 
-⚠ Read our main readme and our guidelines before applying.
+- **Contract affected:** [Contract name]
+- **Priority:** [Critical/High/Medium/Low]
+- **Files to modify:** [List of files]
+
+## 📋 Additional Notes
+
+[Any additional context, references, or considerations]
