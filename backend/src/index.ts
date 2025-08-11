@@ -12,6 +12,7 @@ import nftRoutes from "@/routes/nft.routes";
 import contractRoutes from "@/routes/contract.routes";
 import projectRoutes from '@/routes/project.routes';
 import userRoutes from '@/routes/user.routes';
+import { ErrorHandler } from "./utils/AppError";
 
 
 const app = express();
@@ -34,7 +35,7 @@ app.use('/api/users', userRoutes);
 app.get("/", (_req, res) => {
   res.send("💼 WARDWORK backend is up and running!");
 });
-
+app.use(ErrorHandler);
 app.listen(port, () => {
   console.log(`🚀 WARDWORK server is live at http://localhost:${port}`);
   console.log("🌐 Connecting freelancers and clients around the world...");
