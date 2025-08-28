@@ -74,6 +74,48 @@ The backend lives in the `/backend` folder and includes all APIs and database mi
 
 ---
 
+## 📋 Smart Contracts Documentation
+
+The WardWork platform is powered by a comprehensive suite of Soroban smart contracts. Each contract serves a specific purpose in creating a secure, decentralized freelance marketplace.
+
+### 📚 Contract Documentation
+
+#### Core Infrastructure
+- **[Contracts Overview](./docs/CONTRACTS_OVERVIEW.md)** - Complete system architecture and contract interactions
+- **[User Registry Contract](./docs/USER_REGISTRY_CONTRACT.md)** - User verification and access control system
+- **[Emergency Contract](./docs/EMERGENCY_CONTRACT.md)** - Platform safety and crisis management
+
+#### Payment System
+- **[Escrow Contract](./docs/ESCROW_CONTRACT.md)** - Secure payment management with milestone support
+- **[Escrow Factory](./docs/ESCROW_FACTORY.md)** - Standardized deployment and batch management
+- **[Fee Manager Contract](./docs/FEE_MANAGER_CONTRACT.md)** - Centralized fee calculation and collection
+
+#### Dispute & Content
+- **[Dispute Resolution Contract](./docs/DISPUTE_CONTRACT.md)** - Two-tier mediation and arbitration system
+- **[Publication Contract](./docs/PUBLICATION_CONTRACT.md)** - On-chain registry for services and projects
+
+#### Reputation System
+- **[Rating System Integration](./docs/RATING_SYSTEM_INTEGRATION.md)** - User rating and feedback system
+- **[Reputation NFT Contract](./docs/REPUTATION_NFT_CONTRACT.md)** - Achievement-based NFT rewards
+
+### 🔗 Contract Interactions
+
+The contracts work together to create a seamless platform experience:
+
+```
+User Registration → Service/Project Publication → Escrow Creation → 
+Payment Processing → Work Completion → Rating & Reputation → NFT Rewards
+```
+
+For disputes: `Escrow → Dispute Resolution → Mediation/Arbitration → Resolution`
+
+### 🛠 Development Resources
+
+- **[Freelancer Profile Implementation](./docs/FREELANCER_PROFILE_IMPLEMENTATION.md)** - Frontend profile system
+- **[Contributors Guidelines](./docs/CONTRIBUTORS_GUIDELINE.md)** - Development standards and practices
+
+---
+
 ## 💬 Need Help?
 
 If you get stuck or want to discuss implementation ideas, open an issue or start a discussion in the repo. Let's build something amazing together 💫
