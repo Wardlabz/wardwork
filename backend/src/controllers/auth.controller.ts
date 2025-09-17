@@ -1,3 +1,8 @@
+/**
+ * @fileoverview Authentication controller handling user authentication operations
+ * @author WardWork Team
+ */
+
 import { NextFunction, Request, Response } from "express";
 import * as authService from "@/services/auth.service";
 

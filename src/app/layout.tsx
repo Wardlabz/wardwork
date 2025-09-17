@@ -1,3 +1,8 @@
+/**
+ * @fileoverview Root layout component for the Next.js application
+ * @author WardWork Team
+ */
+
 import './globals.css';
 
 import { Geist, Geist_Mono } from 'next/font/google';
