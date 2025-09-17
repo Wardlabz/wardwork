@@ -1,3 +1,8 @@
+/**
+ * @fileoverview Authentication routes for user login, registration, and token management
+ * @author WardWork Team
+ */
+
 import {
   getNonce,
   login,

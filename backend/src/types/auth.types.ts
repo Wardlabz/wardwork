@@ -1,3 +1,8 @@
+/**
+ * @fileoverview Type definitions for authentication-related data structures
+ * @author WardWork Team
+ */
+
 import { User } from "./user.types";
 
 export type UserRole = "freelancer" | "client" | "admin" | "moderator";

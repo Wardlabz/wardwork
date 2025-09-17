@@ -1,3 +1,8 @@
+/**
+ * @fileoverview Custom hook for managing review filtering and search functionality
+ * @author WardWork Team
+ */
+
 "use client";
 
 import { useCallback, useMemo, useState } from "react";

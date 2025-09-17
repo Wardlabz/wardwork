@@ -1,3 +1,8 @@
+/**
+ * @fileoverview Custom hook for admin dashboard functionality and data management
+ * @author WardWork Team
+ */
+
 'use client';
 
 import { useState, useEffect, useCallback, useMemo } from 'react';

@@ -1,3 +1,8 @@
+/**
+ * @fileoverview Type guard utilities for runtime type checking and validation
+ * @author WardWork Team
+ */
+
 import { AxiosError } from 'axios';
 import { DisputeResponse, EscrowUpdateResponse, TransactionResponse } from '../types/escrow.types';
 
