@@ -1,3 +1,8 @@
+/**
+ * @fileoverview Main navigation header component with user authentication and menu
+ * @author WardWork Team
+ */
+
 "use client"
 import Link from "next/link"
 import { useRouter } from "next/navigation"

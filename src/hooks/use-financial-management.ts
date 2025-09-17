@@ -1,7 +1,9 @@
-"use client"
+/**
+ * @fileoverview Custom hook for financial management and revenue tracking functionality
+ * @author WardWork Team
+ */
 
-// Custom Hook for Financial Management
-// Manages state and operations for the financial management system
+"use client"
 
 import { useState, useEffect, useCallback } from "react"
 import type {
