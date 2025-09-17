@@ -1,3 +1,8 @@
+/**
+ * @fileoverview Admin dashboard component for managing platform statistics and operations
+ * @author WardWork Team
+ */
+
 "use client";
 
 import React from "react";
