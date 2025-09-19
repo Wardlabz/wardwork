@@ -1,3 +1,8 @@
+/**
+ * @fileoverview Sidebar navigation component for application layout
+ * @author WardWork Team
+ */
+
 "use client";
 import React from "react";
 import Link from "next/link";
