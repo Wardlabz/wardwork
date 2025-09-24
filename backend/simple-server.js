@@ -7,12 +7,22 @@ const port = 4001;
 app.use(cors());
 app.use(express.json());
 
-app.get("/", (_req, res) => {
-  res.send("💼 WARDWORK backend is up and running!");
-});
+const logger = {
+  debug: (message) => {
+    if (process.env.NODE_ENV === 'development') {
+      console.log(`[DEBUG] ${new Date().toISOString()} - ${message}`);
+    }
+  },
+  info: (message) => console.log(`[INFO] ${new Date().toISOString()} - ${message}`),
+  warn: (message) => console.warn(`[WARN] ${new Date().toISOString()} - ${message}`),
+  error: (message, error) => console.error(`[ERROR] ${new Date().toISOString()} - ${message}`, error)
+};
+
 
 app.listen(port, () => {
-  console.log(`🚀 WARDWORK server is live at http://localhost:${port}`);
-  console.log("🌐 Connecting freelancers and clients around the world...");
-  console.log("✅ Working...");
+  logger.info(`🚀 WARDWORK server is live at http://localhost:${port}`);
+  logger.debug("Server configuration loaded"); 
+  logger.info("🌐 Connecting freelancers and clients around the world...");
+  logger.debug("CORS and JSON middleware initialized");
+  logger.info("✅ Working...");
 });
