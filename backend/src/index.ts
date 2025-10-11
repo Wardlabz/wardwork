@@ -45,6 +45,7 @@ app.use(cors({
     'http://localhost:3000',
     'https://wardwork-hpd4.vercel.app',
     'https://wardwork.vercel.app',
+    'https://wardwork-web.vercel.app',
     /https:\/\/.*\.vercel\.app$/
   ],
   credentials: true,
