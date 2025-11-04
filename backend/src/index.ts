@@ -63,6 +63,8 @@ app.use(cors({
     'https://wardwork-hpd4.vercel.app',
     'https://wardwork.vercel.app',
     'https://wardwork-web.vercel.app',
+    'https://www.wardwork.org',
+    'https://wardwork.org',
     /https:\/\/.*\.vercel\.app$/
   ],
   credentials: true,
@@ -105,6 +107,13 @@ app.use("/api/applications", authenticateToken(), applicationRoutes);
 app.use("/api/nfts-awarded", authenticateToken(), nftRoutes);
 app.use("/api/contracts", authenticateToken(), contractRoutes);
 app.use("/api/projects", authenticateToken(), projectRoutes);
+
+// Public user routes (no authentication required) - must be before authenticated routes
+app.get("/api/users/public/list", async (req, res, next) => {
+  const { getAllUsersHandler } = await import("@/controllers/user.controller");
+  getAllUsersHandler(req, res, next);
+});
+
 app.use("/api/users", authenticateToken(), userRoutes);
 app.use("/api/conversations", authenticateToken(), conversationRoutes);
 app.use("/api/messages", authenticateToken(), messageRoutes);
