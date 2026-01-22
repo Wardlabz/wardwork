@@ -1,115 +1,87 @@
-# 🚀 WARDWORK Backend
+# 💼 WARDWORK Backend
 
-This is the backend for **WARDWORK**, a freelance platform powered by Supabase and Node.js. It handles user management, services, project workflows, reviews, and more — using Express and PostgreSQL.
+Backend API for WARDWORK, built with Node.js, Express, and Supabase.
 
----
+## 🚀 Getting Started
 
-## ⚙️ Technologies Used
+### Prerequisites
 
-* **Node.js**
-* **Express**
-* **TypeScript**
-* **Supabase (PostgreSQL)**
-* **ts-node**
-* **dotenv**
-* **CORS**
+- Node.js >= 18
+- npm or yarn
+- Supabase Project
 
----
+### Installation
 
-## 📁 Folder Structure
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/WARDWORK/wardwork.git
+   cd wardwork/backend
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Configure Environment Variables:
+   Create a `.env` file in the root directory based on `.env.example`:
+   ```bash
+   cp .env.example .env
+   ```
+   Fill in your Supabase credentials and other required variables.
+   
+   📖 **Need help setting up Supabase?** See [Supabase Setup Guide](docs/SUPABASE_SETUP.md)
+
+4. Run Migrations:
+   Ensure your Supabase instance is up to date with the migrations in `supabase/migrations`.
+
+5. Start the Development Server:
+   ```bash
+   npm run dev
+   ```
+   The server will start at `http://localhost:4000`.
+
+## 📁 Project Structure
 
 ```
 backend/
 ├── src/
-│   ├── controller/         # Route handlers
-│   ├── routes/             # API route definitions
-│   ├── services/           # Business logic
-│   └── index.ts            # App entry point
+│   ├── config/         # App configuration
+│   ├── controllers/    # Route controllers (Auth, User)
+│   ├── middlewares/    # Express middlewares
+│   ├── routes/         # API route definitions
+│   ├── services/       # Business logic
+│   ├── types/          # TypeScript definitions
+│   ├── utils/          # Utility functions
+│   └── index.ts        # Entry point
 ├── supabase/
-│   └── migrations/         # One .sql file per DB table
-├── .env.example
-├── README.md
+│   └── migrations/     # Database migrations
+└── docs/               # Project documentation & standards
 ```
 
----
+## 🛠 Tech Stack
 
-## 🔐 Environment Setup
+- **Runtime**: Node.js
+- **Framework**: Express.js
+- **Database**: PostgreSQL (via Supabase)
+- **Authentication**: JWT & Supabase Auth
+- **Blockchain**: Stellar SDK
+- **Language**: TypeScript
 
-1. Duplicate the `.env.example` file and rename it to `.env`
-2. Add your Supabase credentials:
+## 📚 Documentation
 
-```env
-# =================================
-#  PORT
-# ================================
+For detailed documentation on standards, error handling, and API formats, please check the `docs/` directory:
 
-PORT=4000
+- [Supabase Setup](docs/SUPABASE_SETUP.md) - Quick guide to configure Supabase for local development
+- [Error Handling & Validation](docs/ERROR_HANDLING_AND_VALIDATION.md)
+- [API Response Format](docs/API_RESPONSE_FORMAT.md)
 
-# =================================
-#  SUPABASE
-# ================================
+## 🔐 Key Features (Current)
 
-SUPABASE_URL=https://your-project.supabase.co
-SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
+- **Authentication**: Email/Password & Wallet-based registration/login.
+- **User Management**: Profile management.
+- **Wallets**: Stellar wallet integration (Invisible & External).
 
-```
+## 🤝 Contributing
 
-> You can find these keys in your Supabase [dashboard](https://supabase.com/dashboard), under **Project Settings → API**.
-
----
-
-## 🧪 Database Setup with Supabase
-
-### 1. Create a Supabase Project
-
-* Go to [https://supabase.com](https://supabase.com)
-* Create a new project
-* Save the project ref and password
-
-### 2. Link Your Supabase Project
-
-```bash
-npx supabase login
-npx supabase link --project-ref YOUR_PROJECT_REF
-```
-
-You’ll be asked to enter your database password.
-
----
-
-### 3. Apply Migrations
-
-Once linked, push your SQL migrations:
-
-```bash
-npx supabase db push
-```
-
-This will create all tables defined in `supabase/migrations/` in your Supabase project.
-
----
-
-## 🚀 Run the Backend
-
-### Development Mode
-
-```bash
-npm install
-npm run dev
-```
-
-### Production Mode
-
-```bash
-npm run start
-```
-
----
-
-## ✅ Notes
-
-* Do **not** commit your real `.env` file — it’s ignored via `.gitignore`.
-* Each migration is in its own file and auto-applies via `supabase db push`.
-* You must test each endpoint with the **Supabase DB** and provide **screenshots** before any pull request is approved.
-
----
+Please follow the coding standards defined in the documentation. Ensure all new features include appropriate tests and types.
