@@ -22,11 +22,9 @@ assignees: ''
 - [ ] Add unit tests for new functionalities
 - [ ] Update documentation if needed
 
-## 🔧 Technical Details
+## 🔧 Context AI
 
-- **Contract affected:** [Contract name]
-- **Priority:** [Critical/High/Medium/Low]
-- **Files to modify:** [List of files]
+- [DOCS](https://github.com/WARDWORK/wardwork/tree/main/docs)
 
 ## 📋 Additional Notes
 
