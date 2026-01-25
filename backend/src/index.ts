@@ -55,7 +55,6 @@ app.use(
   cors({
     origin: [
       "http://localhost:3000",
-      "http://localhost:3001",
       "https://wardwork-hpd4.vercel.app",
       "https://wardwork.vercel.app",
       "https://wardwork-web.vercel.app",
