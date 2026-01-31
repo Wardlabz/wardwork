@@ -1,4 +1,3 @@
-import React from "react";
 import Image from "next/image";
 import user_profile from "../../../public/wardwork_profile.svg";
 
