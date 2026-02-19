@@ -25,6 +25,7 @@ assignees: ''
 ## 🔧 Context AI
 
 - [DOCS](https://github.com/WARDWORK/wardwork/tree/main/docs)
+- [DOCS](https://github.com/WARDWORK/wardwork-monorepo/tree/main/docs)
 
 ## 📋 Additional Notes
 
