@@ -53,7 +53,6 @@ export default async function DocPage({ params }: PageProps) {
             title={doc.frontmatter.title}
             description={doc.frontmatter.description}
             markdownContent={doc.content}
-            frontmatter={doc.frontmatter}
           />
         </div>
       </div>
