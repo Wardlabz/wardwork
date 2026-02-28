@@ -100,7 +100,6 @@ function downloadBlob(filename: string, content: string, mimeType: string) {
 
 function getSectionNodes(allNodes: Element[], startIndex: number): Element[] {
   const sectionNodes: Element[] = [];
-  const start = allNodes[startIndex];
 
   for (let i = startIndex + 1; i < allNodes.length; i++) {
     const node = allNodes[i];
