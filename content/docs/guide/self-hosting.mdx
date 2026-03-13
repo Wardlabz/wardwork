@@ -34,18 +34,18 @@ Verify that Docker is installed and running:
 
 The WARDWORK deployment consists of:
 
-```
-┌─────────────┐     ┌─────────────┐     ┌─────────────┐
-│   Frontend  │────▶│ Orchestrator│────▶│  PostgreSQL │
-│  (Next.js)  │     │  (NestJS)   │     │             │
-└─────────────┘     └──────┬──────┘     └─────────────┘
-                          │
-                    ┌─────┴─────┐
-                    ▼           ▼
-              ┌─────────┐ ┌───────────┐
-              │  Redis  │ │  Stellar  │
-              │ (BullMQ)│ │  Network  │
-              └─────────┘ └───────────┘
+```mermaid
+flowchart LR
+    Frontend[Frontend Next.js]
+    Orchestrator[Orchestrator NestJS]
+    Postgres[PostgreSQL]
+    Redis[Redis BullMQ]
+    Stellar[Stellar Network]
+
+    Frontend --> Orchestrator
+    Orchestrator --> Postgres
+    Orchestrator --> Redis
+    Orchestrator --> Stellar
 ```
 
 ## Docker Setup
