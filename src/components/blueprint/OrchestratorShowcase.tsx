@@ -380,31 +380,32 @@ function ArchitectureCard({
 
       <div
         id={`${card.key}-details`}
-        className={`grid transition-all duration-300 ${
-          expanded ? "mt-6 grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-70"
-        }`}
+        className={`grid transition-all duration-300 ${expanded ? "mt-6 grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-70"}`}
+        aria-hidden={!expanded}
       >
         <div className="overflow-hidden">
-          <div className="rounded-[1.5rem] bg-bg-base p-5 shadow-neu-sunken">
-            <p className="text-sm leading-7 text-content-primary">{card.callout}</p>
-            <ul className="mt-4 space-y-3 text-sm leading-7 text-content-secondary">
-              {card.bullets.map((bullet) => (
-                <li key={bullet} className="flex gap-3">
-                  <ArrowRight className="mt-1 h-4 w-4 shrink-0 text-theme-primary" />
-                  <span>{bullet}</span>
-                </li>
-              ))}
-            </ul>
-            <Link
-              href={card.docHref}
-              target="_blank"
-              rel="noreferrer"
-              className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-theme-primary transition-colors hover:text-theme-primary-hover"
-            >
-              Open {card.docLabel}
-              <Command className="h-4 w-4" />
-            </Link>
-          </div>
+          {expanded ? (
+            <div className="rounded-[1.5rem] bg-bg-base p-5 shadow-neu-sunken">
+              <p className="text-sm leading-7 text-content-primary">{card.callout}</p>
+              <ul className="mt-4 space-y-3 text-sm leading-7 text-content-secondary">
+                {card.bullets.map((bullet) => (
+                  <li key={bullet} className="flex gap-3">
+                    <ArrowRight className="mt-1 h-4 w-4 shrink-0 text-theme-primary" />
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+              <Link
+                href={card.docHref}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-theme-primary transition-colors hover:text-theme-primary-hover"
+              >
+                Open {card.docLabel}
+                <Command className="h-4 w-4" />
+              </Link>
+            </div>
+          ) : null}
         </div>
       </div>
     </article>
@@ -412,7 +413,7 @@ function ArchitectureCard({
 }
 
 export default function OrchestratorShowcase() {
-  const [expandedKey, setExpandedKey] = useState<LayerKey>("logic");
+  const [expandedKey, setExpandedKey] = useState<LayerKey | null>("logic");
 
   return (
     <section className="px-6 py-24">
@@ -463,9 +464,7 @@ export default function OrchestratorShowcase() {
                 key={card.key}
                 card={card}
                 expanded={expandedKey === card.key}
-                onToggle={() =>
-                  setExpandedKey((current) => (current === card.key ? "logic" : card.key))
-                }
+                onToggle={() => setExpandedKey((current) => (current === card.key ? null : card.key))}
               />
             ))}
           </div>
