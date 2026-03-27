@@ -109,7 +109,7 @@ function FlowLegend() {
       ].map((item) => (
         <div
           key={item.label}
-          className="rounded-[1.5rem] bg-bg-base p-4 shadow-neu-sunken text-left"
+          className="rounded-[1.5rem] bg-bg-base p-4 shadow-neu-sunken-l2-subtle text-left overflow-visible"
         >
           <div className="mb-2 inline-flex rounded-full bg-theme-primary/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-theme-primary">
             {item.label}
@@ -123,7 +123,7 @@ function FlowLegend() {
 
 function DataFlowDiagram() {
   return (
-    <div className="rounded-[2rem] bg-bg-base p-4 shadow-neu-sunken md:p-6">
+    <div className="rounded-[2rem] bg-bg-base p-4 shadow-neu-sunken-l2 md:p-6 overflow-visible blueprint-layer">
       <svg
         viewBox="0 0 720 336"
         className="h-full w-full"
@@ -341,7 +341,7 @@ function ArchitectureCard({
   const Icon = card.icon;
 
   return (
-    <article className="rounded-[2rem] bg-bg-elevated p-8 shadow-neu-raised transition-transform duration-300 hover:-translate-y-1">
+    <article className="rounded-[2rem] bg-bg-elevated p-8 shadow-neu-raised-l2-sm overflow-visible transition-transform duration-300 hover:-translate-y-1 blueprint-layer">
       <div className="flex items-start justify-between gap-4">
         <div className="flex items-start gap-4">
           <div className="rounded-[1.25rem] bg-bg-base p-3 shadow-neu-sunken-subtle">
@@ -385,7 +385,7 @@ function ArchitectureCard({
       >
         <div className="overflow-hidden">
           {expanded ? (
-            <div className="rounded-[1.5rem] bg-bg-base p-5 shadow-neu-sunken">
+            <div className="rounded-[1.5rem] bg-bg-base p-5 shadow-neu-sunken-l2-subtle overflow-visible">
               <p className="text-sm leading-7 text-content-primary">{card.callout}</p>
               <ul className="mt-4 space-y-3 text-sm leading-7 text-content-secondary">
                 {card.bullets.map((bullet) => (
@@ -418,7 +418,7 @@ export default function OrchestratorShowcase() {
   return (
     <section className="px-6 py-24">
       <div className="mx-auto max-w-7xl">
-        <div className="rounded-[2.5rem] bg-bg-elevated p-10 shadow-neu-raised">
+        <div className="rounded-[2.5rem] bg-bg-elevated p-10 shadow-neu-raised-l2 overflow-visible blueprint-layer">
           <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
             <div>
               <div className="inline-flex items-center gap-2 rounded-full bg-bg-base px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-theme-primary shadow-neu-sunken">
@@ -458,7 +458,7 @@ export default function OrchestratorShowcase() {
             <FlowLegend />
           </div>
 
-          <div className="mt-12 grid gap-6 xl:grid-cols-3">
+          <div className="mt-12 grid gap-6 xl:grid-cols-3 overflow-visible">
             {detailCards.map((card) => (
               <ArchitectureCard
                 key={card.key}

@@ -12,6 +12,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         sans: ["var(--font-inter)", "Roboto", "Outfit", "sans-serif"],
+        mono: ["var(--font-jetbrains-mono)", "JetBrains Mono", "Fira Code", "monospace"],
       },
       colors: {
         // Legacy colors (kept for backwards compatibility during migration)
@@ -74,6 +75,12 @@ const config: Config = {
         "neu-sunken": "inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light)",
         "neu-sunken-subtle": "inset 2px 2px 4px var(--shadow-dark), inset -2px -2px 4px var(--shadow-light)",
         "neu-raised-scrolled": "8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light)",
+
+        // Level-2 (L2) — elevated depth for Blueprint nested layouts (Issue 1168)
+        "neu-raised-l2": "12px 12px 24px var(--shadow-dark), -12px -12px 24px var(--shadow-light)",
+        "neu-raised-l2-sm": "8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light)",
+        "neu-sunken-l2": "inset 8px 8px 16px var(--shadow-dark), inset -8px -8px 16px var(--shadow-light)",
+        "neu-sunken-l2-subtle": "inset 6px 6px 12px var(--shadow-dark), inset -6px -6px 12px var(--shadow-light)",
       },
     },
   },

@@ -7,15 +7,18 @@ import {
     Users,
     ShieldCheck,
     Zap,
-    Globe
+    Globe,
+    Code2,
 } from "lucide-react";
 import { cn } from "@/lib/cn";
 import EscrowFlowDiagram from "@/components/use-cases/freelance/EscrowFlowDiagram";
+import CodeIntegrationShowcase from "@/components/use-cases/freelance/CodeIntegrationShowcase";
 
 const PAGE_SECTIONS = [
     { id: "overview", label: "Overview", icon: Users },
     { id: "features", label: "Features", icon: Zap },
     { id: "architecture", label: "Architecture", icon: Globe },
+    { id: "sdk", label: "SDK", icon: Code2 },
 ] as const;
 
 /** Offset (px) matching the sticky header height + breathing room */
@@ -313,6 +316,15 @@ export default function UseCasesPage() {
 
                         <EscrowFlowDiagram />
                     </div>
+                </section>
+
+                {/* ── SDK / Code Integration Section ── */}
+                <section
+                    id="sdk"
+                    className="relative bg-transparent"
+                    style={{ scrollMarginTop: `${SCROLL_OFFSET}px` }}
+                >
+                    <CodeIntegrationShowcase />
                 </section>
             </main>
 
