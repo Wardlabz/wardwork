@@ -147,11 +147,9 @@ function AnimatedNumber({ value, suffix }: { value: string; suffix: string }) {
 function GrowthBadge({
   label,
   value,
-  isGrowth,
 }: {
   label: string;
   value: string;
-  isGrowth: boolean;
 }) {
   return (
     <motion.div
@@ -272,7 +270,6 @@ function MetricCard({
           <GrowthBadge
             label={metric.savingsLabel}
             value={metric.savingsValue}
-            isGrowth={metric.isGrowth}
           />
         )}
 
@@ -405,7 +402,7 @@ export default function StellarImpactCards() {
           <p className="text-sm text-content-secondary mt-1 max-w-md">
             Hard data that answers{" "}
             <em className="not-italic font-semibold text-content-primary">
-              "Why switch to WARDWORK?"
+              &ldquo;Why switch to WARDWORK?&rdquo;
             </em>
           </p>
         </div>
