@@ -20,6 +20,7 @@ const PAGE_SECTIONS = [
     { id: "features", label: "Features", icon: Zap },
     { id: "metrics", label: "Metrics", icon: BarChart3 },
     { id: "architecture", label: "Architecture", icon: Globe },
+    { id: "sdk", label: "SDK", icon: Code2 },
 ] as const;
 
 /** Offset (px) matching the sticky header height + breathing room */
@@ -321,6 +322,15 @@ export default function UseCasesPage() {
 
                         <EscrowFlowDiagram />
                     </div>
+                </section>
+
+                {/* ── SDK / Code Integration Section ── */}
+                <section
+                    id="sdk"
+                    className="relative bg-transparent"
+                    style={{ scrollMarginTop: `${SCROLL_OFFSET}px` }}
+                >
+                    <CodeIntegrationShowcase />
                 </section>
             </main>
 
