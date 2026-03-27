@@ -1,5 +1,6 @@
 "use client";
 
+import CodeIntegrationShowcase from "@/components/use-cases/freelance/CodeIntegrationShowcase";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { useState, useEffect, useRef, useCallback } from "react";
@@ -9,6 +10,7 @@ import {
     Zap,
     Globe,
     BarChart3,
+    Code2,
 } from "lucide-react";
 import { cn } from "@/lib/cn";
 import EscrowFlowDiagram from "@/components/use-cases/freelance/EscrowFlowDiagram";
