@@ -34,6 +34,11 @@ export default function RegistrationForm() {
         setError(null);
 
         try {
+            if (!supabase) {
+                setError("Waitlist is not configured yet. Please try again later.");
+                setIsLoading(false);
+                return;
+            }
             const { error: supabaseError } = await supabase
                 .from('waitlist')
                 .insert([

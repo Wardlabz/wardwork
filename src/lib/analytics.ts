@@ -137,6 +137,10 @@ export async function trackPageView(pagePath: string, pageTitle?: string) {
   if (!isSupabaseConfigured) {
     return;
   }
+  if (!supabase) {
+    return;
+  }
+  const sb = supabase;
 
   try {
     const visitorId = generateVisitorId();
@@ -159,7 +163,7 @@ export async function trackPageView(pagePath: string, pageTitle?: string) {
       ...utm,
     };
 
-    supabase
+    sb
       .from('page_views')
       .insert([pageViewData])
       .then(({ error }) => {
@@ -173,7 +177,7 @@ export async function trackPageView(pagePath: string, pageTitle?: string) {
 
     // Fetch geolocation in background and update visitor separately
     getGeolocation().then(geo => {
-      supabase
+      sb
         .from('visitors')
         .upsert([{
           visitor_id: visitorId,
