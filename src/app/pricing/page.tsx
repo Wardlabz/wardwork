@@ -70,8 +70,9 @@ const tiers: PricingTier[] = [
       "Custom support scope based on your business needs",
     ],
     ctaLabel: "Talk to Sales",
-    ctaHref: "/contact",
+    ctaHref: "https://t.me/wardwork_contributors",
     ctaStyle: "secondary",
+    external: true,
     icon: Building2,
   },
 ];
@@ -146,9 +147,14 @@ export default function PricingPage() {
           <p className="mt-10 text-center text-sm text-content-secondary">
             Need help choosing the right setup? Reach us through our
             {" "}
-            <Link href="/contact" className="text-theme-primary font-semibold hover:underline">
+            <a
+              href="https://t.me/wardwork_contributors"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-theme-primary font-semibold hover:underline"
+            >
               contact channel
-            </Link>
+            </a>
             {" "}
             and we can recommend a path based on your business stage.
           </p>
