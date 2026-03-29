@@ -156,7 +156,13 @@ function processGitHubData(validData: NonNullable<Awaited<ReturnType<typeof fetc
       return { number: issue.number, title: issue.title, priority, url: issue.html_url, labels: issue.labels.map(l => l.name), createdAt: issue.created_at || "" };
     })
     .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
-  const issues: IssueData[] = allIssues.slice(0, 50).map(({ createdAt: _createdAt, ...rest }) => rest);
+  const issues: IssueData[] = allIssues.slice(0, 50).map(({ number, title, priority, url, labels }) => ({
+    number,
+    title,
+    priority,
+    url,
+    labels,
+  }));
 
   return { stats, contributors, pullRequests, issues };
 }
