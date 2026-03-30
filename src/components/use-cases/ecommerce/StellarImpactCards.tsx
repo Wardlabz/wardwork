@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   TrendingUp,
   ShieldCheck,
-  DollarSign,
   Zap,
   BarChart3,
   PackageCheck,

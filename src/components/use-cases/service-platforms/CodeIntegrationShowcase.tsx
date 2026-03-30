@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   Copy,
@@ -256,12 +257,12 @@ export default function CodeIntegrationShowcase() {
       <p className="text-center text-xs text-content-muted flex items-center justify-center gap-1.5">
         <BookOpen size={12} />
         Full SDK reference and examples in the{" "}
-        <a
+        <Link
           href="/docs"
           className="text-theme-primary hover:underline underline-offset-2"
         >
           documentation
-        </a>
+        </Link>
       </p>
 
       <style jsx global>{`
