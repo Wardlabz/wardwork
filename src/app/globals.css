@@ -141,11 +141,54 @@ body::before {
     display: none;
   }
 
-  /* Neumorphic shadow system — light source at 145° (top-left)
+  /* ── Neumorphic Level-2 (L2) shadow system — Blueprint deep-nesting support ──
+     L2 tokens provide higher offsets and blurs for elements that sit closer to
+     the user ("raised-l2") or hold complex technical data ("sunken-l2").
+     Light source: 135° (top-left). Shadow colors derived from bg-base:
+       Dark shadow  → L - 8%  (--shadow-dark)
+       Light shadow → L + 5%  (--shadow-light)
+  */
+
+  /* L2 Raised — elements elevated above nested card layers */
+  .shadow-raised-l2 {
+    box-shadow:
+      12px 12px 24px var(--shadow-dark),
+      -12px -12px 24px var(--shadow-light);
+  }
+
+  /* L2 Raised (compact) — moderate lift for mid-level nesting */
+  .shadow-raised-l2-sm {
+    box-shadow:
+      8px 8px 16px var(--shadow-dark),
+      -8px -8px 16px var(--shadow-light);
+  }
+
+  /* L2 Sunken — deep depression for containers holding complex technical data */
+  .shadow-sunken-l2 {
+    box-shadow:
+      inset 8px 8px 16px var(--shadow-dark),
+      inset -8px -8px 16px var(--shadow-light);
+  }
+
+  /* L2 Sunken (subtle) — lighter depression for code/data panels */
+  .shadow-sunken-l2-subtle {
+    box-shadow:
+      inset 6px 6px 12px var(--shadow-dark),
+      inset -6px -6px 12px var(--shadow-light);
+  }
+
+  /* Blueprint performance layer — promotes to GPU compositor for Safari/Mobile.
+     Apply to any container with ≥ 3 concurrent box-shadows to avoid repaints. */
+  .blueprint-layer {
+    will-change: transform;
+    transform: translateZ(0);
+  }
+
+  /* ── Standard Neumorphic shadow system — light source at 145° (top-left)
      Background base: #F1F3F7 · Dark shadow: #d1d5db · Light highlight: #ffffff */
 
   .shadow-raised {
-    box-shadow: 6px 6px 12px #d1d5db, -6px -6px 12px #ffffff;
+    box-shadow: 6px 6px 12px var(--shadow-dark), -6px -6px 12px var(--shadow-light);
   }
 
   .shadow-raised-hover {
@@ -165,7 +208,7 @@ body::before {
   }
 
   .shadow-sunken-subtle {
-    box-shadow: inset 2px 2px 4px #d1d5db, inset -2px -2px 4px #ffffff;
+    box-shadow: inset 2px 2px 4px var(--shadow-dark), inset -2px -2px 4px var(--shadow-light);
   }
 
   /* For the navbar: flat surface elevation (bottom-only) */
@@ -420,6 +463,22 @@ body::before {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* Escrow Flow Diagram animations */
+@keyframes blockchainPulse {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.08); opacity: 0.25; }
+}
+.animate-blockchainPulse {
+  animation: blockchainPulse 2s ease-in-out infinite;
+}
+
+@keyframes connectorDash {
+  to { stroke-dashoffset: -12; }
+}
+.animate-connectorDash {
+  animation: connectorDash 1s linear infinite;
 }
 
 /* ══════════════════════════════════════════════════════════════════════════════
