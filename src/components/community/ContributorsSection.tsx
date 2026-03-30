@@ -3,6 +3,7 @@
 import { useState, memo } from "react";
 import { Users, GitCommit, ChevronDown } from "lucide-react";
 import SectionHeading from "@/components/community/SectionHeading";
+import Image from "next/image";
 
 interface ContributorData {
   name: string;
@@ -23,11 +24,11 @@ const ContributorCard = memo(function ContributorCard({ person }: { person: Cont
       <div className="flex flex-col items-center text-center gap-4">
         {person.avatar ? (
           <div className="p-1 rounded-full bg-bg-base shadow-neu-sunken-subtle group-hover:shadow-neu-sunken transition-shadow">
-            <img
+            <Image
               src={person.avatar}
               alt={person.name}
-              loading="lazy"
-              decoding="async"
+              width={64}
+              height={64}
               className="w-16 h-16 rounded-full object-cover"
             />
           </div>

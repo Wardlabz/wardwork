@@ -1,64 +1,145 @@
-"use client";
-
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 
-const changelogEntries = [
-  {
-    version: "v0.3.0",
-    date: "March 2024",
-    title: "New UI Components",
-    badge: "Feature",
-    badgeColor: "bg-theme-primary/10 text-theme-primary",
-    description:
-      "Introduced a new set of neumorphic UI components, improved accessibility, and updated the brand palette for better consistency.",
-    changes: [
-      "Added Neumorphic Card component",
-      "Enhanced mobile navigation",
-      "New icon set integration",
-    ],
-  },
-  {
-    version: "v0.2.0",
-    date: "February 2024",
-    title: "Performance Updates",
-    badge: "Fix",
-    badgeColor: "bg-theme-success/10 text-theme-success",
-    description:
-      "Optimized bundle size and improved page load times by implementing better code splitting and image optimization strategies.",
-    changes: [
-      "Reduced main bundle size by 15%",
-      "Improved LCP scores",
-      "Fixed memory leaks in dashboard charts",
-    ],
-  },
-  {
-    version: "v0.1.0",
-    date: "January 2024",
-    title: "Initial Launch",
-    badge: "Breaking",
-    badgeColor: "bg-theme-error/10 text-theme-error",
-    description:
-      "The first official release of WardWork, featuring secure escrow payments and marketplace integration tools.",
-    changes: [
-      "Core escrow protocol implementation",
-      "Marketplace API v1 release",
-      "Initial landing page and docs",
-    ],
-  },
-];
+interface GitHubRelease {
+  tag_name: string;
+  name: string | null;
+  body: string | null;
+  draft: boolean;
+  prerelease: boolean;
+  published_at: string | null;
+  created_at: string;
+}
 
-export default function ChangelogPage() {
+interface ChangelogEntry {
+  version: string;
+  date: string;
+  title: string;
+  badge: string;
+  badgeColor: string;
+  description: string;
+  changes: string[];
+}
+
+const RELEASES_API_URL = "https://api.github.com/repos/WARDWORK/wardwork-monorepo/releases";
+
+function formatReleaseDate(dateString: string): string {
+  return new Intl.DateTimeFormat("en-US", {
+    month: "long",
+    year: "numeric",
+  }).format(new Date(dateString));
+}
+
+function removeMarkdownInlineSyntax(text: string): string {
+  return text
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, "$1")
+    .replace(/`([^`]+)`/g, "$1")
+    .replace(/\*\*([^*]+)\*\*/g, "$1")
+    .replace(/\*([^*]+)\*/g, "$1")
+    .replace(/__([^_]+)__/g, "$1")
+    .replace(/_([^_]+)_/g, "$1")
+    .trim();
+}
+
+function parseReleaseBody(body: string | null): Pick<ChangelogEntry, "description" | "changes"> {
+  const rawBody = body?.trim();
+
+  if (!rawBody) {
+    return {
+      description: "No release notes were provided for this version.",
+      changes: ["See full release details on GitHub."],
+    };
+  }
+
+  const lines = rawBody
+    .split("\n")
+    .map((line) => line.trim())
+    .filter(Boolean);
+
+  const changes = lines
+    .map((line) => line.match(/^[-*+]\s+(.+)$/)?.[1] ?? line.match(/^\d+\.\s+(.+)$/)?.[1] ?? null)
+    .filter((line): line is string => Boolean(line))
+    .map(removeMarkdownInlineSyntax);
+
+  const firstMeaningfulLine = lines.find(
+    (line) => !/^[-*+]\s+/.test(line) && !/^\d+\.\s+/.test(line) && !/^#+\s+/.test(line),
+  );
+
+  return {
+    description: firstMeaningfulLine
+      ? removeMarkdownInlineSyntax(firstMeaningfulLine)
+      : "Release notes are available in the full GitHub release details.",
+    changes: changes.length > 0 ? changes : ["See full release details on GitHub."],
+  };
+}
+
+function getReleaseBadge(release: Pick<GitHubRelease, "draft" | "prerelease">): Pick<ChangelogEntry, "badge" | "badgeColor"> {
+  if (release.draft) {
+    return {
+      badge: "Draft",
+      badgeColor: "bg-content-secondary/10 text-content-secondary",
+    };
+  }
+
+  if (release.prerelease) {
+    return {
+      badge: "Pre-release",
+      badgeColor: "bg-theme-warning/10 text-theme-warning",
+    };
+  }
+
+  return {
+    badge: "Release",
+    badgeColor: "bg-theme-success/10 text-theme-success",
+  };
+}
+
+function mapReleaseToEntry(release: GitHubRelease): ChangelogEntry {
+  const { description, changes } = parseReleaseBody(release.body);
+  const badge = getReleaseBadge(release);
+
+  return {
+    version: release.tag_name,
+    date: formatReleaseDate(release.published_at ?? release.created_at),
+    title: release.name?.trim() || `Release ${release.tag_name}`,
+    description,
+    changes,
+    ...badge,
+  };
+}
+
+async function fetchChangelogEntries(): Promise<{ entries: ChangelogEntry[]; hasError: boolean }> {
+  try {
+    const response = await fetch(RELEASES_API_URL, {
+      next: { revalidate: 3600 },
+      headers: {
+        Accept: "application/vnd.github+json",
+      },
+    });
+
+    if (!response.ok) {
+      return { entries: [], hasError: true };
+    }
+
+    const releases = (await response.json()) as GitHubRelease[];
+
+    return {
+      entries: releases.map(mapReleaseToEntry),
+      hasError: false,
+    };
+  } catch (error) {
+    console.error("Failed to fetch GitHub releases:", error);
+    return { entries: [], hasError: true };
+  }
+}
+
+export default async function ChangelogPage() {
+  const { entries: changelogEntries, hasError } = await fetchChangelogEntries();
+
   return (
     <div className="min-h-screen flex flex-col bg-transparent">
       {/* Subtle teal glow centered */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse 60% 45% at 50% 50%, rgba(20,154,155,0.07) 0%, transparent 70%)",
-        }}
-      />
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_60%_45%_at_50%_50%,rgba(20,154,155,0.07)_0%,transparent_70%)]" />
       <Navbar />
 
       <main className="flex-grow pt-32 pb-24 px-6 md:px-8">
@@ -79,8 +160,22 @@ export default function ChangelogPage() {
             {/* Improved Timeline Line */}
             <div className="absolute left-6 md:left-1/2 top-4 bottom-4 w-1 transform md:-translate-x-1/2 bg-theme-primary/10 dark:bg-theme-primary/30 rounded-full" />
 
-            <div className="space-y-16 md:space-y-24">
-              {changelogEntries.map((entry, index) => (
+            {changelogEntries.length === 0 ? (
+              <div className="pl-12 md:pl-0">
+                <div className="max-w-2xl mx-auto bg-bg-elevated rounded-[2.5rem] p-8 md:p-10 shadow-neu-raised text-center">
+                  <h2 className="text-2xl font-black text-content-primary tracking-tight mb-4">
+                    No releases published yet
+                  </h2>
+                  <p className="text-content-secondary text-sm md:text-base font-medium leading-relaxed">
+                    {hasError
+                      ? "We couldn’t load GitHub Releases right now. Please try again shortly."
+                      : "As soon as a GitHub release is published, it will appear here automatically."}
+                  </p>
+                </div>
+              </div>
+            ) : (
+              <div className="space-y-16 md:space-y-24">
+                {changelogEntries.map((entry, index) => (
                 <div
                   key={entry.version}
                   className={`relative flex flex-col md:flex-row items-start md:items-center md:justify-between ${index % 2 === 0 ? "md:flex-row-reverse" : ""
@@ -140,8 +235,9 @@ export default function ChangelogPage() {
                     </div>
                   </div>
                 </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </main>

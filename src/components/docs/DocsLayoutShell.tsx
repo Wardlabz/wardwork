@@ -7,12 +7,11 @@ import {
   Menu, X, ChevronRight, Home
 } from "lucide-react";
 
-import { cn } from "@/lib/cn";
 import type { Heading, SidebarSection } from "@/lib/mdx";
 import { DocsSidebar } from "@/components/docs/DocsSidebar";
 import { TableOfContents } from "@/components/docs/TableOfContents";
 import { Navbar } from "@/components/layout/Navbar";
-import { FileCode2, FileJson, FileText, Github } from "lucide-react";
+import { FileCode2, FileText, Github } from "lucide-react";
 
 // Use production URL for AI assistant links
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://wardwork.tech";
@@ -184,8 +183,7 @@ export function DocsLayoutShell({ nav, children }: DocsLayoutShellProps) {
             onClick={() => setIsDrawerOpen(false)}
           />
           <aside
-            className="relative h-full w-80 max-w-[85vw] p-8 bg-bg-base shadow-neu-raised"
-            style={{ borderTopRightRadius: "30px", borderBottomRightRadius: "30px" }}
+            className="relative h-full w-80 max-w-[85vw] p-8 bg-bg-base shadow-neu-raised rounded-r-[30px]"
           >
             <div className="mb-8 flex items-center justify-between pb-4 border-b border-theme-border/40">
               <p className="text-sm font-bold uppercase tracking-widest text-[#149A9B]">
@@ -213,7 +211,6 @@ export function DocsLayoutShell({ nav, children }: DocsLayoutShellProps) {
 import { ExportJSON } from "@/components/docs/ExportJSON";
 
 function DocActionsMenu({ slug }: { slug: string }) {
-  const [isOpen, setIsOpen] = useState(false);
   const [isExportingPdf, setIsExportingPdf] = useState(false);
   const [copyStatus, setCopyStatus] = useState<string | null>(null);
 
@@ -255,47 +252,6 @@ function DocActionsMenu({ slug }: { slug: string }) {
       console.error("Copy failed", err);
       setCopyStatus("Failed to copy");
       setTimeout(() => setCopyStatus(null), 2000);
-    }
-  };
-
-  const handleViewPlainText = () => {
-    const { markdown, title } = getPageContent();
-    const fullContent = `# ${title}\n\nSource: ${SITE_URL}/docs/${slug}\n\n${markdown}`;
-
-    // Create a new window with proper styling
-    const win = window.open("", "_blank");
-    if (win) {
-      win.document.write(`
-        <!DOCTYPE html>
-        <html>
-        <head>
-          <title>${title} - Plain Text</title>
-          <style>
-            body {
-              font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
-              padding: 2rem;
-              max-width: 800px;
-              margin: 0 auto;
-              line-height: 1.6;
-              background: #f8f9fa;
-              color: #1a1a1a;
-            }
-            pre {
-              white-space: pre-wrap;
-              word-wrap: break-word;
-              background: white;
-              padding: 1.5rem;
-              border-radius: 8px;
-              border: 1px solid #e1e4e8;
-            }
-          </style>
-        </head>
-        <body>
-          <pre>${fullContent.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</pre>
-        </body>
-        </html>
-      `);
-      win.document.close();
     }
   };
 
@@ -341,90 +297,6 @@ function DocActionsMenu({ slug }: { slug: string }) {
       setIsExportingPdf(false);
     }
   };
-
-  const actions = [
-    {
-      label: copyStatus || "Copy as Markdown",
-      sublabel: copyStatus ? "Ready to paste!" : "Best for sharing with Claude/ChatGPT",
-      icon: (
-        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
-          {copyStatus ? (
-            <path d="M20 6L9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" />
-          ) : (
-            <>
-              <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
-              <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
-            </>
-          )}
-        </svg>
-      ),
-      onClick: handleCopyMarkdown
-    },
-    {
-      label: "View Plain Text",
-      sublabel: "See raw documentation content",
-      icon: (
-        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
-          <path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4" />
-          <polyline points="14 2 14 8 20 8" />
-          <path d="m3 15 2 2 4-4" />
-        </svg>
-      ),
-      onClick: handleViewPlainText
-    },
-    {
-      type: "divider"
-    },
-    {
-      label: "Ask ChatGPT",
-      sublabel: "Discuss this page with OpenAI",
-      icon: (
-        <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 text-[#10A37F]">
-          <path d="M22.28 9.82a5.39 5.39 0 0 0-1.07-3.79 5.48 5.48 0 0 0-3.92-2.22 5.41 5.41 0 0 0-4.39-.46 5.39 5.39 0 0 0-3.34-1.79 5.48 5.48 0 0 0-4.48 1.26 5.41 5.41 0 0 0-2.43 3.73 5.39 5.39 0 0 0-1.63 3.52 5.48 5.48 0 0 0 .54 4.54 5.41 5.41 0 0 0 3.73 2.43 5.39 5.39 0 0 0 1.79 3.34 5.48 5.48 0 0 0 4.54.54 5.41 5.41 0 0 0 2.43-3.73 5.39 5.39 0 0 0 3.52-1.63 5.48 5.48 0 0 0 1.26-4.48 5.41 5.41 0 0 0 3.19-4.28zm-10.43 8.33a3.3 3.3 0 0 1-2.1-.73 3.35 3.35 0 0 1-1.24-2.1c-.04-.26-.06-.52-.06-.79l-.01-5l2.25 1.3a.75.75 0 0 0 1.13-.65v-2.6L14 7.03l2.25 1.3c.2.11.43.17.66.17a1.32 1.32 0 0 0 .66-.17l2.25-1.3a3.3 3.3 0 0 1 .73 2.1 3.35 3.35 0 0 1-1.24 2.1l-2.25 1.3v2.6a.75.75 0 0 0 1.12.65l2.25-1.3c.1-.06.21-.11.31-.17a3.3 3.3 0 0 1-.73 2.1l-2.25 1.3a3.35 3.35 0 0 1-2.1 1.24 3.3 3.3 0 0 1-2.1-.01zm-5.75-5.07a3.3 3.3 0 0 1-.73-2.1l.01-2.6a.75.75 0 0 0-1.13-.65l-2.25 1.3a1.32 1.32 0 0 0-.31.17 3.35 3.35 0 0 1 .73-2.1 3.3 3.3 0 0 1 2.1-1.24 3.35 3.35 0 0 1 2.1.01 3.3 3.3 0 0 1 2.1.73l2.25 1.3v2.6a.75.75 0 0 0-1.12.65l-2.25-1.3-2.25-1.3a1.32 1.32 0 0 0-.66-.17c-.23 0-.46.06-.66.17l-2.25 1.3a3.35 3.35 0 0 1 1.24 2.1zm-1.83-9.1a3.3 3.3 0 0 1 2.1-.73l2.25 1.3v2.6a.75.75 0 0 0 1.12.65l2.25-1.3 2.25-1.3a1.32 1.32 0 0 0 .66-.17c.23 0 .46.06.66.17l2.25 1.3a3.35 3.35 0 0 1-1.24 2.1 3.3 3.3 0 0 1-2.1.73 3.35 3.35 0 0 1-2.1-.01l-2.25-1.3v-2.6a.75.75 0 0 0-1.13-.65l-2.25 1.3a3.3 3.3 0 0 1-.73-2.1zm12.33 3.42a3.35 3.35 0 0 1 .73 2.1v2.6a.75.75 0 0 0 1.12.65l2.25-1.3a1.32 1.32 0 0 0 .31-.17 3.35 3.35 0 0 1-.73 2.1 3.3 3.3 0 0 1-2.1 1.24 3.35 3.35 0 0 1-2.1-.01 3.3 3.3 0 0 1-2.1-.73l-2.25-1.3v-2.6a.75.75 0 0 0 1.13-.65l2.25 1.3 2.25 1.3a1.32 1.32 0 0 0 .66.17c.23 0 .46-.06.66-.17l2.25-1.3a3.35 3.35 0 0 1-1.24-2.1zm1.83 5.48a3.3 3.3 0 0 1-2.1.73l-2.25-1.3v-2.6a.75.75 0 0 0-1.12-.65l-2.25 1.3-2.25 1.3a1.32 1.32 0 0 0-.66.17c-.23 0-.46-.06-.66-.17l-2.25-1.3a3.35 3.35 0 0 1 1.24-2.1 3.3 3.3 0 0 1 2.1-.73 3.35 3.35 0 0 1 2.1.01l2.25 1.3v2.6a.75.75 0 0 0 1.13.65l2.25-1.3a3.3 3.3 0 0 1 .73 2.1z" />
-        </svg>
-      ),
-      external: true,
-      onClick: () => window.open(`https://chatgpt.com/?q=${encodeURIComponent("Please help me with this documentation page: " + SITE_URL + "/docs/" + slug)}`, "_blank")
-    },
-    {
-      label: "Ask Claude",
-      sublabel: "Discuss this page with Anthropic",
-      icon: (
-        <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 text-[#D97706]">
-          <path d="M11.63 21.01a.34.34 0 0 1-.36-.08.33.33 0 0 1-.08-.36l4.08-11.41a.36.36 0 0 1 .33-.24h2.18c.24 0 .42.24.34.46l-4.08 11.4a.34.34 0 0 1-.3.23h-2.11zm-5.79 0a.34.34 0 0 1-.33-.24l-4.08-11.4a.34.34 0 0 1 .08-.34.33.33 0 0 1 .34-.08l2.11.23a.35.35 0 0 1 .23.36l4.08 11.4c.08.23-.08.47-.32.47H5.84zm6.65-17.15c.16 0 .31.1.37.26l1.3 3.65a.39.39 0 0 1-.37.52H1.38c-.24 0-.42-.25-.34-.47l1.3-3.65a.39.39 0 0 1 .37-.3h9.78z" />
-        </svg>
-      ),
-      external: true,
-      onClick: () => window.open(`https://claude.ai/new?q=${encodeURIComponent("Please help me with this documentation page: " + SITE_URL + "/docs/" + slug)}`, "_blank")
-    },
-    {
-      type: "divider"
-    },
-    {
-      label: "Copy MCP URL",
-      sublabel: "For Cursor, VSCode, or Windsurf",
-      icon: (
-        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" className="w-4 h-4 text-content-primary">
-          <rect x="4" y="4" width="16" height="16" rx="2" ry="2" />
-          <rect x="9" y="9" width="6" height="6" />
-          <path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 15h3M1 9h3M1 15h3" />
-        </svg>
-      ),
-      onClick: () => navigator.clipboard.writeText(`${SITE_URL}/api/mcp`)
-    },
-    {
-      label: "Export PDF",
-      sublabel: isExportingPdf ? "Generating..." : "Download for offline reading",
-      icon: (
-        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" className="w-4 h-4 text-[#EF4444]">
-          <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
-          <polyline points="14 2 14 8 20 8" />
-          <path d="M12 18v-6M9 15l3 3 3-3" />
-        </svg>
-      ),
-      onClick: handleExportPdf
-    },
-  ];
 
   /* ─── Inline helpers ─── */
   async function handleExportMarkdown() {

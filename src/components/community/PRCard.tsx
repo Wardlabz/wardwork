@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 export interface PRCardProps {
   title: string;
@@ -45,6 +46,7 @@ export default function PRCard({
   labels,
 }: PRCardProps) {
   const mergedDate = formatMergedAt(mergedAt);
+  const hasAvatar = Boolean(authorAvatar);
 
   return (
     <article
@@ -67,12 +69,17 @@ export default function PRCard({
       </div>
 
       <div className="mt-4 flex items-center gap-2">
-        <img
-          src={authorAvatar}
-          alt={`${author} avatar`}
-          className="h-8 w-8 rounded-full object-cover shadow-neu-raised-sm"
-          loading="lazy"
-        />
+        {hasAvatar ? (
+          <Image
+            src={authorAvatar}
+            alt={`${author} avatar`}
+            width={32}
+            height={32}
+            className="h-8 w-8 rounded-full object-cover shadow-neu-raised-sm"
+          />
+        ) : (
+          <div className="h-8 w-8 rounded-full shadow-neu-raised-sm bg-bg-elevated" />
+        )}
         <p className="text-xs text-content-secondary">
           {author}
         </p>

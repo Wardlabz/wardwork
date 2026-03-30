@@ -2,7 +2,7 @@
 
 import { useRef, useEffect } from "react";
 import DocsSearchBar from "@/components/docs/DocsSearchBar";
-import { Book, Code, Shield, LifeBuoy, Terminal, Zap, Home } from "lucide-react";
+import { Book, Code, Shield, LifeBuoy, Terminal, Zap } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/cn";
 
