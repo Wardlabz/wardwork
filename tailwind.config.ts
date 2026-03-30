@@ -1,7 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  darkMode: "class",
+  darkMode: "class", 
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -70,11 +70,12 @@ const config: Config = {
 
         // Theme-aware neumorphic shadows (use these for dark mode support)
         "neu-raised": "6px 6px 12px var(--shadow-dark), -6px -6px 12px var(--shadow-light)",
+        "neu-raised-scrolled":
+          "8px 8px 18px var(--shadow-dark), -7px -7px 16px var(--shadow-light)",
         "neu-raised-sm": "3px 3px 6px var(--shadow-dark), -3px -3px 6px var(--shadow-light)",
         "neu-raised-hover": "2px 2px 4px var(--shadow-dark), -2px -2px 4px var(--shadow-light)",
         "neu-sunken": "inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light)",
         "neu-sunken-subtle": "inset 2px 2px 4px var(--shadow-dark), inset -2px -2px 4px var(--shadow-light)",
-        "neu-raised-scrolled": "8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light)",
 
         // Level-2 (L2) — elevated depth for Blueprint nested layouts (Issue 1168)
         "neu-raised-l2": "12px 12px 24px var(--shadow-dark), -12px -12px 24px var(--shadow-light)",

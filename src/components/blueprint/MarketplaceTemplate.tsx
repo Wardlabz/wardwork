@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight, Terminal, Layers, Wallet, Clock, TrendingUp, Package } from "lucide-react";
+import { BlueprintMotionSection } from "@/components/blueprint/BlueprintMotionSection";
 
 type View = "freelancer" | "business";
 
@@ -10,13 +11,11 @@ type View = "freelancer" | "business";
 function FreelancerView() {
   return (
     <div className="space-y-3">
-      {/* Header bar */}
       <div className="flex items-center justify-between mb-4">
         <span className="text-xs font-semibold text-content-primary">Freelancer Dashboard</span>
         <span className="text-xs px-2 py-0.5 rounded-full bg-theme-primary/10 text-theme-primary font-mono">v2.4.1</span>
       </div>
 
-      {/* Pending Escrows */}
       <div
         className="rounded-xl p-4"
         style={{
@@ -45,7 +44,6 @@ function FreelancerView() {
         </div>
       </div>
 
-      {/* Payout Status */}
       <div
         className="rounded-xl p-4"
         style={{
@@ -76,13 +74,11 @@ function FreelancerView() {
 function BusinessView() {
   return (
     <div className="space-y-3">
-      {/* Header bar */}
       <div className="flex items-center justify-between mb-4">
         <span className="text-xs font-semibold text-content-primary">Business Dashboard</span>
         <span className="text-xs px-2 py-0.5 rounded-full bg-theme-primary/10 text-theme-primary font-mono">v2.4.1</span>
       </div>
 
-      {/* Fund Project */}
       <div
         className="rounded-xl p-4"
         style={{
@@ -122,7 +118,6 @@ function BusinessView() {
         </div>
       </div>
 
-      {/* Asset Tracking */}
       <div
         className="rounded-xl p-4"
         style={{
@@ -162,12 +157,11 @@ export default function MarketplaceTemplate() {
   const [view, setView] = useState<View>("freelancer");
 
   return (
-    <section className="py-24 px-6">
+    <BlueprintMotionSection id="templates" className="py-24 px-6 bg-transparent">
       <div className="max-w-6xl mx-auto">
-
-        {/* Section header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full text-xs font-semibold text-theme-primary uppercase tracking-widest"
+          <div
+            className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full text-xs font-semibold text-theme-primary uppercase tracking-widest"
             style={{
               background: "var(--color-bg-base)",
               boxShadow: "inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light)",
@@ -185,11 +179,7 @@ export default function MarketplaceTemplate() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 items-start">
-
-          {/* Left: Device mockup + toggle */}
           <div className="flex flex-col items-center gap-6">
-
-            {/* Neumorphic toggle */}
             <div
               className="flex items-center gap-1 p-1 rounded-full"
               style={{
@@ -217,17 +207,14 @@ export default function MarketplaceTemplate() {
               ))}
             </div>
 
-            {/* Device frame — screen mockup */}
             <div
               className="w-full rounded-3xl p-4"
               style={{
                 background: "var(--color-bg-base)",
-                /* L2 depth: double-layer shadow for device frame effect */
                 boxShadow:
                   "12px 12px 24px var(--shadow-dark), -12px -12px 24px var(--shadow-light), 6px 6px 12px var(--shadow-dark), -6px -6px 12px var(--shadow-light)",
               }}
             >
-              {/* Browser chrome bar */}
               <div
                 className="flex items-center gap-2 px-3 py-2 rounded-xl mb-3"
                 style={{
@@ -251,7 +238,6 @@ export default function MarketplaceTemplate() {
                 </div>
               </div>
 
-              {/* Screen content with cross-fade */}
               <div
                 className="rounded-2xl p-4 min-h-[280px]"
                 style={{
@@ -274,10 +260,7 @@ export default function MarketplaceTemplate() {
             </div>
           </div>
 
-          {/* Right: Quick Start + SDK info */}
           <div className="flex flex-col gap-6">
-
-            {/* Quick Start terminal block */}
             <div>
               <h3 className="text-sm font-semibold text-content-secondary uppercase tracking-widest mb-3 flex items-center gap-2">
                 <Terminal size={14} className="text-theme-primary" />
@@ -287,12 +270,16 @@ export default function MarketplaceTemplate() {
                 className="bg-bg-base shadow-neu-sunken p-6 rounded-2xl font-mono text-xs"
                 style={{ overflowX: "auto" }}
               >
-                <p className="text-content-muted select-none mb-1">$ <span className="text-theme-primary">npx</span> <span className="text-content-primary">create-wardwork-app@latest</span></p>
-                <p className="text-content-muted text-[10px] mt-3">↳ Scaffolds a full marketplace with Buyer &amp; Seller routes, escrow hooks, and the @offerhub/sdk pre-configured.</p>
+                <p className="text-content-muted select-none mb-1">
+                  $ <span className="text-theme-primary">npx</span>{" "}
+                  <span className="text-content-primary">create-wardwork-app@latest</span>
+                </p>
+                <p className="text-content-muted text-[10px] mt-3">
+                  ↳ Scaffolds a full marketplace with Buyer &amp; Seller routes, escrow hooks, and the @offerhub/sdk pre-configured.
+                </p>
               </div>
             </div>
 
-            {/* SDK description card */}
             <div
               className="rounded-2xl p-6"
               style={{
@@ -329,7 +316,6 @@ export default function MarketplaceTemplate() {
               </a>
             </div>
 
-            {/* Two-column feature pills */}
             <div className="grid grid-cols-2 gap-3">
               {[
                 { label: "Escrow Hooks", desc: "Fund, hold, release" },
@@ -353,6 +339,6 @@ export default function MarketplaceTemplate() {
           </div>
         </div>
       </div>
-    </section>
+    </BlueprintMotionSection>
   );
 }

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { ArrowRight, ChevronDown, Command, Cpu, Shield, Workflow } from "lucide-react";
+import { BlueprintMotionSection } from "@/components/blueprint/BlueprintMotionSection";
 
 type LayerKey = "security" | "liquidity" | "logic";
 
@@ -416,7 +417,7 @@ export default function OrchestratorShowcase() {
   const [expandedKey, setExpandedKey] = useState<LayerKey | null>("logic");
 
   return (
-    <section className="px-6 py-24">
+    <BlueprintMotionSection id="orchestrator" className="px-6 py-24 bg-transparent">
       <div className="mx-auto max-w-7xl">
         <div className="rounded-[2.5rem] bg-bg-elevated p-10 shadow-neu-raised-l2 overflow-visible blueprint-layer">
           <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
@@ -470,6 +471,6 @@ export default function OrchestratorShowcase() {
           </div>
         </div>
       </div>
-    </section>
+    </BlueprintMotionSection>
   );
 }
