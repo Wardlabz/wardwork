@@ -222,9 +222,9 @@ export default async function ChangelogPage() {
                       </p>
 
                       <ul className="space-y-3">
-                        {entry.changes.map((change, i) => (
+                        {entry.changes.map((change) => (
                           <li
-                            key={i}
+                            key={`${entry.version}-${change}`}
                             className="flex items-start gap-3 text-sm font-medium text-content-primary/80"
                           >
                             <span className="mt-2 h-1 w-1 rounded-full bg-theme-primary shrink-0" />
