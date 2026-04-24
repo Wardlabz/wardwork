@@ -69,9 +69,9 @@ await oh.escrows.fund(payroll.id, {
     docLabel: "SDK Guide",
     code: `import { WardWork } from "@offerhub/sdk";
 
-// Governance dashboard SDK (public key only, safe in the browser)
+// Governance dashboard SDK use a public/restricted key
 const oh = new WardWork({
-  apiKey: process.env.NEXT_PUBLIC_OFFERHUB_KEY,
+  apiKey: "oh_demo_xxxxxxxxxxxx",
 });
 
 // After governance vote passes, verify contributor milestone
