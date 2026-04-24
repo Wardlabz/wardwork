@@ -2,6 +2,7 @@
 
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import LoadingBar from "@/components/ui/LoadingBar";
 
 import {
   Mail,
@@ -40,6 +41,7 @@ const features = [
 export default function PrivacyPage() {
   return (
     <div className="min-h-screen flex flex-col">
+      <LoadingBar />
       <Navbar />
 
       <main className="flex-grow pt-24 sm:pt-28 md:pt-32 pb-16 sm:pb-20 px-4 sm:px-8 md:px-12 lg:px-24">
