@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useEffect, useState, useCallback } from "react";
 import { flushSync } from "react-dom";
+import { MotionConfig } from "framer-motion";
 
 type Theme = "light" | "dark" | "system";
 type ResolvedTheme = "light" | "dark";
@@ -114,7 +115,9 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   // Provider MUST always be rendered to avoid context errors
   return (
     <ThemeContext.Provider value={{ theme, setTheme, resolvedTheme, toggleTheme }}>
-      {children}
+      <MotionConfig reducedMotion="user">
+        {children}
+      </MotionConfig>
     </ThemeContext.Provider>
   );
 }
