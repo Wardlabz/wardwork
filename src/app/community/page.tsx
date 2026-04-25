@@ -17,6 +17,13 @@ interface RepoStats {
   openIssues: string;
 }
 
+interface CommunityData {
+  stats: RepoStats | null;
+  contributors: ContributorData[];
+  pullRequests: PullRequestData[];
+  issues: IssueData[];
+}
+
 interface Contributor {
   login: string;
   avatar_url: string;
@@ -104,7 +111,7 @@ let githubCache: { data: ReturnType<typeof processGitHubData> | null; timestamp:
 };
 const CACHE_TTL = 10 * 60 * 1000; // 10 minutes
 
-function processGitHubData(validData: NonNullable<Awaited<ReturnType<typeof fetchRepoData>>>[]) {
+function processGitHubData(validData: NonNullable<Awaited<ReturnType<typeof fetchRepoData>>>[]): CommunityData {
   const totalStars = validData.reduce((acc, d) => acc + d.repo.stargazers_count, 0);
   const totalForks = validData.reduce((acc, d) => acc + d.repo.forks_count, 0);
   const totalOpenIssues = validData.reduce((acc, d) => acc + d.repo.open_issues_count, 0);
@@ -205,33 +212,11 @@ async function fetchGitHubData() {
   } catch (error) {
     console.error('Error fetching GitHub data:', error);
     return {
-      stats: {
-        stars: "8.2k",
-        forks: "1.4k",
-        contributors: "168",
-        openIssues: "128",
-      },
-      contributors: [
-        { name: "Ada M.", username: "ada-m", avatar: "", commits: 248, profileUrl: "" },
-        { name: "Dami O.", username: "dami-o", avatar: "", commits: 133, profileUrl: "" },
-        { name: "Hassan K.", username: "hassan-k", avatar: "", commits: 92, profileUrl: "" },
-        { name: "Lina S.", username: "lina-s", avatar: "", commits: 87, profileUrl: "" },
-        { name: "Marta P.", username: "marta-p", avatar: "", commits: 76, profileUrl: "" },
-        { name: "Tomi A.", username: "tomi-a", avatar: "", commits: 70, profileUrl: "" },
-      ],
-      pullRequests: [
-        { number: 1042, title: "feat: add account-level escrow analytics", author: "contributor1", timestamp: "2 days ago", url: "", status: "Merged" },
-        { number: 1039, title: "refactor: simplify wallet sync flow", author: "contributor2", timestamp: "3 days ago", url: "", status: "Merged" },
-        { number: 1036, title: "fix: resolve pagination edge case in jobs feed", author: "contributor3", timestamp: "5 days ago", url: "", status: "Merged" },
-        { number: 1033, title: "docs: add validator onboarding guide", author: "contributor4", timestamp: "1 week ago", url: "", status: "Merged" },
-      ],
-      issues: [
-        { number: 1055, title: "Improve CI cache invalidation strategy", priority: "Medium", url: "", labels: [] },
-        { number: 1051, title: "Add e2e tests for payout cancellation", priority: "High", url: "", labels: [] },
-        { number: 1048, title: "Expose webhook replay in dashboard", priority: "Low", url: "", labels: [] },
-        { number: 1046, title: "Polish mobile nav focus styles", priority: "Low", url: "", labels: [] },
-      ],
-    } as { stats: RepoStats; contributors: ContributorData[]; pullRequests: PullRequestData[]; issues: IssueData[] };
+      stats: null,
+      contributors: [],
+      pullRequests: [],
+      issues: [],
+    } as CommunityData;
   }
 }
 

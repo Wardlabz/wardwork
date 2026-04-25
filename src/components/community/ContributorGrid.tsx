@@ -11,17 +11,6 @@ interface ContributorGridProps {
   contributors?: Contributor[];
 }
 
-const mockContributors: Contributor[] = [
-  { name: "Ada M.", username: "ada-m", area: "Core Protocol", commits: 248 },
-  { name: "Dami O.", username: "dami-o", area: "Frontend", commits: 133 },
-  { name: "Hassan K.", username: "hassan-k", area: "DevRel", commits: 92 },
-  { name: "Lina S.", username: "lina-s", area: "Tooling", commits: 87 },
-  { name: "Marta P.", username: "marta-p", area: "QA", commits: 76 },
-  { name: "Tomi A.", username: "tomi-a", area: "Docs", commits: 70 },
-  { name: "Carlos R.", username: "carlos-r", area: "Backend", commits: 64 },
-  { name: "Femi B.", username: "femi-b", area: "Smart Contracts", commits: 58 },
-];
-
 function getInitials(name: string) {
   return name
     .split(" ")
@@ -32,7 +21,7 @@ function getInitials(name: string) {
 }
 
 export default function ContributorGrid({ contributors }: ContributorGridProps) {
-  const data = contributors ?? mockContributors;
+  const data = contributors ?? [];
 
   return (
     <section id="contributor-grid" className="py-24">
@@ -43,29 +32,40 @@ export default function ContributorGrid({ contributors }: ContributorGridProps) 
           subtitle="The people building and shipping WARDWORK every day."
         />
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {data.map((contributor) => (
-            <article
-              key={contributor.username}
-              className="rounded-2xl p-6 shadow-neu-raised bg-bg-elevated flex flex-col items-center text-center hover:shadow-neu-raised-hover transition-shadow duration-300"
-            >
-              <div
-                className="w-16 h-16 rounded-full shadow-neu-raised-sm flex items-center justify-center text-lg font-bold text-white bg-theme-primary"
+        {data.length > 0 ? (
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {data.map((contributor) => (
+              <article
+                key={contributor.username}
+                className="rounded-2xl p-6 shadow-neu-raised bg-bg-elevated flex flex-col items-center text-center hover:shadow-neu-raised-hover transition-shadow duration-300"
               >
-                {getInitials(contributor.name)}
-              </div>
-              <h3 className="mt-4 text-base font-bold text-content-primary">
-                {contributor.name}
-              </h3>
-              <p className="mt-1 text-xs font-light text-content-secondary">
-                {contributor.area}
-              </p>
-              <p className="mt-3 text-sm font-medium text-theme-primary">
-                {contributor.commits} commits
-              </p>
-            </article>
-          ))}
-        </div>
+                <div
+                  className="w-16 h-16 rounded-full shadow-neu-raised-sm flex items-center justify-center text-lg font-bold text-white bg-theme-primary"
+                >
+                  {getInitials(contributor.name)}
+                </div>
+                <h3 className="mt-4 text-base font-bold text-content-primary">
+                  {contributor.name}
+                </h3>
+                <p className="mt-1 text-xs font-light text-content-secondary">
+                  {contributor.area}
+                </p>
+                <p className="mt-3 text-sm font-medium text-theme-primary">
+                  {contributor.commits} commits
+                </p>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <div className="rounded-2xl p-6 shadow-neu-raised bg-bg-elevated text-center">
+            <p className="text-base font-bold text-content-primary">
+              Contributors temporarily unavailable
+            </p>
+            <p className="mt-2 text-sm text-content-secondary">
+              Live contributor activity could not be loaded from GitHub.
+            </p>
+          </div>
+        )}
 
         <div className="mt-12 text-center">
           <a

@@ -7,38 +7,50 @@ interface RepoStatsProps {
      openIssues?: number;
 }
 
-const mockStats = {
-     stars: 2547,
-     forks: 380,
-     watchers: 145,
-     openIssues: 23,
-};
-
 export default function RepoStats({
-     stars = mockStats.stars,
-     forks = mockStats.forks,
-     watchers = mockStats.watchers,
-     openIssues = mockStats.openIssues,
+     stars,
+     forks,
+     watchers,
+     openIssues,
 }: RepoStatsProps) {
+     const isUnavailable =
+          [stars, forks, watchers, openIssues].some((value) => value === undefined);
+
+     if (isUnavailable) {
+          return (
+               <div
+                    className="rounded-2xl p-6 shadow-raised"
+                    style={{ background: "#F1F3F7" }}
+               >
+                    <p className="text-sm font-semibold" style={{ color: "#19213D" }}>
+                         Stats temporarily unavailable
+                    </p>
+                    <p className="mt-2 text-xs" style={{ color: "#6D758F" }}>
+                         Live GitHub repository metrics could not be loaded right now.
+                    </p>
+               </div>
+          );
+     }
+
      const stats = [
           {
                icon: Star,
-               value: stars,
+               value: stars!,
                label: "Stars",
           },
           {
                icon: GitFork,
-               value: forks,
+               value: forks!,
                label: "Forks",
           },
           {
                icon: Eye,
-               value: watchers,
+               value: watchers!,
                label: "Watchers",
           },
           {
                icon: AlertCircle,
-               value: openIssues,
+               value: openIssues!,
                label: "Open Issues",
           },
      ];
