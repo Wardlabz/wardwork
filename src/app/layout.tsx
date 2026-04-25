@@ -21,11 +21,66 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "WARDWORK",
+  title: {
+    default: "WARDWORK",
+    template: "%s | WARDWORK",
+  },
   description:
     "WARDWORK empowers marketplaces to provide secure, non-custodial escrow payments without building complex payment infrastructure.",
+
+  // ── Favicon & icon variants ──────────────────────────────────────────────
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/favicon.ico",       sizes: "any" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    other: [
+      {
+        rel: "android-chrome",
+        url: "/android-chrome-192x192.png",
+        sizes: "192x192",
+        type: "image/png",
+      },
+      {
+        rel: "android-chrome",
+        url: "/android-chrome-512x512.png",
+        sizes: "512x512",
+        type: "image/png",
+      },
+    ],
+  },
+
+  // ── PWA manifest ──────────────────────────────────────────────────────────
+  manifest: "/site.webmanifest",
+
+  // ── Theme colour (browser chrome on Android / Safari pinned tab) ──────────
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#0e9898" },
+    { media: "(prefers-color-scheme: dark)",  color: "#0a0a0a" },
+  ],
+
+  // ── Open Graph ────────────────────────────────────────────────────────────
+  openGraph: {
+    title: "WARDWORK",
+    description:
+      "WARDWORK empowers marketplaces to provide secure, non-custodial escrow payments without building complex payment infrastructure.",
+    siteName: "WARDWORK",
+    images: [{ url: "/android-chrome-512x512.png", width: 512, height: 512 }],
+    locale: "en_US",
+    type: "website",
+  },
+
+  // ── Twitter / X card ─────────────────────────────────────────────────────
+  twitter: {
+    card: "summary",
+    title: "WARDWORK",
+    description:
+      "WARDWORK empowers marketplaces to provide secure, non-custodial escrow payments without building complex payment infrastructure.",
+    images: ["/android-chrome-512x512.png"],
   },
 };
 
