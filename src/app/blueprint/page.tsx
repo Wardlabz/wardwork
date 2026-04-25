@@ -13,7 +13,7 @@ export default function BlueprintPage() {
     <div className="min-h-screen flex flex-col bg-transparent">
       <LoadingBar />
       <Navbar />
-      
+
       <main className="flex-grow">
         <BlueprintHero />
         <BlueprintSectionNav />
