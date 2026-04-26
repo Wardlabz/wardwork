@@ -57,9 +57,9 @@ await oh.escrows.fund(order.id, {
     docLabel: "SDK Guide",
     code: `import { WardWork } from "@offerhub/sdk";
 
-// Client-side SDK (public key only, safe to expose in the browser)
+// Client-side SDK use a public/restricted key.
 const oh = new WardWork({
-  apiKey: process.env.NEXT_PUBLIC_OFFERHUB_KEY,
+  apiKey: "oh_demo_xxxxxxxxxxxx",
 });
 
 // Buyer confirms delivery — triggers automatic fund release to the seller.
