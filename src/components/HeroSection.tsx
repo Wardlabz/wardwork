@@ -16,12 +16,29 @@ export default function HeroSection() {
     const el = headingRef.current;
     if (!el) return;
 
+    // Detect prefers-reduced-motion
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let shouldReduceMotion = mediaQuery.matches;
+
+    const handleMediaChange = (e: MediaQueryListEvent) => {
+      shouldReduceMotion = e.matches;
+      if (shouldReduceMotion) {
+        cancelAnimationFrame(frame);
+        // Set a static beautiful gradient if motion is reduced
+        el.style.backgroundImage = "linear-gradient(135deg, #1bc8ca 0%, #149A9B 100%)";
+      } else {
+        frame = requestAnimationFrame(animate);
+      }
+    };
+
+    mediaQuery.addEventListener("change", handleMediaChange);
+
     let frame: number;
     let t = 0;
     let paused = false;
 
     const animate = () => {
-      if (paused) return;
+      if (paused || shouldReduceMotion) return;
       t += 0.022;
 
       const b1x = 50 + 28 * Math.sin(t * 0.70);
@@ -59,16 +76,24 @@ export default function HeroSection() {
         cancelAnimationFrame(frame);
       } else {
         paused = false;
-        frame = requestAnimationFrame(animate);
+        if (!shouldReduceMotion) {
+          frame = requestAnimationFrame(animate);
+        }
       }
     };
 
     document.addEventListener("visibilitychange", onVisibility);
-    frame = requestAnimationFrame(animate);
+
+    if (shouldReduceMotion) {
+      el.style.backgroundImage = "linear-gradient(135deg, #1bc8ca 0%, #149A9B 100%)";
+    } else {
+      frame = requestAnimationFrame(animate);
+    }
 
     return () => {
       cancelAnimationFrame(frame);
       document.removeEventListener("visibilitychange", onVisibility);
+      mediaQuery.removeEventListener("change", handleMediaChange);
     };
   }, []);
 
