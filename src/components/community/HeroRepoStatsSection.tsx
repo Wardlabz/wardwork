@@ -8,15 +8,17 @@ interface RepoStats {
 }
 
 interface HeroRepoStatsSectionProps {
-  stats: RepoStats;
+  stats: RepoStats | null;
 }
 
 const HeroRepoStatsSection = ({ stats }: HeroRepoStatsSectionProps) => {
+  const statsUnavailable = stats === null;
+
   const repoStats = [
-    { label: "Stars", value: stats.stars, icon: Star, color: "text-[#149A9B]" },
-    { label: "Forks", value: stats.forks, icon: GitFork, color: "text-[#19213D]" },
-    { label: "Contributors", value: stats.contributors, icon: Users, color: "text-[#149A9B]" },
-    { label: "Open Issues", value: stats.openIssues, icon: AlertCircle, color: "text-[#19213D]" },
+    { label: "Stars", value: stats?.stars ?? "N/A", icon: Star, color: "text-[#149A9B]" },
+    { label: "Forks", value: stats?.forks ?? "N/A", icon: GitFork, color: "text-[#19213D]" },
+    { label: "Contributors", value: stats?.contributors ?? "N/A", icon: Users, color: "text-[#149A9B]" },
+    { label: "Open Issues", value: stats?.openIssues ?? "N/A", icon: AlertCircle, color: "text-[#19213D]" },
   ];
 
   return (
@@ -31,8 +33,9 @@ const HeroRepoStatsSection = ({ stats }: HeroRepoStatsSectionProps) => {
               Building the Future <br />of <span className="text-theme-primary">Payments</span>
             </h1>
             <p className="mt-8 max-w-xl text-lg font-medium leading-relaxed text-content-secondary">
-              A global decentralized community of {stats.contributors} contributors
-              shipping modular infrastructure every day.
+              {statsUnavailable
+                ? "GitHub stats are temporarily unavailable. Live repository metrics will return shortly."
+                : `A global decentralized community of ${stats.contributors} contributors shipping modular infrastructure every day.`}
             </p>
 
             <div className="mt-10 flex flex-wrap gap-4">
@@ -48,27 +51,43 @@ const HeroRepoStatsSection = ({ stats }: HeroRepoStatsSectionProps) => {
           </div>
 
           <div className="lg:col-span-5 relative">
-            <div className="grid grid-cols-2 gap-6">
-              {repoStats.map((stat) => (
-                <div
-                  key={stat.label}
-                  className="group rounded-3xl bg-bg-elevated shadow-neu-raised p-6 transition-all duration-500 hover:scale-[1.02]"
-                >
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="p-2.5 rounded-xl bg-bg-sunken shadow-neu-sunken-subtle">
-                      <stat.icon size={18} className={`${stat.color} transition-transform group-hover:scale-110`} />
-                    </div>
-                    <div className="h-1 w-4 rounded-full bg-theme-primary/20" />
+            {statsUnavailable ? (
+              <div className="rounded-3xl bg-bg-elevated shadow-neu-raised p-8">
+                <div className="flex items-center gap-3">
+                  <div className="p-2.5 rounded-xl bg-bg-sunken shadow-neu-sunken-subtle">
+                    <AlertCircle size={18} className="text-theme-primary" />
                   </div>
-                  <p className="text-[10px] font-bold uppercase tracking-widest text-content-secondary">
-                    {stat.label}
-                  </p>
-                  <p className="mt-1 text-3xl font-black text-content-primary tracking-tight">
-                    {stats[stat.label.toLowerCase().replace(" ", "") as keyof typeof stats] || stat.value}
+                  <p className="text-sm font-black uppercase tracking-widest text-content-primary">
+                    Stats temporarily unavailable
                   </p>
                 </div>
-              ))}
-            </div>
+                <p className="mt-4 text-sm font-medium text-content-secondary">
+                  We could not load live GitHub repository metrics right now. Please check again in a few minutes.
+                </p>
+              </div>
+            ) : (
+              <div className="grid grid-cols-2 gap-6">
+                {repoStats.map((stat) => (
+                  <div
+                    key={stat.label}
+                    className="group rounded-3xl bg-bg-elevated shadow-neu-raised p-6 transition-all duration-500 hover:scale-[1.02]"
+                  >
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="p-2.5 rounded-xl bg-bg-sunken shadow-neu-sunken-subtle">
+                        <stat.icon size={18} className={`${stat.color} transition-transform group-hover:scale-110`} />
+                      </div>
+                      <div className="h-1 w-4 rounded-full bg-theme-primary/20" />
+                    </div>
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-content-secondary">
+                      {stat.label}
+                    </p>
+                    <p className="mt-1 text-3xl font-black text-content-primary tracking-tight">
+                      {stat.value}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>

@@ -84,14 +84,29 @@ const ContributorsSection = ({ contributors }: ContributorsSectionProps) => {
         <SectionHeading
           eyebrow="Contributors"
           title="Meet the people shipping WARDWORK"
-          subtitle={`Meet the developers shipping WARDWORK every day. A growing community of ${totalContributors} contributors.`}
+          subtitle={
+            totalContributors > 0
+              ? `Meet the developers shipping WARDWORK every day. A growing community of ${totalContributors} contributors.`
+              : "Contributor data is temporarily unavailable while we reconnect to GitHub."
+          }
         />
 
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 mt-12">
-          {visibleContributors.map((person) => (
-            <ContributorCard key={person.username} person={person} />
-          ))}
-        </div>
+        {totalContributors > 0 ? (
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 mt-12">
+            {visibleContributors.map((person) => (
+              <ContributorCard key={person.username} person={person} />
+            ))}
+          </div>
+        ) : (
+          <div className="mt-12 rounded-3xl bg-bg-base p-8 shadow-neu-raised">
+            <p className="text-sm font-black uppercase tracking-widest text-content-primary">
+              Contributors temporarily unavailable
+            </p>
+            <p className="mt-3 text-sm text-content-secondary">
+              We could not load live contributor activity right now. Please try again shortly.
+            </p>
+          </div>
+        )}
 
         {hasMore && (
           <div className="mt-16 text-center">
