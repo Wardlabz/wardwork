@@ -845,7 +845,7 @@ function renderBlock(block: ContentBlock, blockIndex: number) {
     return (
       <ul key={blockIndex} className="space-y-4 mt-4">
         {block.items.map((item, i) => (
-          <li key={i} className="flex items-start gap-4 text-sm font-medium text-content-primary">
+          <li key={`${blockIndex}-${i}`} className="flex items-start gap-4 text-sm font-medium text-content-primary">
             <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-theme-primary shrink-0" />
             <span>{item}</span>
           </li>
