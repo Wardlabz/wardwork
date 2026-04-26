@@ -5,6 +5,7 @@ import type { ComponentType } from "react";
 
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
+import LoadingBar from "@/components/ui/LoadingBar";
 
 export const metadata: Metadata = {
   title: "Pricing | WARDWORK",
@@ -80,6 +81,7 @@ const tiers: PricingTier[] = [
 export default function PricingPage() {
   return (
     <div className="min-h-screen flex flex-col bg-transparent">
+      <LoadingBar />
       <Navbar />
 
       <main className="flex-grow pt-28 pb-20">
