@@ -1,4 +1,19 @@
+import type { Metadata } from "next";
 import HeroRepoStatsSection from "@/components/community/HeroRepoStatsSection";
+
+export const metadata: Metadata = {
+  title: "Community",
+  description:
+    "Join the WARDWORK open-source community. Explore contributors, open issues, recent pull requests, and learn how to get involved.",
+  keywords: [
+    "community",
+    "open source",
+    "contributors",
+    "GitHub",
+    "WARDWORK",
+    "contribute",
+  ],
+};
 import ContributorsSection from "@/components/community/ContributorsSection";
 import HowToContribute from "@/components/community/HowToContribute";
 import RecentPRsSection, { PullRequestData } from "@/components/community/RecentPRsSection";

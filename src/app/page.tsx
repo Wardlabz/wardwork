@@ -1,4 +1,21 @@
+import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
+
+export const metadata: Metadata = {
+  title: "WARDWORK — Trustless Payments Orchestrator for Marketplaces",
+  description:
+    "WARDWORK empowers marketplaces to provide secure, non-custodial escrow payments without building complex payment infrastructure from scratch.",
+  keywords: [
+    "escrow",
+    "marketplace payments",
+    "non-custodial",
+    "Stellar",
+    "Trustless Work",
+    "Airtm",
+    "payment orchestration",
+    "USDC",
+  ],
+};
 import { Footer } from "@/components/layout/Footer";
 import HeroSection from "@/components/HeroSection";
 import StatsSection from "@/components/StatsSection";
