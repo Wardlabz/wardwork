@@ -57,6 +57,11 @@ export default function DocsSearchBar() {
                 setIsOpen(false);
             }
         };
+
+        // Fix parent overflow-hidden clipping issue
+        const parent = searchRef.current?.closest(".overflow-hidden");
+        if (parent) (parent as HTMLElement).style.overflow = "visible";
+
         document.addEventListener("mousedown", handleClickOutside);
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
@@ -158,9 +163,9 @@ export default function DocsSearchBar() {
                 <div 
                     id="docs-search-results"
                     role="listbox"
-                    className="absolute top-full mt-3 w-full rounded-2xl overflow-hidden z-[100] animate-in fade-in slide-in-from-top-2 duration-200 bg-bg-elevated/95 border border-theme-border/40 shadow-neu-raised backdrop-blur-xl"
+                    className="absolute top-full left-0 mt-3 w-full rounded-2xl z-[150] animate-in fade-in slide-in-from-top-2 duration-200 bg-bg-elevated border border-theme-border/40 shadow-2xl shadow-black/10 backdrop-blur-md"
                 >
-                    <div className="max-h-[450px] overflow-y-auto">
+                    <div className="max-h-[480px] overflow-y-auto scrollbar-thin">
                         {results.map((result, idx) => (
                             <div
                                 id={`result-item-${result.item.id}`}
