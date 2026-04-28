@@ -806,12 +806,12 @@ const sections: TermsSection[] = [
           </>,
           <>
             <strong>Website:</strong>{" "}
-            <a
+            <Link
               href="/"
               className="font-bold text-theme-primary hover:text-content-primary"
             >
               https://wardwork.tech
-            </a>
+            </Link>
           </>,
         ],
       },
