@@ -22,11 +22,12 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "WARDWORK",
+    default: "WARDWORK | The Future of On-Chain Bounties",
     template: "%s | WARDWORK",
   },
   description:
     "WARDWORK empowers marketplaces to provide secure, non-custodial escrow payments without building complex payment infrastructure.",
+  metadataBase: new URL("https://wardwork.tech"),
 
   // ── Favicon & icon variants ──────────────────────────────────────────────
   icons: {
@@ -65,22 +66,30 @@ export const metadata: Metadata = {
 
   // ── Open Graph ────────────────────────────────────────────────────────────
   openGraph: {
-    title: "WARDWORK",
+    title: "WARDWORK | The Future of On-Chain Bounties",
     description:
       "WARDWORK empowers marketplaces to provide secure, non-custodial escrow payments without building complex payment infrastructure.",
+    url: "https://wardwork.tech",
     siteName: "WARDWORK",
-    images: [{ url: "/android-chrome-512x512.png", width: 512, height: 512 }],
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "WARDWORK - Secure, non-custodial escrow for your marketplace",
+      },
+    ],
     locale: "en_US",
     type: "website",
   },
 
   // ── Twitter / X card ─────────────────────────────────────────────────────
   twitter: {
-    card: "summary",
-    title: "WARDWORK",
+    card: "summary_large_image",
+    title: "WARDWORK | The Future of On-Chain Bounties",
     description:
       "WARDWORK empowers marketplaces to provide secure, non-custodial escrow payments without building complex payment infrastructure.",
-    images: ["/android-chrome-512x512.png"],
+    images: ["/og-image.png"],
   },
 };
 
