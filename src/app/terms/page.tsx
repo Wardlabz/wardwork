@@ -300,9 +300,34 @@ const sections: TermsSection[] = [
         type: "ul",
         items: [
           "The Client deposits funds into a smart contract escrow prior to work commencement.",
-          "Funds are released to the Freelancer upon Client approval of deliverables, or automatically under conditions defined in the smart contract.",
+          "Funds are released to the Freelancer upon Client approval of deliverables.",
           "WARDWORK does not directly hold, control, or take custody of escrowed funds. The smart contract governs fund release.",
         ],
+      },
+      { type: "h3", children: "6.1.1 Auto-Release Conditions" },
+      {
+        type: "p",
+        children: (
+          <>
+            Escrowed funds may be released automatically under the following conditions:
+          </>
+        ),
+      },
+      {
+        type: "ul",
+        items: [
+          <><strong>Deadline Passed:</strong> If the project deadline passes without the Client raising a dispute or approving the deliverables, funds will auto-release to the Freelancer after a <strong>default review period of 72 hours</strong> from the delivery date. This timeout period may be configured differently per project and will be clearly stated in the project terms before funding.</>,
+          <><strong>Milestone Approval:</strong> For milestone-based projects, each milestone payment auto-releases when the Client approves that specific milestone, or when the milestone review period expires without dispute.</>,
+          <><strong>Dispute Prevention:</strong> If a dispute is raised before the auto-release window closes, the automatic release is suspended pending dispute resolution. Funds remain locked in escrow until the dispute is formally resolved by the platform.</>,
+        ],
+      },
+      {
+        type: "p",
+        children: (
+          <>
+            Users should carefully review the specific timeout periods and auto-release terms for each transaction before funding escrow. These terms are binding once funds are deposited into the smart contract.
+          </>
+        ),
       },
       { type: "h3", children: "6.2 Platform Fees" },
       {
