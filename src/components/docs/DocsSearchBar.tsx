@@ -151,15 +151,16 @@ export default function DocsSearchBar() {
                 <div className="absolute top-full mt-3 w-full rounded-2xl overflow-hidden z-[100] animate-in fade-in slide-in-from-top-2 duration-200 bg-bg-elevated/95 border border-theme-border/40 shadow-neu-raised backdrop-blur-xl">
                     <div className="max-h-[450px] overflow-y-auto">
                         {results.map((result, idx) => (
-                            <div
+                            <button
                                 key={result.item.id}
+                                type="button"
                                 onMouseEnter={() => setActiveIndex(idx)}
                                 onClick={() => {
                                     router.push(result.item.link);
                                     setIsOpen(false);
                                     setQuery("");
                                 }}
-                                className="p-4 flex items-start gap-4 cursor-pointer transition-colors"
+                                className="w-full p-4 flex items-start gap-4 cursor-pointer transition-colors text-left appearance-none border-0 bg-transparent"
                                 style={{
                                     backgroundColor: activeIndex === idx ? "rgba(20, 154, 155, 0.08)" : "transparent",
                                 }}
@@ -181,7 +182,7 @@ export default function DocsSearchBar() {
                                         {highlightMatch(result.item.content, result.matches, "content")}
                                     </p>
                                 </div>
-                            </div>
+                            </button>
                         ))}
                     </div>
                     <div className="p-3 flex justify-between items-center text-[10px] font-bold tracking-wider uppercase bg-bg-sunken/60 text-content-secondary border-t border-theme-border/40">
