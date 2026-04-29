@@ -1,5 +1,19 @@
+import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+
+export const metadata: Metadata = {
+  title: "Changelog",
+  description:
+    "Track every release and update to the WARDWORK platform — new features, improvements, and fixes across the ecosystem.",
+  keywords: [
+    "changelog",
+    "releases",
+    "updates",
+    "WARDWORK",
+    "version history",
+  ],
+};
 
 interface GitHubRelease {
   tag_name: string;
