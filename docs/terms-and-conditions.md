@@ -107,8 +107,18 @@ Violation of these prohibitions may result in immediate account termination, wit
 WARDWORK integrates with **Trustless Work** smart contracts on the **Stellar blockchain** to provide non-custodial escrow for transactions. When a Client engages a Freelancer:
 
 - The Client deposits funds into a smart contract escrow prior to work commencement.
-- Funds are released to the Freelancer upon Client approval of deliverables, or automatically under conditions defined in the smart contract.
+- Funds are released to the Freelancer upon Client approval of deliverables.
 - WARDWORK does not directly hold, control, or take custody of escrowed funds. The smart contract governs fund release.
+
+### 6.1.1 Auto-Release Conditions
+
+Escrowed funds may be released automatically under the following conditions:
+
+- **Deadline Passed:** If the project deadline passes without the Client raising a dispute or approving the deliverables, funds will auto-release to the Freelancer after a **default review period of 72 hours** from the delivery date. This timeout period may be configured differently per project and will be clearly stated in the project terms before funding.
+- **Milestone Approval:** For milestone-based projects, each milestone payment auto-releases when the Client approves that specific milestone, or when the milestone review period expires without dispute.
+- **Dispute Prevention:** If a dispute is raised before the auto-release window closes, the automatic release is suspended pending dispute resolution. Funds remain locked in escrow until the dispute is formally resolved by the platform.
+
+Users should carefully review the specific timeout periods and auto-release terms for each transaction before funding escrow. These terms are binding once funds are deposited into the smart contract.
 
 ### 6.2 Platform Fees
 
