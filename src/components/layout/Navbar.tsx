@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -22,6 +22,66 @@ export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
+
+  const menuRef = useRef<HTMLDivElement>(null);
+  const toggleRef = useRef<HTMLButtonElement>(null);
+  const wasMenuOpen = useRef(false);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      wasMenuOpen.current = true;
+      const menuEl = menuRef.current;
+      if (!menuEl) return;
+
+      // Find all focusable elements within the mobile menu
+      const focusableSelectors = 'a[href], button:not([disabled]), [tabIndex]:not([tabIndex="-1"])';
+      const focusableElements = Array.from(
+        menuEl.querySelectorAll<HTMLElement>(focusableSelectors)
+      );
+
+      if (focusableElements.length > 0) {
+        // Focus the first element automatically
+        focusableElements[0].focus();
+      }
+
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === "Escape") {
+          setIsMenuOpen(false);
+          return;
+        }
+
+        if (e.key === "Tab") {
+          const firstEl = focusableElements[0];
+          const lastEl = focusableElements[focusableElements.length - 1];
+
+          if (!firstEl || !lastEl) return;
+
+          if (e.shiftKey) {
+            // Shift + Tab: wrap from first to last
+            if (document.activeElement === firstEl) {
+              lastEl.focus();
+              e.preventDefault();
+            }
+          } else {
+            // Tab: wrap from last to first
+            if (document.activeElement === lastEl) {
+              firstEl.focus();
+              e.preventDefault();
+            }
+          }
+        }
+      };
+
+      document.addEventListener("keydown", handleKeyDown);
+      return () => {
+        document.removeEventListener("keydown", handleKeyDown);
+      };
+    } else if (wasMenuOpen.current) {
+      // Only return focus if the menu was open and is now closing
+      toggleRef.current?.focus();
+      wasMenuOpen.current = false;
+    }
+  }, [isMenuOpen]);
 
   useEffect(() => {
     let ticking = false;
@@ -136,6 +196,7 @@ export function Navbar() {
 
             {/* ── Mobile hamburger ── */}
             <button
+              ref={toggleRef}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="lg:hidden p-2 rounded-full transition-all duration-300 ease-out bg-bg-base text-content-secondary shadow-neu-raised hover:shadow-neu-sunken-subtle"
               aria-label="Toggle menu"
@@ -150,13 +211,16 @@ export function Navbar() {
       {isMenuOpen && (
         <>
           {/* Backdrop */}
-          <div
-            className="lg:hidden fixed inset-0 z-[499] bg-black/20 dark:bg-black/40 backdrop-blur-sm animate-fadeIn"
+          <button
+            className="lg:hidden fixed inset-0 z-[499] bg-black/20 dark:bg-black/40 backdrop-blur-sm animate-fadeIn w-full h-full border-none p-0 cursor-default outline-none"
             onClick={() => setIsMenuOpen(false)}
+            aria-label="Close menu"
+            tabIndex={-1}
           />
 
           {/* Menu panel */}
           <div
+            ref={menuRef}
             className="lg:hidden fixed top-24 left-4 right-4 z-[501] p-6 rounded-3xl bg-bg-base shadow-neu-raised-scrolled animate-fadeInUp"
           >
             <div className="flex flex-col gap-2">
