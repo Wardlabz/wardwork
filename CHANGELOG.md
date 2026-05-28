@@ -14,6 +14,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 ### Security
 
+- Add HTTP security headers (CSP, HSTS, X-Frame-Options, and related) via `next.config.ts` for all routes
+
 ---
 
 ## [0.1.0] - 2025-01-01
