@@ -503,3 +503,74 @@ body::before {
 ::view-transition-new(root) {
   z-index: 99999;
 }
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   PRINT STYLESHEET - Technical Documentation Layout
+   ══════════════════════════════════════════════════════════════════════════════ */
+@media print {
+  @page {
+    margin: 2cm;
+  }
+
+  /* Force hidden for printing */
+  .print\:hidden {
+    display: none !important;
+  }
+
+  /* Reset layout constraints and backgrounds for printing */
+  body, 
+  .min-h-screen, 
+  main,
+  #doc-page-export-content {
+    background: transparent !important;
+    color: #000000 !important;
+  }
+
+  body::before {
+    display: none !important;
+  }
+
+  /* Reset spacings and paddings */
+  .pt-40 {
+    padding-top: 0 !important;
+  }
+
+  .pb-10 {
+    padding-bottom: 0 !important;
+  }
+
+  .mb-16 {
+    margin-bottom: 2rem !important;
+  }
+
+  /* Reset layout grid to span full-width single column */
+  .max-w-\[1800px\],
+  .max-w-6xl,
+  .xl\:max-w-7xl {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .grid {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  main {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Avoid page-breaks inside crucial components */
+  pre, 
+  code, 
+  .mermaid, 
+  [class*="mermaid"] {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+}

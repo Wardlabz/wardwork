@@ -143,7 +143,7 @@ export function DocsLayoutShell({ nav, children }: DocsLayoutShellProps) {
 
             {/* Actions toolbar */}
             {!isHub && isKnownDocPage && (
-              <div className="flex items-center justify-start md:justify-end">
+              <div className="flex items-center justify-start md:justify-end print:hidden">
                 <DocActionsMenu slug={currentDocSlug} />
               </div>
             )}
@@ -153,7 +153,7 @@ export function DocsLayoutShell({ nav, children }: DocsLayoutShellProps) {
         {/* SECTION 2: DOCS CONTENT GRID (Wider width as before) */}
         <div className="max-w-[1800px] mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-[300px_minmax(0,1fr)] xl:grid-cols-[300px_minmax(0,1fr)_280px] gap-12 lg:gap-20 min-h-[calc(100vh-8rem)]">
-            <aside className="hidden lg:block">
+            <aside className="hidden lg:block print:hidden">
               <div className="sticky top-40 max-h-[calc(100vh-12rem)] flex flex-col">
                 <DocsSidebar nav={nav} className="overflow-y-auto" />
               </div>
@@ -166,14 +166,14 @@ export function DocsLayoutShell({ nav, children }: DocsLayoutShellProps) {
                 </div>
 
                 {headings.length > 0 && (
-                  <div className="xl:hidden mt-20 pt-10 border-t border-[#D1D5DB]/20">
+                  <div className="xl:hidden mt-20 pt-10 border-t border-[#D1D5DB]/20 print:hidden">
                     <TableOfContents headings={headings} />
                   </div>
                 )}
               </div>
             </main>
 
-            <aside className="hidden xl:block">
+            <aside className="hidden xl:block print:hidden">
               {headings.length > 0 && (
                 <div className="sticky top-40 max-h-[calc(100vh-12rem)] overflow-y-auto scrollbar-thin">
                   <TableOfContents headings={headings} />
@@ -185,15 +185,15 @@ export function DocsLayoutShell({ nav, children }: DocsLayoutShellProps) {
       </div>
 
       {isDrawerOpen && (
-        <div className="fixed inset-0 z-50 lg:hidden">
+        <div className="fixed inset-0 z-50 lg:hidden print:hidden">
           <button
             type="button"
-            className="absolute inset-0 bg-black/40 backdrop-blur-sm"
+            className="absolute inset-0 bg-black/40 backdrop-blur-sm print:hidden"
             aria-label="Close docs navigation overlay"
             onClick={() => setIsDrawerOpen(false)}
           />
           <aside
-            className="relative h-full w-80 max-w-[85vw] p-8 bg-bg-base shadow-neu-raised rounded-r-[30px]"
+            className="relative h-full w-80 max-w-[85vw] p-8 bg-bg-base shadow-neu-raised rounded-r-[30px] print:hidden"
           >
             <div className="mb-8 flex items-center justify-between pb-4 border-b border-theme-border/40">
               <p className="text-sm font-bold uppercase tracking-widest text-[#149A9B]">
