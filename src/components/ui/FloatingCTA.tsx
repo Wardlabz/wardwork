@@ -113,7 +113,7 @@ export function FloatingCTA() {
       <style>{rotatingBorderStyles}</style>
 
       <div
-        className={`fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 transition-all duration-300 ease-out ${isVisible
+        className={`fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 transition-all duration-300 ease-out print:hidden ${isVisible
           ? "opacity-100 translate-y-0 scale-100"
           : "opacity-0 translate-y-4 scale-95"
           }`}
