@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 
 import type { Heading, SidebarSection } from "@/lib/mdx";
+import { BackToTopButton } from "@/components/docs/BackToTopButton";
 import { DocsSidebar } from "@/components/docs/DocsSidebar";
 import { TableOfContents } from "@/components/docs/TableOfContents";
 import { Navbar } from "@/components/layout/Navbar";
@@ -183,6 +184,8 @@ export function DocsLayoutShell({ nav, children }: DocsLayoutShellProps) {
           </div>
         </div>
       </div>
+
+      <BackToTopButton />
 
       {isDrawerOpen && (
         <div className="fixed inset-0 z-50 lg:hidden print:hidden">
