@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState, ReactNode } from "react";
+import { Copy, Check } from "lucide-react";
 import mermaid from "mermaid";
 import { useTheme } from "@/components/providers/ThemeProvider";
+import { cn } from "@/lib/cn";
 
 interface MermaidDiagramProps {
   chart?: string;
@@ -35,9 +37,20 @@ export function MermaidDiagram({
   const [svg, setSvg] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [copied, setCopied] = useState(false);
 
   const chartContent = extractChartContent(chart, children);
   const { resolvedTheme } = useTheme();
+
+  async function handleCopy() {
+    try {
+      await navigator.clipboard.writeText(chartContent);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error("Failed to copy!", err);
+    }
+  }
 
   useEffect(() => {
     let cancelled = false;
@@ -177,6 +190,29 @@ export function MermaidDiagram({
               Mermaid
             </span>
           </div>
+
+          {chartContent && (
+            <button
+              type="button"
+              onClick={handleCopy}
+              aria-label={copied ? "Copied" : "Copy diagram source"}
+              className={cn(
+                "relative flex items-center gap-2.5 px-4 py-2 rounded-xl text-[10.5px] font-black uppercase tracking-widest transition-all duration-300",
+                copied
+                  ? "text-white bg-theme-primary shadow-lg shadow-theme-primary/25"
+                  : "text-content-secondary bg-bg-base shadow-neu-raised-sm hover:text-content-primary hover:bg-theme-primary/10 active:scale-95"
+              )}
+            >
+              <span className="flex items-center gap-2">
+                {copied ? (
+                  <Check size={14} className="stroke-[3.5]" />
+                ) : (
+                  <Copy size={14} className="stroke-[2.5]" />
+                )}
+                <span>{copied ? "Copied" : "Copy source"}</span>
+              </span>
+            </button>
+          )}
         </div>
 
         <div
