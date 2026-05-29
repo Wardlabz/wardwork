@@ -29,7 +29,7 @@ WCAG 2.1 Level A is the foundational compliance level, while Level AA represents
 
 Our accessibility efforts cover:
 
-- ✅ The WARDWORK website and web application (https://offerhub.io)
+- ✅ The WARDWORK website and web application (https://wardwork.tech)
 - ✅ All public-facing pages and features
 - ✅ User account and dashboard interfaces
 - ✅ Documentation and help resources
