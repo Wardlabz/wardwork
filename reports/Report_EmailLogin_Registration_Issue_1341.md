@@ -4,19 +4,19 @@
 - **Tested Site:** [https://www.wardwork.org](https://www.wardwork.org)
 - **Tested By:** shogun444 (GitHub Contributor)
 - **Branch:** `manual-test/1341-email-login-registration`
-- **Status:** **Completed with 6 Critical UX/UI Bugs Identified**
+- **Status:** **Completed with 7 UX/UI Bugs Identified (6 Critical, 1 Minor)**
 
 ---
 
 ## 📋 Executive Summary
 A comprehensive manual test of the Email/Password Login flow, User Registration flow, and Dashboard navigation was executed across multiple screen sizes (Desktop and Mobile viewports). 
-While both flows are functional and successfully integrate with the database, **six distinct bugs/UX regression issues** were identified that significantly degrade the mobile experience, visual branding, and user identity presentation.
+While both flows are functional and successfully integrate with the database, **seven distinct bugs/UX regression issues** were identified that significantly degrade the mobile experience, visual branding, and user identity presentation.
 
 ---
 
 ## 🔍 Bug Logs (Identified Issues)
 
-Below are the detailed reports of the 6 bugs identified during manual testing:
+Below are the detailed reports of the 7 bugs identified during manual testing:
 
 ### 🚨 Bug 1: Missing "Sign Up" Button in Mobile Viewport
 * **Component:** Global Header / Navigation Bar
@@ -65,6 +65,14 @@ Below are the detailed reports of the 6 bugs identified during manual testing:
 * **Description:** The header's notification bell displays an active, bright red badge containing the number `0`. Standard UI patterns dictate that badges should only appear or be colored red when there is at least `1` unread notification, to prevent false alarms.
 * **Impact:** **Low/Medium** — Confuses users into thinking they have unread messages or notifications when they have none.
 * **Evidence:** [bug5(notification button looks like i got a message).png](./screenshots/bug5(notification%20button%20looks%20like%20i%20got%20a%20message).png)
+
+---
+
+### 🚨 Bug 7: Profile Updated CTA Overlaps with Logo on Mobile
+* **Component:** Profile Settings Form / Global Header (Mobile Viewport)
+* **Description:** After updating the user profile on smaller screens, the "Profile updated" CTA/success toast mixes and overlaps with the logo displayed at the back.
+* **Impact:** **Minor GI bug** — Layout overlapping/misalignment on mobile screens.
+* **Evidence:** [UI bug.jpg](./screenshots/UI%20bug.jpg)
 
 ---
 
@@ -127,3 +135,6 @@ Both flows were tested and verified successfully using real production-ready inp
 
 4. **Correct Notification Component Badge logic (Bug 6):**
    - Hide or mute the badge color conditional on `notificationCount > 0` instead of unconditionally rendering the red circle.
+
+5. **Fix Profile updated CTA positioning (Bug 7):**
+   - Adjust CSS positioning/margin or z-index on smaller screens so the profile updated CTA does not overlap with the background header logo.
