@@ -83,8 +83,6 @@ export const metadata: Metadata = {
   manifest: "/site.webmanifest",
 
   // ── Open Graph ────────────────────────────────────────────────────────────
-  // Image URLs are now relative paths — metadataBase resolves them to
-  // https://wardwork.tech/og-image.png automatically.
   openGraph: {
     title: "WARDWORK | The Future of On-Chain Bounties",
     description:
@@ -104,7 +102,6 @@ export const metadata: Metadata = {
   },
 
   // ── Twitter / X card ─────────────────────────────────────────────────────
-  // Relative path resolved to absolute via metadataBase.
   twitter: {
     card: "summary_large_image",
     title: "WARDWORK | The Future of On-Chain Bounties",
