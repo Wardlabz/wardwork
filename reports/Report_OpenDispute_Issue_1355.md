@@ -1,7 +1,7 @@
 # Manual Test Report: Open Dispute
 
 ## Issue Information
-- **Issue Number**: #[Number]
+- **Issue Number**: #1355
 - **Title**: Manual Test: Open Dispute
 - **Date**: 2026-05-30
 - **Tester**: [Your Name/Username]
