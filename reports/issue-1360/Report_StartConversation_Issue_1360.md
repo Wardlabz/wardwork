@@ -24,8 +24,7 @@
 | GitHub       | estherolukorede12@gmail.com (connected)                                                                  |
 | Profile Photo | Real personal photo uploaded ✅                                                                         |
 
-**Screenshot — Completed Profile:**  
-![Profile Screenshot](./screenshots/profile-completed.png)
+**Screenshot — Completed Profile:** *(see PR description)*
 
 ---
 
@@ -40,8 +39,7 @@
 | Delivery Time    | 3 days                                                                                                                                                                                       |
 | Status           | Active ✅                                                                                                                                                                                    |
 
-**Screenshot — Published Service Page:**  
-![Service Screenshot](./screenshots/service-published.png)
+**Screenshot — Published Service Page:** *(see PR description)*
 
 ---
 
@@ -55,8 +53,7 @@
 | Status      | Active ✅                                      |
 | Applicants  | 0                                              |
 
-**Screenshot — Published Offer Page:**  
-![Offer Screenshot](./screenshots/offer-published.png)
+**Screenshot — Published Offer Page:** *(see PR description)*
 
 ---
 
@@ -69,8 +66,7 @@
 - **Result:** ✅ PASS / ❌ FAIL
 - **Notes:** _(add observations here)_
 
-**Screenshot:**  
-![Conversations List](./screenshots/conversations-list.png)
+**Screenshot:** *(see PR description)*
 
 ---
 
@@ -81,8 +77,7 @@
 - **Result:** ❌ FAIL
 - **Notes:** The chat page crashes immediately with a generic error screen: *"Oops! Something went wrong — An unexpected error has occurred."* The chat route `/app/chat/usr_[userID]` is broken and does not load.
 
-**Screenshot:**  
-![Start Conversation Error](./screenshots/start-conversation-error.png)
+**Screenshot:** *(see PR description)*
 
 ---
 
@@ -127,7 +122,7 @@
 - **Expected:** Chat thread opens and conversation can be started
 - **Actual:** Page renders a full-screen error: *"Oops! Something went wrong — An unexpected error has occurred. Our team has been notified and is working to fix the issue."*
 - **Severity:** Critical — the entire chat feature is inaccessible; no conversation can be started
-- **Screenshot:** `./screenshots/start-conversation-error.png`
+- **Screenshot:** *(see PR description)*
 
 ---
 

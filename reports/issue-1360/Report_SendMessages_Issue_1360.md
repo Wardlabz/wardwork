@@ -29,8 +29,7 @@
 - **Result:** ❌ FAIL
 - **Notes:** Page crashed with "Oops! Something went wrong" error. Chat is inaccessible.
 
-**Screenshot:**  
-![Open Conversation](./screenshots/open-conversation.png)
+**Screenshot:** *(see PR description)*
 
 ---
 
@@ -117,7 +116,7 @@
 - **Expected:** Chat thread opens
 - **Actual:** Full-page error — *"Oops! Something went wrong"*
 - **Severity:** Critical — all send/receive message tests are blocked
-- **Screenshot:** `./screenshots/chat-error.png`
+- **Screenshot:** *(see PR description)*
 
 ---
 
