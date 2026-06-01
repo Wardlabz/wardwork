@@ -35,7 +35,23 @@ export const metadata: Metadata = {
   },
   description:
     "WARDWORK empowers marketplaces to provide secure, non-custodial escrow payments without building complex payment infrastructure.",
+
+  // ── Canonical base URL ────────────────────────────────────────────────────
+  // Required so Next.js can resolve all relative image/icon URLs in metadata
+  // to absolute URLs, and so that alternates.canonical emits the correct href.
+  // Eliminates the "metadataBase property in metadata export is not set" build
+  // warning and prevents search engines from indexing duplicate versions of the
+  // site (e.g. www subdomain, Vercel preview URLs).
   metadataBase: new URL("https://wardwork.tech"),
+
+  // ── Canonical URL ─────────────────────────────────────────────────────────
+  // Next.js resolves '/' against metadataBase and injects
+  //   <link rel="canonical" href="https://wardwork.tech/" />
+  // on every page that inherits this root layout metadata, consolidating link
+  // equity and preventing duplicate-content penalties from alternate hostnames.
+  alternates: {
+    canonical: "/",
+  },
 
   // ── Favicon & icon variants ──────────────────────────────────────────────
   icons: {
