@@ -1,3 +1,4 @@
+
 # Reports Directory
 
 This directory contains manual test reports for the WardWork project.
@@ -82,3 +83,4 @@ All screenshots should be:
 - Named descriptively (e.g., `step1_dispute_form.png`)
 - Attached to the PR description
 - Referenced in the report
+
