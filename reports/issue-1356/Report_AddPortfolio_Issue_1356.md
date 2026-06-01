@@ -13,7 +13,7 @@
 
 Passed for the add-portfolio project flow.
 
-The add-portfolio flow was manually tested on https://www.wardwork.org using an authenticated contributor account. Screenshots are included in `reports/issue-1356/screenshots/`.
+The add-portfolio flow was manually tested on https://www.wardwork.org using an authenticated contributor account. Screenshots should be attached to the PR description so they are hosted by GitHub and are not committed to the repository.
 
 ## Required Production Data
 
@@ -23,15 +23,15 @@ The add-portfolio flow was manually tested on https://www.wardwork.org using an 
 
 ## Test Steps
 
-| Step | Expected Result | Status | Screenshot |
+| Step | Expected Result | Status | PR Screenshot |
 | --- | --- | --- | --- |
-| Open https://www.wardwork.org and sign in with a real account. | User is authenticated and can access portfolio management. | Passed | `screenshots/add-project-form-filled.png` |
-| Open the portfolio page. | Portfolio page loads and portfolio management is available. | Passed | `screenshots/add-project-form-filled.png` |
-| Start adding a new portfolio project. | Add project form is visible. | Passed | `screenshots/add-project-form-filled.png` |
-| Enter a real professional project title and description. | Text fields accept and retain the entered data. | Passed | `screenshots/add-project-form-filled.png` |
-| Upload one real project image. | Image uploads successfully and a preview is visible. | Passed | `screenshots/add-project-image-preview.png` |
-| Save the project. | Project is saved without errors. | Passed | `screenshots/saved-project-visible.png` |
-| Return to the portfolio list/page. | Newly added project appears in the portfolio. | Passed | `screenshots/saved-project-visible.png` |
+| Open https://www.wardwork.org and sign in with a real account. | User is authenticated and can access portfolio management. | Passed | `add-project-form-filled.png` |
+| Open the portfolio page. | Portfolio page loads and portfolio management is available. | Passed | `add-project-form-filled.png` |
+| Start adding a new portfolio project. | Add project form is visible. | Passed | `add-project-form-filled.png` |
+| Enter a real professional project title and description. | Text fields accept and retain the entered data. | Passed | `add-project-form-filled.png` |
+| Upload one real project image. | Image uploads successfully and a preview is visible. | Passed | `add-project-image-preview.png` |
+| Save the project. | Project is saved without errors. | Passed | `saved-project-visible.png` |
+| Return to the portfolio list/page. | Newly added project appears in the portfolio. | Passed | `saved-project-visible.png` |
 
 ## Result
 
@@ -42,10 +42,10 @@ Passed. The project was created successfully and appeared in the portfolio list.
 - Completed real profile screenshot: Not included in this report
 - Published real service page screenshot: Not included in this report
 - Published real offer page screenshot: Not included in this report
-- Portfolio page with existing projects: `screenshots/saved-project-visible.png`
-- Add project form populated with real content: `screenshots/add-project-form-filled.png`
-- Uploaded project image preview: `screenshots/add-project-image-preview.png`
-- Saved project visible in portfolio: `screenshots/saved-project-visible.png`
+- Portfolio page with existing projects: `saved-project-visible.png`
+- Add project form populated with real content: `add-project-form-filled.png`
+- Uploaded project image preview: `add-project-image-preview.png`
+- Saved project visible in portfolio: `saved-project-visible.png`
 
 ## Notes
 
