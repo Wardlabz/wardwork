@@ -220,6 +220,7 @@ export default function RegistrationForm() {
                                 value={formData.name}
                                 onChange={handleInputChange}
                                 placeholder="John Doe"
+                                maxLength={100}
                                 disabled={isLoading || cooldownSeconds > 0}
                                 className="w-full pl-12 pr-6 py-3.5 rounded-xl bg-bg-sunken shadow-neu-sunken-subtle text-sm text-content-primary placeholder:text-content-muted border-none transition-all font-medium disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-theme-primary focus-visible:outline-offset-2 focus-visible:ring-2 focus-visible:ring-theme-primary"
                             />
@@ -237,6 +238,7 @@ export default function RegistrationForm() {
                                 value={formData.email}
                                 onChange={handleInputChange}
                                 placeholder="john@example.com"
+                                maxLength={320}
                                 disabled={isLoading || cooldownSeconds > 0}
                                 className="w-full pl-12 pr-6 py-3.5 rounded-xl bg-bg-sunken shadow-neu-sunken-subtle text-sm text-content-primary placeholder:text-content-muted border-none transition-all font-medium disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-theme-primary focus-visible:outline-offset-2 focus-visible:ring-2 focus-visible:ring-theme-primary"
                             />
@@ -244,7 +246,18 @@ export default function RegistrationForm() {
                     </div>
 
                     <div className="flex flex-col gap-2">
-                        <label className="text-[10px] font-black uppercase tracking-widest text-content-secondary ml-2">For what would you use WardWork?</label>
+                        <div className="flex justify-between items-center ml-2">
+                            <label className="text-[10px] font-black uppercase tracking-widest text-content-secondary">For what would you use WardWork?</label>
+                            <span className={`text-[10px] font-bold tracking-wider transition-colors duration-200 ${
+                                formData.purpose.length >= 480
+                                    ? "text-red-500"
+                                    : formData.purpose.length >= 400
+                                    ? "text-amber-500"
+                                    : "text-content-muted"
+                            }`}>
+                                {formData.purpose.length}/500
+                            </span>
+                        </div>
                         <div className="relative group">
                             <MessageSquare size={16} className="absolute left-5 top-6 text-content-muted group-focus-within:text-theme-primary transition-colors" />
                             <textarea
@@ -254,6 +267,7 @@ export default function RegistrationForm() {
                                 value={formData.purpose}
                                 onChange={handleInputChange}
                                 placeholder="Tell us about your marketplace or project..."
+                                maxLength={500}
                                 disabled={isLoading || cooldownSeconds > 0}
                                 className="w-full pl-12 pr-6 py-3.5 rounded-xl bg-bg-sunken shadow-neu-sunken-subtle text-sm text-content-primary placeholder:text-content-muted border-none transition-all font-medium resize-none disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-theme-primary focus-visible:outline-offset-2 focus-visible:ring-2 focus-visible:ring-theme-primary"
                             />
@@ -271,6 +285,7 @@ export default function RegistrationForm() {
                                 value={formData.referral}
                                 onChange={handleInputChange}
                                 placeholder="X, Telegram, Friend, etc."
+                                maxLength={200}
                                 disabled={isLoading || cooldownSeconds > 0}
                                 className="w-full pl-12 pr-6 py-3.5 rounded-xl bg-bg-sunken shadow-neu-sunken-subtle text-sm text-content-primary placeholder:text-content-muted border-none transition-all font-medium disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-theme-primary focus-visible:outline-offset-2 focus-visible:ring-2 focus-visible:ring-theme-primary"
                             />
