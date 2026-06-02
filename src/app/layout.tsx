@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { Suspense } from "react";
+// @ts-ignore: CSS side-effect import declarations are handled by Next.js
 import "./globals.css";
 import Analytics from "@/components/Analytics";
 import { ClientBackground } from "@/components/layout/ClientBackground";
@@ -30,7 +31,7 @@ export const viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: "WARDWORK | The Future of On-Chain Bounties",
+    default: "WARDWORK",
     template: "%s | WARDWORK",
   },
   description:
