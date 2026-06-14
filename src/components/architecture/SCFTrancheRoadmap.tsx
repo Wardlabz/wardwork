@@ -15,18 +15,18 @@ gantt
   dateFormat YYYY-MM-DD
   axisFormat %b %d
 
-  section T1 — Foundation ($15K)
+  section T1 — MVP: SWK Connection & Auth ($16K)
     SWK Wallet Connection + Balance Display    :t1a, 2026-07-01, 2026-09-01
     Wallet-Based Auth (hybrid)                 :t1b, 2026-08-01, 2026-09-01
 
-  section T2 — Core Integrations ($47K)
+  section T2 — Testnet: Core Integrations ($24K)
     Soroban Client-Side Signing (SWK)          :t2a, 2026-09-01, 2026-10-20
     BlindPay — 7 LATAM Corridors               :t2b, 2026-09-01, 2026-10-20
     Abroad — Nequi/Daviplata/Bre-B/Pix         :t2c, 2026-09-15, 2026-10-20
     Off-ramp Orchestration + Webhooks          :t2d, 2026-09-15, 2026-10-20
     E2E Integration Testing                    :t2e, 2026-10-01, 2026-10-20
 
-  section T3 — Mainnet & Open-Source ($18K)
+  section T3 — Mainnet Launch & OS Adapters ($32K)
     Horizon → Stellar RPC Migration            :t3a, 2026-10-20, 2026-12-05
     Mainnet Launch + Monitoring                :t3b, 2026-10-20, 2026-12-05
     Open-Source Integration Adapters           :t3c, 2026-11-15, 2026-12-05
@@ -81,37 +81,37 @@ gantt
                 <tr className="bg-bg-sunken text-content-muted text-xs uppercase tracking-widest">
                   <th className="py-4 px-6 font-semibold">Milestone</th>
                   <th className="py-4 px-6 font-semibold">Date</th>
-                  <th className="py-4 px-6 font-semibold">Budget</th>
-                  <th className="py-4 px-6 font-semibold">SCF Payment</th>
+                  <th className="py-4 px-6 font-semibold">Technical Cost</th>
+                  <th className="py-4 px-6 font-semibold">SCF Payout</th>
                   <th className="py-4 px-6 font-semibold">%</th>
                 </tr>
               </thead>
               <tbody className="text-sm">
                 <tr className="border-b border-[var(--color-border)]">
-                  <td className="py-4 px-6 font-medium text-content-primary">T0 Upfront</td>
+                  <td className="py-4 px-6 font-medium text-content-primary">T0 — Upfront</td>
                   <td className="py-4 px-6 text-content-secondary">On award</td>
                   <td className="py-4 px-6 text-content-secondary">—</td>
                   <td className="py-4 px-6 text-content-secondary">$8,000</td>
                   <td className="py-4 px-6 text-content-secondary">10%</td>
                 </tr>
                 <tr className="border-b border-[var(--color-border)]">
-                  <td className="py-4 px-6 font-medium text-content-primary">T1 Complete</td>
+                  <td className="py-4 px-6 font-medium text-content-primary">T1 — MVP: SWK Connection & Auth</td>
                   <td className="py-4 px-6 text-content-secondary">Sept 1, 2026</td>
-                  <td className="py-4 px-6 text-content-secondary">$15,000</td>
+                  <td className="py-4 px-6 text-content-secondary">$16,000</td>
                   <td className="py-4 px-6 text-content-secondary">$16,000</td>
                   <td className="py-4 px-6 text-content-secondary">20%</td>
                 </tr>
                 <tr className="border-b border-[var(--color-border)]">
-                  <td className="py-4 px-6 font-medium text-content-primary">T2 Complete</td>
+                  <td className="py-4 px-6 font-medium text-content-primary">T2 — Testnet: Core Integrations</td>
                   <td className="py-4 px-6 text-content-secondary">Oct 20, 2026</td>
-                  <td className="py-4 px-6 text-content-secondary">$47,000</td>
+                  <td className="py-4 px-6 text-content-secondary">$24,000</td>
                   <td className="py-4 px-6 text-content-secondary">$24,000</td>
                   <td className="py-4 px-6 text-content-secondary">30%</td>
                 </tr>
                 <tr className="border-b border-[var(--color-border)]">
-                  <td className="py-4 px-6 font-medium text-content-primary">T3 Complete</td>
+                  <td className="py-4 px-6 font-medium text-content-primary">T3 — Mainnet Launch & OS Adapters</td>
                   <td className="py-4 px-6 text-content-secondary">Dec 5, 2026</td>
-                  <td className="py-4 px-6 text-content-secondary">$18,000</td>
+                  <td className="py-4 px-6 text-content-secondary">$32,000</td>
                   <td className="py-4 px-6 text-content-secondary">$32,000</td>
                   <td className="py-4 px-6 text-content-secondary">40%</td>
                 </tr>
