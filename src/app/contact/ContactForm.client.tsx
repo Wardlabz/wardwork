@@ -76,7 +76,7 @@ export default function ContactForm() {
       }
 
       setIsSubmitted(true);
-    } catch (_err) {
+    } catch {
       setSubmitError("Network error. Please check your connection and try again.");
       setIsLoading(false);
     }
