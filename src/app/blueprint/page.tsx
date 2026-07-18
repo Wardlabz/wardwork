@@ -8,8 +8,9 @@ import BlueprintSectionNav from "@/components/blueprint/BlueprintSectionNav";
 import OrchestratorShowcase from "@/components/blueprint/OrchestratorShowcase";
 import MarketplaceTemplate from "@/components/blueprint/MarketplaceTemplate";
 import EvolutionTimeline from "@/components/blueprint/EvolutionTimeline";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Blueprint",
   description:
     "Explore the WARDWORK technical blueprint: orchestrator architecture, marketplace templates, and the evolution roadmap for trustless payment infrastructure.",
@@ -22,7 +23,10 @@ export const metadata: Metadata = {
     "WARDWORK",
     "payment infrastructure",
   ],
-};
+  path: "/blueprint",
+  ogImageAlt:
+    "WARDWORK Blueprint — orchestrator architecture and marketplace templates",
+});
 
 export default function BlueprintPage() {
   return (
