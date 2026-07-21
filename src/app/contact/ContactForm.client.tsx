@@ -97,7 +97,7 @@ export default function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="p-8 rounded-[2.5rem] bg-bg-elevated shadow-neu-raised flex flex-col gap-6">
       {submitError && (
-        <div role="alert" className="p-4 rounded-2xl bg-red-50 dark:bg-red-950/50 border border-red-200 dark:border-red-800 flex items-start gap-3 animate-fadeIn">
+        <div role="alert" aria-live="assertive" className="p-4 rounded-2xl bg-red-50 dark:bg-red-950/50 border border-red-200 dark:border-red-800 flex items-start gap-3 animate-fadeIn">
           <AlertCircle size={20} className="text-red-500 flex-shrink-0 mt-0.5" />
           <p className="text-sm text-red-700 dark:text-red-400 font-medium">{submitError}</p>
         </div>
@@ -108,8 +108,8 @@ export default function ContactForm() {
           <label htmlFor="company" className="text-[10px] font-black uppercase tracking-widest text-content-secondary ml-2">Company Name</label>
           <div className="relative group">
             <Building2 size={16} className="absolute left-5 top-1/2 -translate-y-1/2 text-content-muted group-focus-within:text-theme-primary transition-colors" />
-            <input id="company" name="company" value={formData.company} onChange={handleInputChange} required className={`w-full pl-12 pr-6 py-3.5 rounded-xl bg-bg-sunken shadow-neu-sunken-subtle text-sm text-content-primary placeholder:text-content-muted border-none transition-all font-medium focus-visible:ring-2 focus-visible:ring-theme-primary ${errors.company ? 'ring-1 ring-red-400' : ''}`} placeholder="Company, LLC" disabled={isLoading} />
-            {errors.company && <p className="text-xs text-red-600 mt-1 pl-2">{errors.company}</p>}
+            <input id="company" name="company" value={formData.company} onChange={handleInputChange} required aria-describedby={errors.company ? "company-error" : undefined} className={`w-full pl-12 pr-6 py-3.5 rounded-xl bg-bg-sunken shadow-neu-sunken-subtle text-sm text-content-primary placeholder:text-content-muted border-none transition-all font-medium focus-visible:ring-2 focus-visible:ring-theme-primary ${errors.company ? 'ring-1 ring-red-400' : ''}`} placeholder="Company, LLC" disabled={isLoading} />
+            {errors.company && <p id="company-error" className="text-xs text-red-600 mt-1 pl-2">{errors.company}</p>}
           </div>
         </div>
 
@@ -117,8 +117,8 @@ export default function ContactForm() {
           <label htmlFor="name" className="text-[10px] font-black uppercase tracking-widest text-content-secondary ml-2">Contact Name</label>
           <div className="relative group">
             <User size={16} className="absolute left-5 top-1/2 -translate-y-1/2 text-content-muted group-focus-within:text-theme-primary transition-colors" />
-            <input id="name" name="name" value={formData.name} onChange={handleInputChange} required className={`w-full pl-12 pr-6 py-3.5 rounded-xl bg-bg-sunken shadow-neu-sunken-subtle text-sm text-content-primary placeholder:text-content-muted border-none transition-all font-medium focus-visible:ring-2 focus-visible:ring-theme-primary ${errors.name ? 'ring-1 ring-red-400' : ''}`} placeholder="Jane Doe" disabled={isLoading} />
-            {errors.name && <p className="text-xs text-red-600 mt-1 pl-2">{errors.name}</p>}
+            <input id="name" name="name" value={formData.name} onChange={handleInputChange} required aria-describedby={errors.name ? "name-error" : undefined} className={`w-full pl-12 pr-6 py-3.5 rounded-xl bg-bg-sunken shadow-neu-sunken-subtle text-sm text-content-primary placeholder:text-content-muted border-none transition-all font-medium focus-visible:ring-2 focus-visible:ring-theme-primary ${errors.name ? 'ring-1 ring-red-400' : ''}`} placeholder="Jane Doe" disabled={isLoading} />
+            {errors.name && <p id="name-error" className="text-xs text-red-600 mt-1 pl-2">{errors.name}</p>}
           </div>
         </div>
       </div>
@@ -127,8 +127,8 @@ export default function ContactForm() {
         <label htmlFor="email" className="text-[10px] font-black uppercase tracking-widest text-content-secondary ml-2">Work Email</label>
         <div className="relative group">
           <Mail size={16} className="absolute left-5 top-1/2 -translate-y-1/2 text-content-muted group-focus-within:text-theme-primary transition-colors" />
-          <input id="email" name="email" type="email" value={formData.email} onChange={handleInputChange} required className={`w-full pl-12 pr-6 py-3.5 rounded-xl bg-bg-sunken shadow-neu-sunken-subtle text-sm text-content-primary placeholder:text-content-muted border-none transition-all font-medium focus-visible:ring-2 focus-visible:ring-theme-primary ${errors.email ? 'ring-1 ring-red-400' : ''}`} placeholder="you@company.com" disabled={isLoading} />
-          {errors.email && <p className="text-xs text-red-600 mt-1 pl-2">{errors.email}</p>}
+          <input id="email" name="email" type="email" value={formData.email} onChange={handleInputChange} required aria-describedby={errors.email ? "email-error" : undefined} className={`w-full pl-12 pr-6 py-3.5 rounded-xl bg-bg-sunken shadow-neu-sunken-subtle text-sm text-content-primary placeholder:text-content-muted border-none transition-all font-medium focus-visible:ring-2 focus-visible:ring-theme-primary ${errors.email ? 'ring-1 ring-red-400' : ''}`} placeholder="you@company.com" disabled={isLoading} />
+          {errors.email && <p id="email-error" className="text-xs text-red-600 mt-1 pl-2">{errors.email}</p>}
         </div>
       </div>
 

@@ -23,6 +23,7 @@ yarn-debug.log*
 
 # Misc
 .DS_Store
+.claude/
 *.pem
 *.tsbuildinfo
 temp_css.txt

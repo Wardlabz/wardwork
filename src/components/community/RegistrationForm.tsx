@@ -194,7 +194,7 @@ export default function RegistrationForm() {
                     className="p-10 rounded-[2.5rem] bg-bg-elevated shadow-neu-raised flex flex-col gap-8"
                 >
                     {error && (
-                        <div className="p-4 rounded-2xl bg-red-50 dark:bg-red-950/50 border border-red-200 dark:border-red-800 flex items-start gap-3 animate-fadeIn">
+                        <div role="alert" className="p-4 rounded-2xl bg-red-50 dark:bg-red-950/50 border border-red-200 dark:border-red-800 flex items-start gap-3 animate-fadeIn">
                             <AlertCircle size={20} className="text-red-500 flex-shrink-0 mt-0.5" />
                             <p className="text-sm text-red-700 dark:text-red-400 font-medium">{error}</p>
                         </div>
