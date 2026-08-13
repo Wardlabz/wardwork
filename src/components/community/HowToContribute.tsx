@@ -28,7 +28,7 @@ export function HowToContribute() {
                         How to Contribute
                     </p>
                     <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-6 text-content-primary">
-                        Join the OFFER HUB Community
+                        Join the WardWork Community
                     </h2>
                     <p className="text-lg max-w-2xl mx-auto text-content-secondary">
                         We welcome all types of contributions! Here is a step-by-step guide to help you build with us.
@@ -85,7 +85,7 @@ export function HowToContribute() {
                 {/* CTAs */}
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
                     <Link
-                        href="https://github.com/WARDWORK/wardwork-monorepo/issues"
+                        href="https://github.com/Wardlabz/wardwork-monorepo/issues"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="btn-neumorphic-primary px-8 py-4 rounded-xl font-medium flex items-center gap-2"

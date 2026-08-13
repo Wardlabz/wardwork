@@ -11,7 +11,7 @@ export const heroData: UseCaseHeroProps = {
   subheadline:
     "The real estate escrow blueprint: non-custodial deposit locking, condition-based release against inspection reports, and on-chain dispute settlement — for rental and purchase transactions, globally.",
   docsUrl:
-    "https://github.com/WARDWORK/wardwork-monorepo/blob/main/docs/business/use-cases.md",
+    "https://github.com/Wardlabz/wardwork-monorepo/blob/main/docs/business/use-cases.md",
   footerIcon: Home,
   footerLabel: "Non-custodial real estate escrow",
   stats: [
@@ -70,7 +70,7 @@ export const stellarImpactCardsData: DetailedMetricCard[] = [
     id: "counterparty",
     label: "Counterparty Risk",
     icon: ShieldCheck,
-    offerHub: {
+    wardWork: {
       value: "0",
       unit: "%",
       sublabel: "Non-custodial protection",
@@ -84,13 +84,13 @@ export const stellarImpactCardsData: DetailedMetricCard[] = [
     savingsValue: "100%",
     isGrowth: true,
     description:
-      "Traditional deposits are held in landlord or agent bank accounts with no tenant protection. WARDWORK escrow removes this risk entirely — neither party controls the funds unilaterally.",
+      "Traditional deposits are held in landlord or agent bank accounts with no tenant protection. WardWork escrow removes this risk entirely — neither party controls the funds unilaterally.",
   },
   {
     id: "settlement",
     label: "Settlement Speed",
     icon: Clock,
-    offerHub: {
+    wardWork: {
       value: "3.2",
       unit: "sec",
       sublabel: "Stellar average finality",
@@ -110,7 +110,7 @@ export const stellarImpactCardsData: DetailedMetricCard[] = [
     id: "transparency",
     label: "Dispute Transparency",
     icon: Eye,
-    offerHub: {
+    wardWork: {
       value: "100",
       unit: "%",
       sublabel: "On-chain audit trail",
@@ -132,7 +132,7 @@ export const stellarImpactSummary = {
   icon: ShieldCheck,
   text: (
     <>
-      WARDWORK eliminates counterparty risk{" "}
+      WardWork eliminates counterparty risk{" "}
       <span className="text-theme-primary">entirely</span> and settles deposits{" "}
       <span className="text-theme-primary">1,000,000× faster</span> than
       traditional escrow agents.

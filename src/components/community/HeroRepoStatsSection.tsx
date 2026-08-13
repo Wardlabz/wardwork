@@ -40,7 +40,7 @@ export const HeroRepoStatsSection = ({ stats }: HeroRepoStatsSectionProps) => {
 
             <div className="mt-10 flex flex-wrap gap-4">
               <a
-                href="https://github.com/WARDWORK/wardwork-monorepo"
+                href="https://github.com/Wardlabz/wardwork-monorepo"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-8 py-4 rounded-xl bg-content-primary text-white text-xs font-black uppercase tracking-widest shadow-xl shadow-content-primary/20 hover:bg-black transition-all"

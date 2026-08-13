@@ -7,16 +7,16 @@ import { fetchChangelogEntries } from "@/services/github";
 export const metadata: Metadata = buildPageMetadata({
   title: "Changelog",
   description:
-    "Track every release and update to the WARDWORK platform — new features, improvements, and fixes across the ecosystem.",
+    "Track every release and update to the WardWork platform — new features, improvements, and fixes across the ecosystem.",
   keywords: [
     "changelog",
     "releases",
     "updates",
-    "WARDWORK",
+    "WardWork",
     "version history",
   ],
   path: "/changelog",
-  ogImageAlt: "WARDWORK Changelog — releases, improvements, and fixes",
+  ogImageAlt: "WardWork Changelog — releases, improvements, and fixes",
 });
 
 export default async function ChangelogPage() {

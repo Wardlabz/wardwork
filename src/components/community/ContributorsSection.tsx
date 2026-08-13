@@ -83,10 +83,10 @@ export const ContributorsSection = ({ contributors }: ContributorsSectionProps) 
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <SectionHeading
           eyebrow="Contributors"
-          title="Meet the people shipping WARDWORK"
+          title="Meet the people shipping WardWork"
           subtitle={
             totalContributors > 0
-              ? `Meet the developers shipping WARDWORK every day. A growing community of ${totalContributors} contributors.`
+              ? `Meet the developers shipping WardWork every day. A growing community of ${totalContributors} contributors.`
               : "Contributor data is temporarily unavailable while we reconnect to GitHub."
           }
         />

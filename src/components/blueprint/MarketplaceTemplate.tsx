@@ -234,7 +234,7 @@ export function MarketplaceTemplate() {
                     boxShadow: "inset 1px 1px 3px var(--shadow-dark), inset -1px -1px 3px var(--shadow-light)",
                   }}
                 >
-                  app.offerhub.io/{view}
+                  app.wardwork.io/{view}
                 </div>
               </div>
 
@@ -275,7 +275,7 @@ export function MarketplaceTemplate() {
                   <span className="text-content-primary">create-wardwork-app@latest</span>
                 </p>
                 <p className="text-content-muted text-[10px] mt-3">
-                  ↳ Scaffolds a full marketplace with Buyer &amp; Seller routes, escrow hooks, and the @offerhub/sdk pre-configured.
+                  ↳ Scaffolds a full marketplace with Buyer &amp; Seller routes, escrow hooks, and the @wardwork/sdk pre-configured.
                 </p>
               </div>
             </div>
@@ -298,15 +298,15 @@ export function MarketplaceTemplate() {
                   <Layers size={16} className="text-theme-primary" />
                 </div>
                 <div>
-                  <p className="text-sm font-bold text-content-primary font-mono">@offerhub/sdk</p>
+                  <p className="text-sm font-bold text-content-primary font-mono">@wardwork/sdk</p>
                   <p className="text-xs text-content-muted mt-0.5">The official JavaScript/TypeScript SDK</p>
                 </div>
               </div>
               <p className="text-xs text-content-secondary leading-relaxed mb-5">
-                The <span className="font-mono text-content-primary">@offerhub/sdk</span> bridges the Marketplace Template and the Orchestrator. It exposes typed hooks for escrow lifecycle management, real-time payout tracking, and asset resolution — so your frontend stays synced with the payment engine without writing a single REST call by hand.
+                The <span className="font-mono text-content-primary">@wardwork/sdk</span> bridges the Marketplace Template and the Orchestrator. It exposes typed hooks for escrow lifecycle management, real-time payout tracking, and asset resolution — so your frontend stays synced with the payment engine without writing a single REST call by hand.
               </p>
               <a
-                href="https://docs.offerhub.io/sdk"
+                href="https://docs.wardwork.io/sdk"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold btn-neumorphic-primary transition-all"

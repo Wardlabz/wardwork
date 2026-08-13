@@ -1,15 +1,15 @@
 ---
 title: Disputes Guide
-description: How to handle disputes in WARDWORK — opening, resolving, and managing disagreements between buyers and sellers.
+description: How to handle disputes in WardWork — opening, resolving, and managing disagreements between buyers and sellers.
 order: 4
 section: Guides
 ---
 
 <Callout type="note">
-  This is the public API/SDK guide for integrators. For internal implementation detail (Orchestrator state machine, signer roles), see [`docs/guides/disputes.md`](https://github.com/WARDWORK/wardwork-monorepo/blob/main/docs/guides/disputes.md) in the repo.
+  This is the public API/SDK guide for integrators. For internal implementation detail (Orchestrator state machine, signer roles), see [`docs/guides/disputes.md`](https://github.com/Wardlabz/wardwork-monorepo/blob/main/docs/guides/disputes.md) in the repo.
 </Callout>
 
-Disputes are a critical part of any marketplace. When a buyer and seller disagree, WARDWORK provides a structured process to resolve conflicts fairly while funds remain safely locked in escrow.
+Disputes are a critical part of any marketplace. When a buyer and seller disagree, WardWork provides a structured process to resolve conflicts fairly while funds remain safely locked in escrow.
 
 <Callout type="tip">
   Disputes only apply to orders that have funded escrow. For orders still in `FUNDS_RESERVED`, use the cancel flow instead.
@@ -304,7 +304,7 @@ curl http://localhost:4000/api/v1/disputes/dsp_abc123 \
 ## Using the SDK
 
 ```typescript
-import { WardWorkSDK } from '@offerhub/sdk';
+import { WardWorkSDK } from '@wardwork/sdk';
 
 const sdk = new WardWorkSDK({
   apiUrl: 'http://localhost:4000',

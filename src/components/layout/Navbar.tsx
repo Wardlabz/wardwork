@@ -80,10 +80,10 @@ export function Navbar() {
               <Image
                 src={
                   resolvedTheme === "dark"
-                    ? "/WARDWORK-logo-to-darkmode.png"
-                    : "/WARDWORK-logo.png"
+                    ? "/WardWork-logo-to-darkmode.png"
+                    : "/WardWork-logo.png"
                 }
-                alt="WARDWORK"
+                alt="WardWork"
                 width={180}
                 height={48}
                 className="h-10 w-auto object-contain"

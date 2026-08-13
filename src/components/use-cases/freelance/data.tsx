@@ -9,9 +9,9 @@ export const heroData: UseCaseHeroProps = {
   badgeLabel: "CASE STUDY: LVL-1 REAL-WORLD",
   headline: "Orchestrating the Global Talent Economy",
   subheadline:
-    "The flagship WARDWORK deployment story, designed as a live study of escrow-backed freelance infrastructure: mapped payment flows, milestone controls, and global USDC settlement without custodial risk.",
+    "The flagship WardWork deployment story, designed as a live study of escrow-backed freelance infrastructure: mapped payment flows, milestone controls, and global USDC settlement without custodial risk.",
   docsUrl:
-    "https://github.com/WARDWORK/wardwork-monorepo/blob/main/docs/business/use-cases.md#use-case-1-freelance-platform",
+    "https://github.com/Wardlabz/wardwork-monorepo/blob/main/docs/business/use-cases.md#use-case-1-freelance-platform",
   footerIcon: Orbit,
   footerLabel: "Deployment-grade architecture",
   stats: [
@@ -66,7 +66,7 @@ export const stellarImpactCardsData: DetailedMetricCard[] = [
     id: "fee",
     label: "Transaction Fee",
     icon: DollarSign,
-    offerHub: {
+    wardWork: {
       value: "0.0001",
       unit: "XLM",
       sublabel: "≈ $0.01 per transaction",
@@ -86,7 +86,7 @@ export const stellarImpactCardsData: DetailedMetricCard[] = [
     id: "settlement",
     label: "Settlement Time",
     icon: Clock,
-    offerHub: {
+    wardWork: {
       value: "3.2",
       unit: "sec",
       sublabel: "Stellar average finality",
@@ -106,7 +106,7 @@ export const stellarImpactCardsData: DetailedMetricCard[] = [
     id: "transparency",
     label: "Operational Transparency",
     icon: ShieldCheck,
-    offerHub: {
+    wardWork: {
       value: "100",
       unit: "%",
       sublabel: "On-chain audit trail",
@@ -128,7 +128,7 @@ export const stellarImpactSummary = {
   icon: ShieldCheck,
   text: (
     <>
-      WARDWORK saves businesses up to{" "}
+      WardWork saves businesses up to{" "}
       <span className="text-theme-primary">99.8% in transaction fees</span>{" "}
       and settles{" "}
       <span className="text-theme-primary">185,000× faster</span> than SWIFT.

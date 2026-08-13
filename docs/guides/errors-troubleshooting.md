@@ -439,7 +439,7 @@ curl -N \
 ## SDK Error Handling
 
 ```typescript
-import { WardWorkError, InsufficientFundsError, InvalidStateError } from '@offerhub/sdk';
+import { WardWorkError, InsufficientFundsError, InvalidStateError } from '@wardwork/sdk';
 
 try {
   await sdk.orders.reserve(orderId, { amount: '100.00' });

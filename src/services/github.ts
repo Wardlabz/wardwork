@@ -100,9 +100,9 @@ interface GitHubRelease {
 /* -------------------------------------------------------------------------- */
 
 const REPOS = [
-  'WARDWORK/wardwork-monorepo',
-  'WARDWORK/WARDWORK',
-  'WARDWORK/WARDWORK-Frontend'
+  'WardWork/wardwork-monorepo',
+  'WardWork/WardWork',
+  'WardWork/WardWork-Frontend'
 ];
 
 const formatNumber = (num: number): string => {
@@ -233,7 +233,7 @@ export async function fetchCommunityData() {
 /*                                  Changelog                                  */
 /* -------------------------------------------------------------------------- */
 
-const RELEASES_API_URL = "https://api.github.com/repos/WARDWORK/wardwork-monorepo/releases";
+const RELEASES_API_URL = "https://api.github.com/repos/WardWork/wardwork-monorepo/releases";
 
 function formatReleaseDate(dateString: string): string {
   return new Intl.DateTimeFormat("en-US", {

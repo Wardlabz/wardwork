@@ -29,7 +29,7 @@ export function ContributorGrid({ contributors }: ContributorGridProps) {
         <SectionHeading
           eyebrow="Community"
           title="Our Contributors"
-          subtitle="The people building and shipping WARDWORK every day."
+          subtitle="The people building and shipping WardWork every day."
         />
 
         {data.length > 0 ? (
@@ -69,7 +69,7 @@ export function ContributorGrid({ contributors }: ContributorGridProps) {
 
         <div className="mt-12 text-center">
           <a
-            href="https://github.com/WARDWORK/wardwork-monorepo/graphs/contributors"
+            href="https://github.com/Wardlabz/wardwork-monorepo/graphs/contributors"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-[400ms] ease-out border border-theme-primary text-theme-primary hover:shadow-neu-raised-hover"

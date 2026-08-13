@@ -1,6 +1,6 @@
 # AirTM Integration Guide
 
-> How the AirTM fiat payment provider works in WARDWORK — deposits (top-ups), withdrawals, and webhooks.
+> How the AirTM fiat payment provider works in WardWork — deposits (top-ups), withdrawals, and webhooks.
 
 > **Status (Phase 1 — Current):** Setting `PAYMENT_PROVIDER=airtm` throws a `ConfigurationError` at startup with the message: _"Set PAYMENT_PROVIDER=crypto to use Stellar USDC wallets. AirTM support is planned for a future release."_ Use `PAYMENT_PROVIDER=crypto` for production deployments.
 >

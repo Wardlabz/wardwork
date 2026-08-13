@@ -1,10 +1,10 @@
-# AI Context for WARDWORK
+# AI Context for WardWork
 
-This document provides essential context for AI assistants working on the WARDWORK project. Read this document FIRST before making any changes.
+This document provides essential context for AI assistants working on the WardWork project. Read this document FIRST before making any changes.
 
 ## Project Overview
 
-WARDWORK is a **self-hosted payments orchestrator** for marketplaces that provides escrow-protected payments and user balances without requiring marketplaces to build payment infrastructure. It's a monorepo containing both backend (NestJS) and frontend (Next.js) applications.
+WardWork is a **self-hosted payments orchestrator** for marketplaces that provides escrow-protected payments and user balances without requiring marketplaces to build payment infrastructure. It's a monorepo containing both backend (NestJS) and frontend (Next.js) applications.
 
 **What it provides:**
 - User Balance (Web2)
@@ -93,8 +93,8 @@ wardwork-orchestrator/          # Backend API (separate repo)
 ├── packages/
 │   ├── database/                # Prisma schema and client
 │   ├── shared/                  # Shared DTOs, types, enums
-│   ├── sdk/                     # @offerhub/sdk client
-│   └── cli/                     # @offerhub/cli tool
+│   ├── sdk/                     # @wardwork/sdk client
+│   └── cli/                     # @wardwork/cli tool
 └── docs/                        # Backend documentation
 ```
 

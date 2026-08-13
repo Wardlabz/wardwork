@@ -1,7 +1,7 @@
 {
   "name": "@wardwork/mcp-docs-server",
   "version": "1.0.0",
-  "description": "MCP server that exposes WARDWORK documentation to AI assistants",
+  "description": "MCP server that exposes WardWork documentation to AI assistants",
   "type": "module",
   "main": "./build/index.js",
   "bin": {
@@ -23,7 +23,7 @@
     "documentation",
     "ai-assistant"
   ],
-  "author": "WARDWORK Team",
+  "author": "WardWork Team",
   "license": "MIT",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.0.0",

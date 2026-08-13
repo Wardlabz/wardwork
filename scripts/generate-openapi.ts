@@ -40,9 +40,9 @@ function generateOpenApiSpec(): OpenApiSpec {
   const openapi: OpenApiSpec = {
     openapi: "3.0.0",
     info: {
-      title: "WARDWORK API",
+      title: "WardWork API",
       version: "1.0.0",
-      description: "Auto-generated OpenAPI specification for WARDWORK",
+      description: "Auto-generated OpenAPI specification for WardWork",
       license: {
         name: "MIT",
         url: "https://opensource.org/licenses/MIT"

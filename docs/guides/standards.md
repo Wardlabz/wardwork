@@ -1,6 +1,6 @@
 # API Standards
 
-> Conventions, response formats, naming rules, validation constraints, and integration standards for the WARDWORK Orchestrator API.
+> Conventions, response formats, naming rules, validation constraints, and integration standards for the WardWork Orchestrator API.
 
 ---
 
@@ -56,7 +56,7 @@ API keys have prefixes by type:
 Create API keys via the master key bootstrap endpoint:
 ```bash
 POST /api/v1/auth/api-keys
-Authorization: Bearer $OFFERHUB_MASTER_KEY
+Authorization: Bearer $WARDWORK_MASTER_KEY
 ```
 
 ### API Key Scopes

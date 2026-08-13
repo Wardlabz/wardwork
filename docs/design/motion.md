@@ -1,6 +1,6 @@
 # Motion & Animation Standards
 
-This document defines the animation system for WARDWORK. Movement should feel organic, purposeful, and enhance the user experience without being distracting.
+This document defines the animation system for WardWork. Movement should feel organic, purposeful, and enhance the user experience without being distracting.
 
 ## Animation Philosophy
 

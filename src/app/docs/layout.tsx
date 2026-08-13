@@ -5,14 +5,14 @@ import { DocsLayoutShell } from "@/components/docs/DocsLayoutShell";
 export const metadata: Metadata = {
   title: "Documentation",
   description:
-    "Explore WARDWORK documentation: getting started guides, API reference, TypeScript SDK, escrow workflows, and self-hosting instructions.",
+    "Explore WardWork documentation: getting started guides, API reference, TypeScript SDK, escrow workflows, and self-hosting instructions.",
   keywords: [
     "documentation",
     "API reference",
     "SDK",
     "escrow",
     "getting started",
-    "WARDWORK",
+    "WardWork",
     "self-hosting",
   ],
 };

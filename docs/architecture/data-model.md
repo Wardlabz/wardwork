@@ -1,6 +1,6 @@
 # Data Model
 
-This document defines the core data entities, relationships, and state machines in the WARDWORK system.
+This document defines the core data entities, relationships, and state machines in the WardWork system.
 
 ## Entity Relationship Overview
 

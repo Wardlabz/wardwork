@@ -19,7 +19,7 @@
 --------------- Marketplaces Orchestrator & Freelance Platform ---------------
 ```
 
-**WARDWORK Orchestrator** is a self-hosted payments orchestration system designed for Marketplaces. It manages a Web2-like experience (balances, top-ups, payments with escrow, and withdrawals) using **Airtm** for fund management and **Trustless Work** for non-custodial escrows on the Stellar network.
+**WardWork Orchestrator** is a self-hosted payments orchestration system designed for Marketplaces. It manages a Web2-like experience (balances, top-ups, payments with escrow, and withdrawals) using **Airtm** for fund management and **Trustless Work** for non-custodial escrows on the Stellar network.
 
 ##  Features
 
@@ -28,6 +28,17 @@
 - 🤝 **Smart Escrow**: Secure checkout with non-custodial escrow via TW.
 - 💸 **Withdrawals**: Direct withdrawals to Airtm accounts.
 - 🔐 **Secure & Audited**: Native idempotency, audit logs, and modular architecture.
+
+## How It Works
+
+The orchestrator sits between your marketplace and the rails it uses to move money:
+
+1. A user **tops up** their internal balance via Airtm.
+2. A purchase/order creates an **escrow** on Trustless Work, reserving the funds.
+3. When the service provider completes the work, the client **approves**, and funds are released.
+4. The provider can then **withdraw** their balance to an Airtm account.
+
+Every operation is idempotent and auditable: retries never double-charge, and a full audit log records every state transition.
 
 ## 🛠️ Tech Stack
 
@@ -41,8 +52,8 @@
 
 1. **Clone and Prepare**:
    ```bash
-   git clone https://github.com/your-org/WARDWORK-Orchestrator.git
-   cd WARDWORK-Orchestrator
+   git clone https://github.com/your-org/WardWork-Orchestrator.git
+   cd WardWork-Orchestrator
    cp .env.example .env
    ```
 
@@ -90,6 +101,25 @@ are independent packages — each has its own `package.json` and needs its
 own `npm install` (see [`mcp/README.md`](./mcp/README.md) for the MCP
 server's setup and usage).
 
+### Standalone backend
+
+The `backend/` folder is a minimal Express + TypeScript API (`tsx watch src/index.ts` in dev, `tsc` + `node dist/index.js` in production). It is intentionally independent of the frontend workspace.
+
+## ⚙️ Environment Variables
+
+Copy `.env.example` to `.env` and fill in:
+
+| Variable | Description |
+|---|---|
+| `NEXT_PUBLIC_API_URL` | Base URL of the orchestrator API (default `http://localhost:4000`) |
+| `WARDWORK_API_KEY` | Your WardWork SDK/API key |
+| `NEXT_PUBLIC_SUPABASE_URL` | Supabase project URL |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase anonymous key |
+| `DATABASE_URL` | Postgres connection string (backend/migrations) |
+| `DIRECT_URL` | Direct Postgres connection (Prisma) |
+| `NEXT_PUBLIC_SITE_URL` | Production domain (default `https://wardwork.tech`) |
+| `NEXT_PUBLIC_API_BASE_URL` | Public API base (default `http://localhost:4000/api/v1`) |
+
 ## 📚 Documentation
 
 Comprehensive documentation is available in the [`/docs`](./docs/) folder:
@@ -124,6 +154,20 @@ Connect freelancers with clients using escrow protection:
 - **Digital Goods**: Instant or escrow-based delivery
 - **Gig Economy**: Worker/client escrow with job completion
 
+## 🛠️ Development Scripts
+
+| Command | Description |
+|---|---|
+| `npm run dev` | Run the Next.js frontend (dev mode) |
+| `npm run build` | Production build |
+| `npm run start` | Serve the production build |
+| `npm run lint` | Lint the frontend |
+| `npm test` | Run Vitest unit tests |
+| `npm run test:watch` | Watch mode for tests |
+| `npm run test:coverage` | Test coverage report |
+| `npm run generate:openapi` | Generate OpenAPI spec |
+| `npm run docs:index` | Rebuild the docs search index |
+
 ## 🤝 Contributing
 
 We welcome contributions! Please see [CONTRIBUTING.md](./docs/CONTRIBUTING.md) for detailed guidelines.
@@ -143,8 +187,8 @@ This project is licensed under the MIT License - see the [LICENSE](./LICENSE) fi
 ## 🆘 Support
 
 - **Documentation**: [/docs](./docs/)
-- **Issues**: [GitHub Issues](https://github.com/your-org/WARDWORK-Orchestrator/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/your-org/WARDWORK-Orchestrator/discussions)
+- **Issues**: [GitHub Issues](https://github.com/your-org/WardWork-Orchestrator/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/your-org/WardWork-Orchestrator/discussions)
 
 ## 👥 Maintainers
 

@@ -19,7 +19,7 @@ export interface DetailedMetricCard {
   id: string;
   label: string;
   icon: React.FC<{ size?: number; className?: string }>;
-  offerHub: { value: string; unit: string; sublabel: string };
+  wardWork: { value: string; unit: string; sublabel: string };
   traditional: { value: string; unit: string; sublabel: string };
   savingsLabel: string;
   savingsValue: string;
@@ -29,7 +29,7 @@ export interface DetailedMetricCard {
 
 export interface SimpleMetricCard {
   label: string;
-  offerhub: string;
+  wardwork: string;
   traditional: string;
   icon: React.FC<{ size?: number; className?: string }>;
   savingsLabel: string;
@@ -46,7 +46,7 @@ export interface StellarImpactCardsProps {
   toggleId: string;
   showHeader?: boolean;
   summaryContent?: {
-    offerhub?: { icon?: React.FC<{ size?: number; className?: string }>; text: React.ReactNode };
+    wardwork?: { icon?: React.FC<{ size?: number; className?: string }>; text: React.ReactNode };
     traditional?: { icon?: React.FC<{ size?: number; className?: string }>; text: React.ReactNode };
   };
 }
@@ -54,7 +54,7 @@ export interface StellarImpactCardsProps {
 /* ── Helpers ── */
 
 function isDetailed(card: MetricCard): card is DetailedMetricCard {
-  return "id" in card && "offerHub" in card;
+  return "id" in card && "wardWork" in card;
 }
 
 /* ── Animated Counter (detailed variant) ── */
@@ -108,8 +108,8 @@ function AnimatedNumberDetailed({ value, suffix }: { value: string; suffix: stri
 
 /* ── Animated Text (simple variant) ── */
 
-function AnimatedText({ value, mode }: { value: string; mode: "offerhub" | "traditional" }) {
-  const prevModeRef = useRef<"offerhub" | "traditional">(mode);
+function AnimatedText({ value, mode }: { value: string; mode: "wardwork" | "traditional" }) {
+  const prevModeRef = useRef<"wardwork" | "traditional">(mode);
   const [display, setDisplay] = useState(value);
 
   useEffect(() => {
@@ -164,15 +164,15 @@ function ModeToggleDetailed({
   onChange,
   toggleId,
 }: {
-  mode: "offerhub" | "traditional";
-  onChange: (m: "offerhub" | "traditional") => void;
+  mode: "wardwork" | "traditional";
+  onChange: (m: "wardwork" | "traditional") => void;
   toggleId: string;
 }) {
   return (
     <div className="inline-flex items-center bg-bg-sunken shadow-neu-sunken rounded-2xl p-1 gap-1">
       {(
         [
-          { key: "offerhub" as const, label: "WARDWORK Engine", icon: Zap },
+          { key: "wardwork" as const, label: "WardWork Engine", icon: Zap },
           { key: "traditional" as const, label: "Standard Platform", icon: BarChart3 },
         ]
       ).map(({ key, label, icon: Icon }) => (
@@ -210,13 +210,13 @@ function ModeToggleSimple({
   onChange,
   toggleId,
 }: {
-  mode: "offerhub" | "traditional";
-  onChange: (m: "offerhub" | "traditional") => void;
+  mode: "wardwork" | "traditional";
+  onChange: (m: "wardwork" | "traditional") => void;
   toggleId: string;
 }) {
   return (
     <div className="inline-flex items-center rounded-full shadow-neu-raised-sm bg-bg-elevated p-1 gap-1">
-      {(["offerhub", "traditional"] as const).map((m) => (
+      {(["wardwork", "traditional"] as const).map((m) => (
         <button
           key={m}
           onClick={() => onChange(m)}
@@ -235,7 +235,7 @@ function ModeToggleSimple({
             />
           )}
           <span className="relative">
-            {m === "offerhub" ? "WardWork" : "Traditional"}
+            {m === "wardwork" ? "WardWork" : "Traditional"}
           </span>
         </button>
       ))}
@@ -249,15 +249,15 @@ function SummaryBarDetailed({
   mode,
   content,
 }: {
-  mode: "offerhub" | "traditional";
+  mode: "wardwork" | "traditional";
   content?: {
-    offerhub?: { icon?: React.FC<{ size?: number; className?: string }>; text: React.ReactNode };
+    wardwork?: { icon?: React.FC<{ size?: number; className?: string }>; text: React.ReactNode };
     traditional?: { icon?: React.FC<{ size?: number; className?: string }>; text: React.ReactNode };
   };
 }) {
-  if (mode !== "offerhub") return null;
+  if (mode !== "wardwork") return null;
 
-  const Icon = content?.offerhub?.icon ?? ShieldCheck;
+  const Icon = content?.wardwork?.icon ?? ShieldCheck;
 
   return (
     <motion.div
@@ -272,7 +272,7 @@ function SummaryBarDetailed({
           <Icon size={16} className="text-theme-success" />
         </div>
         <p className="text-sm font-bold text-content-primary">
-          {content?.offerhub?.text}
+          {content?.wardwork?.text}
         </p>
       </div>
       <span className="flex-shrink-0 text-[10px] font-bold uppercase tracking-widest text-content-muted bg-bg-base shadow-neu-sunken-subtle rounded-full px-3 py-1">
@@ -288,18 +288,18 @@ function SummaryBarSimple({
   mode,
   content,
 }: {
-  mode: "offerhub" | "traditional";
+  mode: "wardwork" | "traditional";
   content?: {
-    offerhub?: { icon?: React.FC<{ size?: number; className?: string }>; text: React.ReactNode };
+    wardwork?: { icon?: React.FC<{ size?: number; className?: string }>; text: React.ReactNode };
     traditional?: { icon?: React.FC<{ size?: number; className?: string }>; text: React.ReactNode };
   };
 }) {
   return (
     <div className="flex items-center gap-3 py-4 px-6 md:px-8 rounded-2xl shadow-neu-sunken-subtle bg-bg-sunken">
       <div className="w-2 h-2 rounded-full bg-theme-primary animate-pulse flex-shrink-0" />
-      {mode === "offerhub" ? (
+      {mode === "wardwork" ? (
         <p className="text-xs md:text-sm text-content-secondary leading-relaxed">
-          {content?.offerhub?.text}
+          {content?.wardwork?.text}
         </p>
       ) : (
         <p className="text-xs md:text-sm text-content-secondary leading-relaxed">
@@ -318,13 +318,13 @@ function DetailedMetricCardComponent({
   index,
 }: {
   metric: DetailedMetricCard;
-  mode: "offerhub" | "traditional";
+  mode: "wardwork" | "traditional";
   index: number;
 }) {
   const [expanded, setExpanded] = useState(false);
   const Icon = metric.icon;
-  const active = mode === "offerhub" ? metric.offerHub : metric.traditional;
-  const isWardWork = mode === "offerhub";
+  const active = mode === "wardwork" ? metric.wardWork : metric.traditional;
+  const isWardWork = mode === "wardwork";
 
   return (
     <motion.div
@@ -452,16 +452,16 @@ function SimpleMetricCardComponent({
   index,
 }: {
   metric: SimpleMetricCard;
-  mode: "offerhub" | "traditional";
+  mode: "wardwork" | "traditional";
   index: number;
 }) {
   const Icon = metric.icon;
-  const value = mode === "offerhub" ? metric.offerhub : metric.traditional;
+  const value = mode === "wardwork" ? metric.wardwork : metric.traditional;
   const isGood =
-    mode === "offerhub"
+    mode === "wardwork"
       ? metric.higherIsBetter ||
-        metric.offerhub === "0%" ||
-        metric.offerhub === "100%"
+        metric.wardwork === "0%" ||
+        metric.wardwork === "100%"
       : false;
 
   return (
@@ -494,7 +494,7 @@ function SimpleMetricCardComponent({
         <p
           className={cn(
             "text-3xl md:text-4xl font-extrabold tabular-nums leading-none",
-            mode === "offerhub" ? "text-theme-primary" : "text-content-muted",
+            mode === "wardwork" ? "text-theme-primary" : "text-content-muted",
           )}
         >
           <AnimatedText value={value} mode={mode} />
@@ -529,7 +529,7 @@ export function StellarImpactCards({
   showHeader = true,
   summaryContent,
 }: StellarImpactCardsProps) {
-  const [mode, setMode] = useState<"offerhub" | "traditional">("offerhub");
+  const [mode, setMode] = useState<"wardwork" | "traditional">("wardwork");
 
   return (
     <div
@@ -552,7 +552,7 @@ export function StellarImpactCards({
             <p className="text-sm text-content-secondary mt-1 max-w-md">
               Hard data that answers{" "}
               <em className="not-italic font-semibold text-content-primary">
-                &ldquo;Why switch to WARDWORK?&rdquo;
+                &ldquo;Why switch to WardWork?&rdquo;
               </em>
             </p>
           </div>
@@ -571,7 +571,7 @@ export function StellarImpactCards({
             <DetailedMetricCardComponent
               key={metric.id}
               metric={metric}
-              mode={mode as "offerhub" | "traditional"}
+              mode={mode as "wardwork" | "traditional"}
               index={i}
             />
           ))}
@@ -582,7 +582,7 @@ export function StellarImpactCards({
             <SimpleMetricCardComponent
               key={metric.label}
               metric={metric}
-              mode={mode as "offerhub" | "traditional"}
+              mode={mode as "wardwork" | "traditional"}
               index={i}
             />
           ))}
@@ -591,7 +591,7 @@ export function StellarImpactCards({
 
       {variant === "detailed" && (
         <AnimatePresence>
-          {mode === "offerhub" && summaryContent && (
+          {mode === "wardwork" && summaryContent && (
             <SummaryBarDetailed mode={mode} content={summaryContent} />
           )}
         </AnimatePresence>

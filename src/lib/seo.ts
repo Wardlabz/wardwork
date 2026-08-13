@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 
 export const SITE_URL = "https://wardwork.tech";
-export const SITE_NAME = "WARDWORK";
+export const SITE_NAME = "WardWork";
 
 type PageSeoInput = {
-  /** Feeds `metadata.title`, so the root layout's "%s | WARDWORK" template applies */
+  /** Feeds `metadata.title`, so the root layout's "%s | WardWork" template applies */
   title: string;
   description: string;
   keywords: string[];

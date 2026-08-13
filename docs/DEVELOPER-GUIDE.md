@@ -1,10 +1,10 @@
 # Developer Guide
 
-Complete guide for developers working with WARDWORK.
+Complete guide for developers working with WardWork.
 
 ## Overview
 
-WARDWORK is a self-hosted payment and escrow system for marketplaces. It consists of two main components:
+WardWork is a self-hosted payment and escrow system for marketplaces. It consists of two main components:
 
 1. **Orchestrator (Backend)** - RESTful API on port **4000** (NestJS)
    - Handles user balances, USDC escrow on Stellar (via Trustless Work), and withdrawals
@@ -16,7 +16,7 @@ WARDWORK is a self-hosted payment and escrow system for marketplaces. It consist
 
 Components:
 - **API** - RESTful API on port **4000** (NestJS)
-- **SDK** - TypeScript SDK for easy integration (`@offerhub/sdk`)
+- **SDK** - TypeScript SDK for easy integration (`@wardwork/sdk`)
 - **Worker** - Background jobs integrated into the API (BullMQ + Redis)
 - **Database** - PostgreSQL with Prisma ORM (Supabase recommended)
 - **Frontend** - Next.js 15+ with App Router
@@ -53,7 +53,7 @@ Components:
 
 ```bash
 # Clone repository
-git clone https://github.com/WARDWORK/wardwork-monorepo.git
+git clone https://github.com/Wardlabz/wardwork-monorepo.git
 cd wardwork-monorepo
 
 # Install dependencies
@@ -69,11 +69,11 @@ npm run dev
 ### 2. Using the SDK
 
 ```typescript
-import { WardWorkSDK } from '@offerhub/sdk';
+import { WardWorkSDK } from '@wardwork/sdk';
 
 const sdk = new WardWorkSDK({
   apiUrl: 'http://localhost:4000',
-  apiKey: process.env.OFFERHUB_API_KEY
+  apiKey: process.env.WARDWORK_API_KEY
 });
 
 // Create a user
@@ -96,13 +96,13 @@ const order = await sdk.orders.create({
 
 ```bash
 # Configure CLI
-offerhub config set
+wardwork config set
 
 # Create API key
-offerhub keys create --user-id usr_admin --scopes read,write
+wardwork keys create --user-id usr_admin --scopes read,write
 
 # Enable maintenance mode
-offerhub maintenance enable --message "Upgrading database"
+wardwork maintenance enable --message "Upgrading database"
 ```
 
 ---
@@ -120,7 +120,7 @@ offerhub maintenance enable --message "Upgrading database"
                      | Uses SDK
                      v
 +---------------------------------------------------------+
-|                  @offerhub/sdk                           |
+|                  @wardwork/sdk                           |
 |            (TypeScript SDK Package)                      |
 +--------------------+------------------------------------+
                      |
@@ -255,7 +255,7 @@ npm run build
 
 ```bash
 # Enable debug logs
-DEBUG=offerhub:* npm run dev
+DEBUG=wardwork:* npm run dev
 
 # Or in your .env
 LOG_LEVEL=debug
@@ -268,7 +268,7 @@ The SDK automatically retries failed requests. To debug:
 ```typescript
 const sdk = new WardWorkSDK({
   apiUrl: 'http://localhost:4000',
-  apiKey: process.env.OFFERHUB_API_KEY,
+  apiKey: process.env.WARDWORK_API_KEY,
   timeout: 60000,        // Increase timeout
   retryAttempts: 0,      // Disable retries for debugging
 });
@@ -304,7 +304,7 @@ const sdk = new WardWorkSDK({
 curl http://localhost:4000/health
 
 # CLI check
-offerhub maintenance status
+wardwork maintenance status
 ```
 
 ### Logging
@@ -334,8 +334,8 @@ All operations are logged with structured JSON:
 
 ### Community
 
-- [GitHub Issues](https://github.com/WARDWORK/wardwork-monorepo/issues)
-- [GitHub Discussions](https://github.com/WARDWORK/wardwork-monorepo/discussions)
+- [GitHub Issues](https://github.com/Wardlabz/wardwork-monorepo/issues)
+- [GitHub Discussions](https://github.com/Wardlabz/wardwork-monorepo/discussions)
 
 ---
 

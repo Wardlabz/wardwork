@@ -5,10 +5,10 @@ order: 2
 section: Guides
 ---
 
-This guide walks through every escrow flow in WARDWORK: from creating and funding a contract to releasing, disputing, and refunding. Each flow includes step-by-step diagrams and code examples.
+This guide walks through every escrow flow in WardWork: from creating and funding a contract to releasing, disputing, and refunding. Each flow includes step-by-step diagrams and code examples.
 
 <Callout type="note">
-  WARDWORK uses [Trustless Work](https://trustlesswork.com) smart contracts on Stellar for non-custodial escrow. All flows ultimately resolve on-chain.
+  WardWork uses [Trustless Work](https://trustlesswork.com) smart contracts on Stellar for non-custodial escrow. All flows ultimately resolve on-chain.
 </Callout>
 
 ## Creating an Escrow
@@ -54,7 +54,7 @@ Response:
 ### TypeScript SDK
 
 ```ts
-import { WardWorkSDK } from '@offerhub/sdk';
+import { WardWorkSDK } from '@wardwork/sdk';
 
 const sdk = new WardWorkSDK({
   apiUrl: 'http://localhost:4000',

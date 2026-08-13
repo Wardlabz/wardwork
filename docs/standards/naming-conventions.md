@@ -1,6 +1,6 @@
 # Naming Conventions
 
-This document defines strict naming standards for the WARDWORK codebase. Consistent naming ensures readability, searchability, and maintainability across thousands of files.
+This document defines strict naming standards for the WardWork codebase. Consistent naming ensures readability, searchability, and maintainability across thousands of files.
 
 ## Core Principles
 

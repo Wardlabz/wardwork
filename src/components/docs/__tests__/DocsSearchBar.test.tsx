@@ -15,7 +15,7 @@ vi.mock("@/data/docs-index.json", () => ({
       id: "getting-started",
       title: "Getting Started",
       section: "Guides",
-      content: "How to install and configure WARDWORK.",
+      content: "How to install and configure WardWork.",
       link: "/docs/getting-started",
     },
     {

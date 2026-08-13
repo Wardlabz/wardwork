@@ -1,12 +1,12 @@
 # Marketplace Integration Guide
 
-> **Audience:** You have your own frontend or marketplace and want to integrate WARDWORK Orchestrator to handle payments, escrow, and withdrawals.
+> **Audience:** You have your own frontend or marketplace and want to integrate WardWork Orchestrator to handle payments, escrow, and withdrawals.
 
 ---
 
 ## What is the Orchestrator?
 
-WARDWORK Orchestrator is a **self-hosted payments and escrow backend** that your marketplace calls via REST API or TypeScript SDK. It handles user balances, USDC escrow on Stellar (via Trustless Work), and withdrawals. It does **not** provide a UI, marketplace logic, or user authentication — those are yours. The Orchestrator is server-to-server: your backend calls it with an API key.
+WardWork Orchestrator is a **self-hosted payments and escrow backend** that your marketplace calls via REST API or TypeScript SDK. It handles user balances, USDC escrow on Stellar (via Trustless Work), and withdrawals. It does **not** provide a UI, marketplace logic, or user authentication — those are yours. The Orchestrator is server-to-server: your backend calls it with an API key.
 
 ---
 
@@ -35,7 +35,7 @@ Copy `.env.example` to `.env` and fill in these values:
 | `DATABASE_URL` | Yes | `postgresql://...` | Supabase direct URL (port **5432**, not 6543) |
 | `DIRECT_URL` | Yes | `postgresql://...` | Same as DATABASE_URL for Prisma migrations |
 | `REDIS_URL` | Yes | `redis://:pass@host:6379` | Redis connection |
-| `OFFERHUB_MASTER_KEY` | Yes | `a-long-random-secret` | Bootstrap key for API key creation |
+| `WARDWORK_MASTER_KEY` | Yes | `a-long-random-secret` | Bootstrap key for API key creation |
 | `PAYMENT_PROVIDER` | Yes | `crypto` or `airtm` | Active payment provider |
 | `WALLET_ENCRYPTION_KEY` | crypto only | 32-byte hex | AES-256-GCM key for wallet encryption |
 | `TRUSTLESS_API_KEY` | Yes | `tw_live_...` | Trustless Work API key |
@@ -59,8 +59,8 @@ Copy `.env.example` to `.env` and fill in these values:
 ### Step 1 — Clone and install
 
 ```bash
-git clone https://github.com/WARDWORK/WARDWORK.git
-cd WARDWORK
+git clone https://github.com/Wardlabz/wardwork.git
+cd WardWork
 npm install
 cp .env.example .env
 # Fill in your .env values
@@ -84,7 +84,7 @@ npm run dev
 
 ```bash
 curl -X POST http://localhost:4000/api/v1/auth/api-keys \
-  -H "Authorization: Bearer YOUR_OFFERHUB_MASTER_KEY" \
+  -H "Authorization: Bearer YOUR_WARDWORK_MASTER_KEY" \
   -H "Content-Type: application/json" \
   -d '{"name": "My Marketplace", "scopes": ["read", "write"]}'
 ```
@@ -136,11 +136,11 @@ Browser → Your Marketplace Backend → Orchestrator API
 **With the TypeScript SDK (recommended):**
 
 ```typescript
-import { WardWorkSDK } from '@offerhub/sdk';
+import { WardWorkSDK } from '@wardwork/sdk';
 
 const orchestrator = new WardWorkSDK({
-  apiUrl: process.env.OFFERHUB_API_URL,  // http://localhost:4000 in dev
-  apiKey: process.env.OFFERHUB_API_KEY,  // wwk_live_...
+  apiUrl: process.env.WARDWORK_API_URL,  // http://localhost:4000 in dev
+  apiKey: process.env.WARDWORK_API_KEY,  // wwk_live_...
 });
 
 // All calls are server-side
@@ -561,12 +561,12 @@ If you retry with the same key, you get the same response without duplicating th
 
 Install:
 ```bash
-npm install @offerhub/sdk
+npm install @wardwork/sdk
 ```
 
 Initialize:
 ```typescript
-import { WardWorkSDK } from '@offerhub/sdk';
+import { WardWorkSDK } from '@wardwork/sdk';
 const sdk = new WardWorkSDK({ apiUrl: '...', apiKey: '...' });
 ```
 

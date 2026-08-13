@@ -20,13 +20,13 @@ const channels = [
   {
     name: "X",
     description: "Community highlights, release threads, and ecosystem news.",
-    href: "https://x.com/offerhub_",
+    href: "https://x.com/wardwork_",
     icon: Twitter,
   },
   {
     name: "GitHub",
     description: "Open source repositories, pull requests, and roadmap items.",
-    href: "https://github.com/WARDWORK",
+    href: "https://github.com/Wardlabz",
     icon: Github,
   },
 ];

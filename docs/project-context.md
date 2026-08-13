@@ -1,8 +1,8 @@
-# WARDWORK Orchestrator — System Context
+# WardWork Orchestrator — System Context
 
 ## 1. Overview
 
-WARDWORK Orchestrator is a **self-hosted payments orchestrator** for marketplaces. It provides a Web2-style experience (balance, top-ups, checkout, withdrawals) while delegating funds to external rails: **Airtm** (fiat) or **Stellar + Trustless Work** (crypto-native). Each marketplace runs its own instance; there is no centralized SaaS.
+WardWork Orchestrator is a **self-hosted payments orchestrator** for marketplaces. It provides a Web2-style experience (balance, top-ups, checkout, withdrawals) while delegating funds to external rails: **Airtm** (fiat) or **Stellar + Trustless Work** (crypto-native). Each marketplace runs its own instance; there is no centralized SaaS.
 
 **Purpose:** Let marketplaces offer escrow-protected payments and user balances without building payment infrastructure. The Orchestrator coordinates users, orders, balances, escrow on Stellar (Trustless Work), and optional fiat on/off-ramp (Airtm).
 
@@ -37,7 +37,7 @@ WARDWORK Orchestrator is a **self-hosted payments orchestrator** for marketplace
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│  Marketplace UI  →  @offerhub/sdk  →  WARDWORK Orchestrator    │
+│  Marketplace UI  →  @wardwork/sdk  →  WardWork Orchestrator    │
 │       (third-party)      (NPM)              (self-hosted)        │
 └─────────────────────────────────────────────┬───────────────────┘
                                               │
@@ -54,7 +54,7 @@ WARDWORK Orchestrator is a **self-hosted payments orchestrator** for marketplace
                                     API + Worker (single process)
 ```
 
-- **Clients:** Marketplaces use `@offerhub/sdk` (or direct REST) against the Orchestrator API.
+- **Clients:** Marketplaces use `@wardwork/sdk` (or direct REST) against the Orchestrator API.
 - **API:** NestJS; REST; auth via API key (Bearer); idempotency, rate limiting, audit, events.
 - **Worker:** BullMQ in same process; webhooks, retries, reconciliation.
 - **Core domain:** Users, orders, escrows, balances, top-ups, withdrawals, disputes. State machines enforce valid transitions.

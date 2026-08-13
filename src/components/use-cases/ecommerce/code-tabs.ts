@@ -16,12 +16,12 @@ export const tabs: CodeTab[] = [
     icon: Server,
     description: "Order creation and escrow funding on the server side.",
     docHref:
-      "https://github.com/WARDWORK/wardwork-monorepo/blob/main/docs/api/overview.md",
+      "https://github.com/Wardlabz/wardwork-monorepo/blob/main/docs/api/overview.md",
     docLabel: "API Reference",
-    code: `import { WardWork } from "@offerhub/sdk";
+    code: `import { WardWork } from "@wardwork/sdk";
 
 // Initialize SDK — The Orchestrator mirrors your backend state
-const oh = new WardWork({ apiKey: process.env.OFFERHUB_API_KEY! });
+const oh = new WardWork({ apiKey: process.env.WARDWORK_API_KEY! });
 
 // Order Creation: creates an escrow-safe purchase with a delivery window
 const order = await oh.orders.create({
@@ -45,9 +45,9 @@ await oh.escrows.fund(order.id, {
     description:
       "Delivery confirmation from the buyer — triggers on-chain fund release.",
     docHref:
-      "https://github.com/WARDWORK/wardwork-monorepo/blob/main/docs/sdk/integration-guide.md",
+      "https://github.com/Wardlabz/wardwork-monorepo/blob/main/docs/sdk/integration-guide.md",
     docLabel: "SDK Guide",
-    code: `import { WardWork } from "@offerhub/sdk";
+    code: `import { WardWork } from "@wardwork/sdk";
 
 // Client-side SDK use a public/restricted key.
 const oh = new WardWork({

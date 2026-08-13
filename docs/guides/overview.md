@@ -1,12 +1,12 @@
 # Overview
 
-> What is WARDWORK Orchestrator, what problems it solves, and who it's for.
+> What is WardWork Orchestrator, what problems it solves, and who it's for.
 
 ---
 
 ## Table of Contents
 
-- [What Is WARDWORK Orchestrator?](#what-is-wardwork-orchestrator)
+- [What Is WardWork Orchestrator?](#what-is-wardwork-orchestrator)
 - [What Problems It Solves](#what-problems-it-solves)
 - [Who It's For](#who-its-for)
 - [What You Can Build](#what-you-can-build)
@@ -18,9 +18,9 @@
 
 ---
 
-## What Is WARDWORK Orchestrator?
+## What Is WardWork Orchestrator?
 
-WARDWORK Orchestrator is a **self-hosted payments middleware** for service marketplaces. It handles the financial plumbing — escrow, balance management, dispute resolution, USDC transactions on Stellar — so you can focus on your marketplace product.
+WardWork Orchestrator is a **self-hosted payments middleware** for service marketplaces. It handles the financial plumbing — escrow, balance management, dispute resolution, USDC transactions on Stellar — so you can focus on your marketplace product.
 
 It is NOT a SaaS. You deploy it on your own infrastructure and call its REST API from your marketplace backend.
 
@@ -29,7 +29,7 @@ Your Marketplace Frontend
          ↓
 Your Marketplace Backend
          ↓
-  WARDWORK Orchestrator  ← You deploy this
+  WardWork Orchestrator  ← You deploy this
          ↓              ↓
    Stellar + USDC    Trustless Work
    (blockchain)      (smart contracts)

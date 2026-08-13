@@ -10,7 +10,7 @@ export const COMPANY_INFO = {
     line2: "San Francisco, CA 94105, USA",
   },
   emails: {
-    privacy: "privacy@offerhub.io",
-    support: "support@offerhub.io",
+    privacy: "privacy@wardwork.io",
+    support: "support@wardwork.io",
   },
 } as const;

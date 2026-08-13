@@ -11,17 +11,17 @@ import { buildPageMetadata } from "@/lib/seo";
 export const metadata: Metadata = buildPageMetadata({
   title: "Pricing",
   description:
-    "WARDWORK pricing: open source core for free, free self-hosting, and enterprise support available on request.",
+    "WardWork pricing: open source core for free, free self-hosting, and enterprise support available on request.",
   keywords: [
     "pricing",
     "open source",
     "self-hosting",
     "enterprise",
     "escrow pricing",
-    "WARDWORK",
+    "WardWork",
   ],
   path: "/pricing",
-  ogImageAlt: "WARDWORK Pricing — open source core, free self-hosting, enterprise support",
+  ogImageAlt: "WardWork Pricing — open source core, free self-hosting, enterprise support",
 });
 
 type PricingTier = {
@@ -41,7 +41,7 @@ const tiers: PricingTier[] = [
     name: "Open Source",
     priceLabel: "Free forever",
     description:
-      "Build with the full WARDWORK core codebase under an open-source model designed for developer trust and transparency.",
+      "Build with the full WardWork core codebase under an open-source model designed for developer trust and transparency.",
     features: [
       "Core platform access at no cost",
       "Community-driven development and feedback",
@@ -49,7 +49,7 @@ const tiers: PricingTier[] = [
       "Ideal for prototypes, pilots, and technical evaluation",
     ],
     ctaLabel: "View on GitHub",
-    ctaHref: "https://github.com/WARDWORK/wardwork-monorepo",
+    ctaHref: "https://github.com/Wardlabz/wardwork-monorepo",
     ctaStyle: "secondary",
     external: true,
     icon: Code2,
@@ -58,7 +58,7 @@ const tiers: PricingTier[] = [
     name: "Self-Hosted",
     priceLabel: "Free",
     description:
-      "Deploy WARDWORK on your own infrastructure and keep full control of runtime, data boundaries, and security operations.",
+      "Deploy WardWork on your own infrastructure and keep full control of runtime, data boundaries, and security operations.",
     features: [
       "No platform licensing cost",
       "Run in your cloud or on-prem environment",
@@ -105,7 +105,7 @@ export default function PricingPage() {
               Open by default. <br className="hidden md:block" /> Scalable by design.
             </h1>
             <p className="text-lg md:text-xl font-medium leading-relaxed text-content-secondary">
-              WARDWORK keeps core access free for builders and lets teams self-host without
+              WardWork keeps core access free for builders and lets teams self-host without
               licensing fees. If you need enterprise-level support, our team can tailor a
               support model around your rollout.
             </p>

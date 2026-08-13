@@ -10,7 +10,7 @@ const docSections = [
   {
     icon: <Book />,
     title: "Getting Started",
-    description: "Learn what WARDWORK is, how to install it, and make your first API call.",
+    description: "Learn what WardWork is, how to install it, and make your first API call.",
     link: "/docs/getting-started",
     count: "3 articles",
     externalLink: undefined as { href: string; label: string } | undefined,
@@ -42,7 +42,7 @@ const docSections = [
   {
     icon: <Code />,
     title: "TypeScript SDK",
-    description: "Install and use the official SDK to integrate WARDWORK into your app.",
+    description: "Install and use the official SDK to integrate WardWork into your app.",
     link: "/docs/sdk/quick-start",
     count: "1 article",
     externalLink: undefined as { href: string; label: string } | undefined,
@@ -50,7 +50,7 @@ const docSections = [
   {
     icon: <LifeBuoy />,
     title: "Self-Hosting",
-    description: "Deploy WARDWORK on your own infrastructure with Docker and configure it.",
+    description: "Deploy WardWork on your own infrastructure with Docker and configure it.",
     link: "/docs/guide/self-hosting",
     count: "2 articles",
     externalLink: undefined as { href: string; label: string } | undefined,
@@ -138,7 +138,7 @@ export default function DocsPage() {
                 willChange: "background-image",
               }}
             >
-              OFFER HUB
+              WardWork
             </h1>
 
             <p className="text-base md:text-lg mb-10 max-w-xl mx-auto leading-relaxed font-medium animate-fadeInUp text-content-secondary" style={{ animationDelay: "200ms" }}>
@@ -202,7 +202,7 @@ export default function DocsPage() {
           <div className="flex justify-center items-center gap-8">
             <Link href="/community" className="text-theme-primary font-black uppercase tracking-widest text-xs hover:tracking-[0.2em] transition-all">Help Center</Link>
             <span className="w-1.5 h-1.5 rounded-full bg-theme-border/40" />
-            <Link href="https://github.com/WARDWORK/wardwork-monorepo/issues" className="text-theme-primary font-black uppercase tracking-widest text-xs hover:tracking-[0.2em] transition-all">GitHub Issues</Link>
+            <Link href="https://github.com/Wardlabz/wardwork-monorepo/issues" className="text-theme-primary font-black uppercase tracking-widest text-xs hover:tracking-[0.2em] transition-all">GitHub Issues</Link>
           </div>
         </div>
       </div>

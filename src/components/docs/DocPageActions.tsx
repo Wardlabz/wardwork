@@ -13,7 +13,7 @@ interface DocPageActionsProps {
   markdownContent: string;
 }
 
-const DOCS_REPO_BASE = "https://github.com/WARDWORK/wardwork-monorepo/blob/main/content/docs";
+const DOCS_REPO_BASE = "https://github.com/Wardlabz/wardwork-monorepo/blob/main/content/docs";
 
 function dateStamp() {
   return new Date().toISOString().split("T")[0];
@@ -64,7 +64,7 @@ export function DocPageActions({ slug, title, description, markdownContent }: Do
       exportContainer.style.fontFamily = "Inter, Roboto, Arial, sans-serif";
       exportContainer.style.color = "#6D758F";
 
-      const logo = `${window.location.origin}/WARDWORK-logo.png`;
+      const logo = `${window.location.origin}/WardWork-logo.png`;
       const printableDate = new Date().toLocaleDateString("en-CA", {
         year: "numeric",
         month: "2-digit",
@@ -74,7 +74,7 @@ export function DocPageActions({ slug, title, description, markdownContent }: Do
       exportContainer.innerHTML = `
         <header style="display:flex;align-items:center;justify-content:space-between;gap:20px;padding-bottom:18px;border-bottom:1px solid #e5e7eb;margin-bottom:18px;">
           <div style="display:flex;align-items:center;gap:10px;">
-            <img src="${logo}" alt="WARDWORK" style="height:48px;width:auto;object-fit:contain;" />
+            <img src="${logo}" alt="WardWork" style="height:48px;width:auto;object-fit:contain;" />
           </div>
           <div style="text-align:right;">
             <div style="font-size:12px;letter-spacing:0.08em;color:#149A9B;font-weight:700;text-transform:uppercase;">Documentation Export</div>

@@ -1,10 +1,10 @@
 # Payment Flows
 
-This document details the complete payment lifecycle flows in WARDWORK, including state transitions and transaction sequences.
+This document details the complete payment lifecycle flows in WardWork, including state transitions and transaction sequences.
 
 ## Overview
 
-WARDWORK supports two payment modes:
+WardWork supports two payment modes:
 1. **Crypto-Native (Default):** USDC on Stellar with Trustless Work escrow
 2. **Airtm Mode:** Fiat on/off-ramp via Airtm
 

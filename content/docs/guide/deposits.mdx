@@ -1,15 +1,15 @@
 ---
 title: Deposits Guide
-description: How users add funds to their WARDWORK balance — crypto deposits and AirTM top-ups.
+description: How users add funds to their WardWork balance — crypto deposits and AirTM top-ups.
 order: 6
 section: Guides
 ---
 
 <Callout type="note">
-  This is the public API/SDK guide for integrators. For internal implementation detail (Orchestrator state machine, signer roles), see [`docs/guides/deposits.md`](https://github.com/WARDWORK/wardwork-monorepo/blob/main/docs/guides/deposits.md) in the repo.
+  This is the public API/SDK guide for integrators. For internal implementation detail (Orchestrator state machine, signer roles), see [`docs/guides/deposits.md`](https://github.com/Wardlabz/wardwork-monorepo/blob/main/docs/guides/deposits.md) in the repo.
 </Callout>
 
-Before users can create orders or fund escrow, they need balance in their account. WARDWORK supports two deposit methods depending on your payment provider configuration.
+Before users can create orders or fund escrow, they need balance in their account. WardWork supports two deposit methods depending on your payment provider configuration.
 
 ## Payment Providers
 
@@ -63,7 +63,7 @@ The user sends USDC from any Stellar wallet:
 
 ### Step 3: Automatic Detection
 
-WARDWORK monitors the blockchain for incoming transactions. When USDC arrives:
+WardWork monitors the blockchain for incoming transactions. When USDC arrives:
 
 1. **Transaction detected** — Horizon streaming catches the payment
 2. **Balance updated** — Off-chain balance incremented
@@ -79,7 +79,7 @@ WARDWORK monitors the blockchain for incoming transactions. When USDC arrives:
 ```mermaid
 sequenceDiagram
     participant User as User's External Wallet
-    participant OH as WARDWORK
+    participant OH as WardWork
 
     User->>OH: 1. Send USDC
     Note over OH: 2. Detect on blockchain
@@ -148,7 +148,7 @@ AirTM sends a webhook when payment completes:
 }
 ```
 
-WARDWORK:
+WardWork:
 1. Verifies webhook signature
 2. Credits user balance
 3. Emits `balance.credited` event
@@ -162,7 +162,7 @@ WARDWORK:
 ### Crypto Deposits
 
 ```typescript
-import { WardWorkSDK } from '@offerhub/sdk';
+import { WardWorkSDK } from '@wardwork/sdk';
 
 const sdk = new WardWorkSDK({
   apiUrl: 'http://localhost:4000',
@@ -365,7 +365,7 @@ AirTM supports 200+ funding methods including:
 For development, get testnet USDC:
 
 1. **Get testnet XLM** — Use [Stellar Friendbot](https://friendbot.stellar.org)
-2. **Get testnet USDC** — Use Circle's testnet faucet or contact WARDWORK
+2. **Get testnet USDC** — Use Circle's testnet faucet or contact WardWork
 
 ```bash
 # Fund testnet account with XLM

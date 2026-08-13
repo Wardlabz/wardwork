@@ -1,6 +1,6 @@
 # Backend Modules Overview
 
-This document provides an overview of the core modules in the WARDWORK Orchestrator backend.
+This document provides an overview of the core modules in the WardWork Orchestrator backend.
 
 ## Architecture
 

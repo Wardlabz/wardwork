@@ -17,12 +17,12 @@ export const tabs: CodeTab[] = [
     description:
       "Deposit escrow initialization and vault funding on the server side.",
     docHref:
-      "https://github.com/WARDWORK/wardwork-monorepo/blob/main/docs/api/overview.md",
+      "https://github.com/Wardlabz/wardwork-monorepo/blob/main/docs/api/overview.md",
     docLabel: "API Reference",
-    code: `import { WardWork } from "@offerhub/sdk";
+    code: `import { WardWork } from "@wardwork/sdk";
 
 // Initialize SDK — The Orchestrator mirrors your property platform state
-const oh = new WardWork({ apiKey: process.env.OFFERHUB_API_KEY! });
+const oh = new WardWork({ apiKey: process.env.WARDWORK_API_KEY! });
 
 // Deposit Escrow: initialize a non-custodial security deposit
 const deposit = await oh.escrows.init({
@@ -49,9 +49,9 @@ await oh.escrows.fund(deposit.id, {
     description:
       "Inspection verification and deposit settlement at lease end.",
     docHref:
-      "https://github.com/WARDWORK/wardwork-monorepo/blob/main/docs/sdk/integration-guide.md",
+      "https://github.com/Wardlabz/wardwork-monorepo/blob/main/docs/sdk/integration-guide.md",
     docLabel: "SDK Guide",
-    code: `import { WardWork } from "@offerhub/sdk";
+    code: `import { WardWork } from "@wardwork/sdk";
 
 // Client-side SDK use a public/restricted key.
 const oh = new WardWork({

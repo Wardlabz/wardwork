@@ -2,18 +2,18 @@ import { Github, FolderGit2 } from "lucide-react";
 
 const repos = [
     {
-        name: "WARDWORK Core",
-        url: "https://github.com/WARDWORK/WARDWORK",
+        name: "WardWork Core",
+        url: "https://github.com/Wardlabz/wardwork",
         description: "The decentralized payment engine",
     },
     {
-        name: "WARDWORK UI",
-        url: "https://github.com/WARDWORK/WARDWORK-Frontend",
+        name: "WardWork UI",
+        url: "https://github.com/Wardlabz/wardwork-Frontend",
         description: "The primary workspace portal",
     },
     {
-        name: "WARDWORK Mono",
-        url: "https://github.com/WARDWORK/wardwork-monorepo",
+        name: "WardWork Mono",
+        url: "https://github.com/Wardlabz/wardwork-monorepo",
         description: "Modern marketplace orchestrator",
     },
 ];

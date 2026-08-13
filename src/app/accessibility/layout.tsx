@@ -6,7 +6,7 @@ import { buildPageMetadata } from "@/lib/seo";
 export const metadata: Metadata = buildPageMetadata({
   title: "Accessibility",
   description:
-    "WARDWORK's accessibility commitment: WCAG 2.1 Level AA target, screen reader and keyboard support, known limitations, and how to report accessibility barriers.",
+    "WardWork's accessibility commitment: WCAG 2.1 Level AA target, screen reader and keyboard support, known limitations, and how to report accessibility barriers.",
   keywords: [
     "accessibility",
     "WCAG 2.1",
@@ -14,10 +14,10 @@ export const metadata: Metadata = buildPageMetadata({
     "screen reader",
     "keyboard navigation",
     "inclusive design",
-    "WARDWORK",
+    "WardWork",
   ],
   path: "/accessibility",
-  ogImageAlt: "WARDWORK Accessibility — our WCAG 2.1 Level AA commitment",
+  ogImageAlt: "WardWork Accessibility — our WCAG 2.1 Level AA commitment",
 });
 
 export default function AccessibilityLayout({

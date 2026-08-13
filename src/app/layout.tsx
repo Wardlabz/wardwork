@@ -30,11 +30,11 @@ export const viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: "WARDWORK",
-    template: "%s | WARDWORK",
+    default: "WardWork",
+    template: "%s | WardWork",
   },
   description:
-    "WARDWORK empowers marketplaces to provide secure, non-custodial escrow payments without building complex payment infrastructure.",
+    "WardWork empowers marketplaces to provide secure, non-custodial escrow payments without building complex payment infrastructure.",
 
   // ── Canonical base URL ────────────────────────────────────────────────────
   // Required so Next.js can resolve all relative image/icon URLs in metadata
@@ -84,17 +84,17 @@ export const metadata: Metadata = {
 
   // ── Open Graph ────────────────────────────────────────────────────────────
   openGraph: {
-    title: "WARDWORK | The Future of On-Chain Bounties",
+    title: "WardWork | The Future of On-Chain Bounties",
     description:
-      "WARDWORK empowers marketplaces to provide secure, non-custodial escrow payments without building complex payment infrastructure.",
+      "WardWork empowers marketplaces to provide secure, non-custodial escrow payments without building complex payment infrastructure.",
     url: "https://wardwork.tech",
-    siteName: "WARDWORK",
+    siteName: "WardWork",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "WARDWORK - Secure, non-custodial escrow for your marketplace",
+        alt: "WardWork - Secure, non-custodial escrow for your marketplace",
       },
     ],
     locale: "en_US",
@@ -104,9 +104,9 @@ export const metadata: Metadata = {
   // ── Twitter / X card ─────────────────────────────────────────────────────
   twitter: {
     card: "summary_large_image",
-    title: "WARDWORK | The Future of On-Chain Bounties",
+    title: "WardWork | The Future of On-Chain Bounties",
     description:
-      "WARDWORK empowers marketplaces to provide secure, non-custodial escrow payments without building complex payment infrastructure.",
+      "WardWork empowers marketplaces to provide secure, non-custodial escrow payments without building complex payment infrastructure.",
     images: ["/og-image.png"],
   },
 };

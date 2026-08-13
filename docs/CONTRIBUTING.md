@@ -1,6 +1,6 @@
 # Contribution Guide
 
-Thank you for your interest in contributing to **WARDWORK**! To maintain code quality and consistency, we follow these standards.
+Thank you for your interest in contributing to **WardWork**! To maintain code quality and consistency, we follow these standards.
 
 ## Local Setup
 
@@ -48,7 +48,7 @@ The project uses **npm Workspaces**. You can run the services from the root:
 
 ### Backend (Orchestrator)
 
-For the backend Orchestrator, see the [WARDWORK-Orchestrator](https://github.com/WARDWORK/WARDWORK-Orchestrator) repository:
+For the backend Orchestrator, see the [WardWork-Orchestrator](https://github.com/Wardlabz/wardwork-Orchestrator) repository:
 
 - **API Server**: `npm run dev:api`
 - **Both Services (API + Worker)**: `npm run dev`

@@ -17,19 +17,19 @@ import { buildPageMetadata } from "@/lib/seo";
 export const metadata: Metadata = buildPageMetadata({
   title: "Blueprint",
   description:
-    "Explore the WARDWORK technical blueprint: orchestrator architecture, marketplace templates, and the evolution roadmap for trustless payment infrastructure.",
+    "Explore the WardWork technical blueprint: orchestrator architecture, marketplace templates, and the evolution roadmap for trustless payment infrastructure.",
   keywords: [
     "blueprint",
     "architecture",
     "orchestrator",
     "marketplace",
     "roadmap",
-    "WARDWORK",
+    "WardWork",
     "payment infrastructure",
   ],
   path: "/blueprint",
   ogImageAlt:
-    "WARDWORK Blueprint — orchestrator architecture and marketplace templates",
+    "WardWork Blueprint — orchestrator architecture and marketplace templates",
 });
 
 export default function BlueprintPage() {

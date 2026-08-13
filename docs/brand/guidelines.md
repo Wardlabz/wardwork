@@ -1,11 +1,11 @@
 # Brand Guidelines
 
-This document defines the WARDWORK brand identity, visual language, and usage guidelines.
+This document defines the WardWork brand identity, visual language, and usage guidelines.
 
 ## Brand Identity
 
 ### Mission Statement
-WARDWORK empowers marketplaces to provide secure, non-custodial escrow payments without building complex payment infrastructure.
+WardWork empowers marketplaces to provide secure, non-custodial escrow payments without building complex payment infrastructure.
 
 ### Brand Values
 1. **Trust:** Non-custodial, transparent, and secure
@@ -18,7 +18,7 @@ WARDWORK empowers marketplaces to provide secure, non-custodial escrow payments 
 ## Visual Identity
 
 ### Logo
-The WARDWORK logo consists of the wordmark "WARDWORK" in a modern sans-serif typeface.
+The WardWork logo consists of the wordmark "WardWork" in a modern sans-serif typeface.
 
 **Primary Logo:** Full wordmark  
 **Secondary Logo:** "OH" monogram (for small spaces)
@@ -134,10 +134,10 @@ Roboto, Outfit, system fonts
 ### Example Messaging
 
 **Good:**
-> "WARDWORK provides secure, non-custodial escrow for your marketplace. Get started in minutes with our simple API."
+> "WardWork provides secure, non-custodial escrow for your marketplace. Get started in minutes with our simple API."
 
 **Bad:**
-> "WARDWORK is the best payment orchestrator ever! You'll never need anything else!"
+> "WardWork is the best payment orchestrator ever! You'll never need anything else!"
 
 ---
 
@@ -176,7 +176,7 @@ Roboto, Outfit, system fonts
 ## Design Principles
 
 ### Neumorphism
-WARDWORK uses a neumorphic design language with soft shadows and tactile depth.
+WardWork uses a neumorphic design language with soft shadows and tactile depth.
 
 **Key Elements:**
 - Dual shadows (dark + light)
@@ -245,7 +245,7 @@ See [Neumorphism Guide](../design/neumorphism.md) for details.
 ## Legal & Compliance
 
 ### Trademark
-WARDWORK™ is a trademark of [Company Name]. Unauthorized use is prohibited.
+WardWork™ is a trademark of [Company Name]. Unauthorized use is prohibited.
 
 ### Copyright
 © 2026 [Company Name]. All rights reserved.
@@ -260,7 +260,7 @@ WARDWORK™ is a trademark of [Company Name]. Unauthorized use is prohibited.
 ## Contact
 
 For brand asset requests or usage questions:
-- **Email:** brand@offerhub.com
+- **Email:** brand@wardwork.com
 - **Documentation:** See `/brand/` directory
 
 ---

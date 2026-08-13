@@ -1,6 +1,6 @@
 # Events Reference
 
-> Complete guide to the WARDWORK Orchestrator event system: how events work, how to subscribe, and the full catalog of every event emitted.
+> Complete guide to the WardWork Orchestrator event system: how events work, how to subscribe, and the full catalog of every event emitted.
 
 ---
 
@@ -139,7 +139,7 @@ The `Last-Event-ID` value is the `id` field from the last SSE event you received
 
 ```typescript
 import EventSource from 'eventsource'; // npm install eventsource
-import type { DomainEvent } from '@offerhub/sdk';
+import type { DomainEvent } from '@wardwork/sdk';
 
 class OrchestratorEventListener {
   private es: EventSource;
@@ -200,8 +200,8 @@ class OrchestratorEventListener {
 
 // Usage
 const listener = new OrchestratorEventListener(
-  process.env.OFFERHUB_API_URL!,
-  process.env.OFFERHUB_API_KEY!
+  process.env.WARDWORK_API_URL!,
+  process.env.WARDWORK_API_KEY!
 );
 listener.connect();
 ```

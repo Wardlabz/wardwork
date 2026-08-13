@@ -1,6 +1,6 @@
 # Core Concepts
 
-> Deep dive into how WARDWORK Orchestrator works under the hood. Read this before building to avoid surprises.
+> Deep dive into how WardWork Orchestrator works under the hood. Read this before building to avoid surprises.
 
 ---
 
@@ -23,7 +23,7 @@
 
 ### What it IS
 
-The WARDWORK Orchestrator is a **self-hosted, server-to-server backend** that your marketplace backend calls via REST API. It manages:
+The WardWork Orchestrator is a **self-hosted, server-to-server backend** that your marketplace backend calls via REST API. It manages:
 
 - **User balances** — Track how much each user has available and reserved
 - **Escrow contracts** — Lock funds in non-custodial smart contracts on Stellar via Trustless Work
@@ -64,7 +64,7 @@ Examples: freelance platforms, service marketplaces, NFT royalty distribution, p
 │      - Calls the Orchestrator via SDK or REST               │
 │      - Holds the API key (never exposes it to frontend)     │
 ├─────────────────────────────────────────────────────────────┤
-│  [3] WARDWORK Orchestrator (self-hosted, port 4000)        │
+│  [3] WardWork Orchestrator (self-hosted, port 4000)        │
 │      - State machine, idempotency, audit, balance logic     │
 │      - Integrates Trustless Work + Stellar                  │
 ├─────────────────────────────────────────────────────────────┤
@@ -424,7 +424,7 @@ Browser → Your Backend (has API key) → Orchestrator API
 
 ```bash
 curl -X POST http://localhost:4000/api/v1/auth/api-keys \
-  -H "Authorization: Bearer YOUR_OFFERHUB_MASTER_KEY" \
+  -H "Authorization: Bearer YOUR_WARDWORK_MASTER_KEY" \
   -H "Content-Type: application/json" \
   -d '{"name": "Production Marketplace", "scopes": ["read", "write"]}'
 ```
@@ -432,7 +432,7 @@ curl -X POST http://localhost:4000/api/v1/auth/api-keys \
 **Option 2: Via the CLI**
 
 ```bash
-offerhub keys create \
+wardwork keys create \
   --user-id usr_admin \
   --scopes read,write \
   --name "Production Key"
@@ -460,7 +460,7 @@ For scenarios where you want to limit token lifetime:
 
 ```bash
 # Generate a token valid for 1 hour from a key
-offerhub keys token key_abc123 --ttl 3600
+wardwork keys token key_abc123 --ttl 3600
 ```
 
 ---

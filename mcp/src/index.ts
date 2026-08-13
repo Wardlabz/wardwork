@@ -23,7 +23,7 @@ async function ensureDocsLoaded() {
 // Tool 1: List all documentation sections
 server.tool(
   "list_doc_sections",
-  "List all available documentation sections and their pages. Returns a structured overview of the WARDWORK documentation.",
+  "List all available documentation sections and their pages. Returns a structured overview of the WardWork documentation.",
   {},
   async () => {
     await ensureDocsLoaded();
@@ -43,7 +43,7 @@ server.tool(
 // Tool 2: Search documentation
 server.tool(
   "search_docs",
-  "Search WARDWORK documentation by query. Returns matching documents with titles, descriptions, and content snippets.",
+  "Search WardWork documentation by query. Returns matching documents with titles, descriptions, and content snippets.",
   {
     query: z.string().describe("Search query to find relevant documentation"),
     maxResults: z.number().optional().default(10).describe("Maximum number of results to return (default: 10)"),
@@ -109,7 +109,7 @@ server.tool(
 async function main() {
   const transport = new StdioServerTransport();
   await server.connect(transport);
-  console.error("WARDWORK MCP Documentation Server running on stdio");
+  console.error("WardWork MCP Documentation Server running on stdio");
 }
 
 main().catch((error) => {

@@ -1,6 +1,6 @@
 # Color Palette Reference
 
-This document provides a comprehensive reference for the WARDWORK color system.
+This document provides a comprehensive reference for the WardWork color system.
 
 ## Primary Palette
 

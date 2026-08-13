@@ -5,7 +5,7 @@ interface EditOnGitHubProps {
 }
 
 export function EditOnGitHub({ filePath }: EditOnGitHubProps) {
-  const githubEditUrl = `https://github.com/WARDWORK/wardwork-monorepo/edit/main/${filePath}`;
+  const githubEditUrl = `https://github.com/Wardlabz/wardwork-monorepo/edit/main/${filePath}`;
 
   return (
     <a

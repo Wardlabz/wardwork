@@ -1,15 +1,15 @@
 ---
 title: Wallets Guide
-description: Understanding invisible wallets in WARDWORK — automatic Stellar wallet creation and management.
+description: Understanding invisible wallets in WardWork — automatic Stellar wallet creation and management.
 order: 5
 section: Guides
 ---
 
 <Callout type="note">
-  This is the public API/SDK guide for integrators. For internal implementation detail (Orchestrator state machine, signer roles), see [`docs/guides/wallets.md`](https://github.com/WARDWORK/wardwork-monorepo/blob/main/docs/guides/wallets.md) in the repo.
+  This is the public API/SDK guide for integrators. For internal implementation detail (Orchestrator state machine, signer roles), see [`docs/guides/wallets.md`](https://github.com/Wardlabz/wardwork-monorepo/blob/main/docs/guides/wallets.md) in the repo.
 </Callout>
 
-WARDWORK uses "invisible wallets" to give users blockchain capabilities without the complexity of managing private keys. Every user gets a Stellar wallet automatically, but they interact with it like a simple account balance.
+WardWork uses "invisible wallets" to give users blockchain capabilities without the complexity of managing private keys. Every user gets a Stellar wallet automatically, but they interact with it like a simple account balance.
 
 <Callout type="tip">
   Invisible wallets only apply when using `PAYMENT_PROVIDER=crypto`. AirTM mode uses traditional fiat accounts instead.
@@ -23,7 +23,7 @@ Traditional crypto requires users to:
 - Understand gas fees
 - Sign transactions manually
 
-WARDWORK eliminates all of this. Users see a simple USD balance while the system manages Stellar wallets behind the scenes.
+WardWork eliminates all of this. Users see a simple USD balance while the system manages Stellar wallets behind the scenes.
 
 ### How It Works
 
@@ -233,7 +233,7 @@ When the user performs an action that requires on-chain activity (funding escrow
 ## Using the SDK
 
 ```typescript
-import { WardWorkSDK } from '@offerhub/sdk';
+import { WardWorkSDK } from '@wardwork/sdk';
 
 const sdk = new WardWorkSDK({
   apiUrl: 'http://localhost:4000',
@@ -277,7 +277,7 @@ events.on('balance.debited', (data) => {
 
 ## On-Chain vs Off-Chain
 
-WARDWORK maintains both on-chain (Stellar) and off-chain (database) balances:
+WardWork maintains both on-chain (Stellar) and off-chain (database) balances:
 
 ### On-Chain (Stellar)
 

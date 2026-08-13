@@ -1,10 +1,10 @@
-# Visual DNA: The WARDWORK Design Language
+# Visual DNA: The WardWork Design Language
 
-This document defines the complete visual identity and aesthetic principles of WARDWORK. Every visual decision in the project stems from these foundational rules.
+This document defines the complete visual identity and aesthetic principles of WardWork. Every visual decision in the project stems from these foundational rules.
 
 ## Design Philosophy: Modern Neumorphic Bento
 
-WARDWORK utilizes a **Modern Neumorphic Bento** design system based on the principle of **"Soft Depth"**. The UI simulates a physical 2.5D surface shaped by light, shadow, and tactile feedback.
+WardWork utilizes a **Modern Neumorphic Bento** design system based on the principle of **"Soft Depth"**. The UI simulates a physical 2.5D surface shaped by light, shadow, and tactile feedback.
 
 ### Core Principles
 
@@ -18,7 +18,7 @@ WARDWORK utilizes a **Modern Neumorphic Bento** design system based on the princ
 
 ## The Chromatic Blueprint
 
-Every color in WARDWORK has a specific semantic role. These are defined as CSS variables in Tailwind 4.
+Every color in WardWork has a specific semantic role. These are defined as CSS variables in Tailwind 4.
 
 ### Core Palette
 
@@ -154,7 +154,7 @@ Based on an 8px grid for consistent rhythm.
 
 ## Elevation & Depth
 
-WARDWORK uses a z-index scale for layering:
+WardWork uses a z-index scale for layering:
 
 | Layer | Z-Index | Usage |
 |:------|:--------|:------|

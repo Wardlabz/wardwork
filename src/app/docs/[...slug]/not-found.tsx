@@ -5,7 +5,7 @@ import { DocsSearchBar } from "@/components/docs/DocsSearchBar";
 const recommendedDocs = [
   {
     title: "Getting Started",
-    description: "Set up WARDWORK and make your first integration call.",
+    description: "Set up WardWork and make your first integration call.",
     href: "/docs/getting-started",
   },
   {

@@ -37,7 +37,7 @@ export function Hero() {
           </h1>
 
           <p className="text-lg md:text-xl text-text-secondary max-w-2xl mx-auto mb-8">
-            WARDWORK empowers marketplaces with secure, non-custodial escrow payments. 
+            WardWork empowers marketplaces with secure, non-custodial escrow payments. 
             No complex infrastructure needed. Get started in minutes.
           </p>
 

@@ -1,11 +1,11 @@
 ---
 title: Self-Hosting
-description: Complete instructions for deploying WARDWORK Orchestrator on your own infrastructure using Docker.
+description: Complete instructions for deploying WardWork Orchestrator on your own infrastructure using Docker.
 order: 8
 section: Guides
 ---
 
-Run WARDWORK Orchestrator on your own server with full control over data, uptime, and configuration. This guide covers everything from initial setup to ongoing maintenance using Docker.
+Run WardWork Orchestrator on your own server with full control over data, uptime, and configuration. This guide covers everything from initial setup to ongoing maintenance using Docker.
 
 <Callout type="tip">
   If you haven't configured your environment variables yet, review the [Configuration](/docs/configuration) page first.
@@ -32,7 +32,7 @@ Verify that Docker is installed and running:
 
 ## Architecture Overview
 
-The WARDWORK deployment consists of:
+The WardWork deployment consists of:
 
 ```mermaid
 flowchart LR
@@ -79,19 +79,19 @@ services:
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_USER: offerhub
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-offerhub_secret}
-      POSTGRES_DB: offerhub_db
+      POSTGRES_USER: wardwork
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-wardwork_secret}
+      POSTGRES_DB: wardwork_db
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U offerhub"]
+      test: ["CMD-SHELL", "pg_isready -U wardwork"]
       interval: 10s
       timeout: 5s
       retries: 5
     restart: unless-stopped
     networks:
-      - offerhub
+      - wardwork
 
   redis:
     image: redis:7-alpine
@@ -106,16 +106,16 @@ services:
       retries: 5
     restart: unless-stopped
     networks:
-      - offerhub
+      - wardwork
 
   orchestrator:
-    image: offerhub/orchestrator:latest
+    image: wardwork/orchestrator:latest
     ports:
       - "4000:4000"
     env_file:
       - .env
     environment:
-      - DATABASE_URL=postgresql://offerhub:${POSTGRES_PASSWORD:-offerhub_secret}@postgres:5432/offerhub_db
+      - DATABASE_URL=postgresql://wardwork:${POSTGRES_PASSWORD:-wardwork_secret}@postgres:5432/wardwork_db
       - REDIS_URL=redis://redis:6379
     depends_on:
       postgres:
@@ -130,10 +130,10 @@ services:
       start_period: 30s
     restart: unless-stopped
     networks:
-      - offerhub
+      - wardwork
 
   frontend:
-    image: offerhub/frontend:latest
+    image: wardwork/frontend:latest
     ports:
       - "3000:3000"
     environment:
@@ -144,7 +144,7 @@ services:
         condition: service_healthy
     restart: unless-stopped
     networks:
-      - offerhub
+      - wardwork
 
   nginx:
     image: nginx:alpine
@@ -159,14 +159,14 @@ services:
       - orchestrator
     restart: unless-stopped
     networks:
-      - offerhub
+      - wardwork
 
 volumes:
   postgres_data:
   redis_data:
 
 networks:
-  offerhub:
+  wardwork:
     driver: bridge
 ```
 
@@ -181,7 +181,7 @@ If you prefer managed databases, remove `postgres` and `redis` services and upda
 ```yaml
 services:
   orchestrator:
-    image: offerhub/orchestrator:latest
+    image: wardwork/orchestrator:latest
     ports:
       - "4000:4000"
     environment:
@@ -196,9 +196,9 @@ services:
 
 To build images locally instead of pulling pre-built ones:
 
-<CommandLine>git clone https://github.com/WARDWORK/wardwork-orchestrator.git && cd wardwork-orchestrator</CommandLine>
+<CommandLine>git clone https://github.com/Wardlabz/wardwork-orchestrator.git && cd wardwork-orchestrator</CommandLine>
 
-<CommandLine>docker build -t offerhub/orchestrator:latest .</CommandLine>
+<CommandLine>docker build -t wardwork/orchestrator:latest .</CommandLine>
 
 ## Environment Variables
 
@@ -211,7 +211,7 @@ Create a `.env` file in the same directory as your `docker-compose.yml`.
 | `NODE_ENV` | Runtime environment: `development`, `staging`, `production` |
 | `DATABASE_URL` | PostgreSQL connection string |
 | `REDIS_URL` | Redis connection string |
-| `OFFERHUB_MASTER_KEY` | Master key for creating API keys |
+| `WARDWORK_MASTER_KEY` | Master key for creating API keys |
 | `WALLET_ENCRYPTION_KEY` | 64 hex chars - AES-256-GCM key for wallet encryption |
 | `TRUSTLESS_API_KEY` | Trustless Work API key for escrow |
 | `PLATFORM_USER_ID` | Platform user ID for escrow operations |
@@ -240,14 +240,14 @@ PORT=4000
 LOG_LEVEL=info
 
 # Database (PostgreSQL)
-DATABASE_URL=postgresql://offerhub:your_password@postgres:5432/offerhub_db
+DATABASE_URL=postgresql://wardwork:your_password@postgres:5432/wardwork_db
 POSTGRES_PASSWORD=your_password
 
 # Redis
 REDIS_URL=redis://redis:6379
 
 # Authentication
-OFFERHUB_MASTER_KEY=your-secure-master-key-at-least-32-chars
+WARDWORK_MASTER_KEY=your-secure-master-key-at-least-32-chars
 
 # Payment Provider
 PAYMENT_PROVIDER=crypto
@@ -275,7 +275,7 @@ NEXT_PUBLIC_STELLAR_NETWORK=mainnet
 ### Generating Secure Keys
 
 ```bash
-# Generate OFFERHUB_MASTER_KEY
+# Generate WARDWORK_MASTER_KEY
 openssl rand -base64 32
 
 # Generate WALLET_ENCRYPTION_KEY (64 hex characters)
@@ -457,7 +457,7 @@ The recommended update procedure:
 
 ```bash
 # 1. Backup database
-docker compose exec postgres pg_dump -U offerhub offerhub_db > backup-$(date +%Y%m%d).sql
+docker compose exec postgres pg_dump -U wardwork wardwork_db > backup-$(date +%Y%m%d).sql
 
 # 2. Pull latest images
 docker compose pull
@@ -479,7 +479,7 @@ If something goes wrong, roll back to a specific image tag:
 ```yaml
 services:
   orchestrator:
-    image: offerhub/orchestrator:1.2.0   # pin to a known-good version
+    image: wardwork/orchestrator:1.2.0   # pin to a known-good version
 ```
 
 Then restart:
@@ -487,7 +487,7 @@ Then restart:
 <CommandLine>docker compose up -d</CommandLine>
 
 <Callout type="note">
-  Check the [GitHub Releases](https://github.com/WARDWORK/wardwork-orchestrator/releases) page for available tags and changelogs.
+  Check the [GitHub Releases](https://github.com/Wardlabz/wardwork-orchestrator/releases) page for available tags and changelogs.
 </Callout>
 
 ## Security Checklist
@@ -495,7 +495,7 @@ Then restart:
 Before going to production, verify:
 
 - [ ] `NODE_ENV=production` is set
-- [ ] `OFFERHUB_MASTER_KEY` is a strong, unique value
+- [ ] `WARDWORK_MASTER_KEY` is a strong, unique value
 - [ ] `WALLET_ENCRYPTION_KEY` is backed up securely
 - [ ] Database uses SSL (`?sslmode=require`)
 - [ ] Redis uses TLS (`rediss://`)

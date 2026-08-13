@@ -1,13 +1,13 @@
 ---
 title: Webhooks
-description: Receive real-time event notifications from WARDWORK via HTTP webhooks.
+description: Receive real-time event notifications from WardWork via HTTP webhooks.
 order: 2
 section: API Reference
 ---
 
 ## Overview
 
-Webhooks let your application receive real-time notifications when events occur in WARDWORK — escrow lifecycle changes, balance updates, order state changes, and more. You register an HTTP endpoint; WARDWORK sends a `POST` request with a JSON payload and an `X-WardWork-Signature` header so you can verify authenticity.
+Webhooks let your application receive real-time notifications when events occur in WardWork — escrow lifecycle changes, balance updates, order state changes, and more. You register an HTTP endpoint; WardWork sends a `POST` request with a JSON payload and an `X-WardWork-Signature` header so you can verify authenticity.
 
 <Callout type="note">
   Your endpoint must respond with a **2xx** status within **10 seconds**. Process heavy work asynchronously after acknowledging receipt.
@@ -20,14 +20,14 @@ Register a webhook by creating a subscription with your URL, the events you want
 <Badge variant="primary">POST</Badge> `/api/v1/webhooks`
 
 ```bash
-curl -X POST http://localhost:4000/api/v1/webhooks -H "Content-Type: application/json" -d '{"url": "https://your-app.com/webhooks/offerhub", "events": ["escrow.created", "escrow.released"], "secret": "your-signing-secret"}'
+curl -X POST http://localhost:4000/api/v1/webhooks -H "Content-Type: application/json" -d '{"url": "https://your-app.com/webhooks/wardwork", "events": ["escrow.created", "escrow.released"], "secret": "your-signing-secret"}'
 ```
 
 Request body:
 
 ```json
 {
-  "url": "https://your-app.com/webhooks/offerhub",
+  "url": "https://your-app.com/webhooks/wardwork",
   "events": ["escrow.created", "escrow.funded", "escrow.released", "escrow.disputed", "escrow.refunded"],
   "secret": "your-signing-secret"
 }
@@ -41,7 +41,7 @@ A successful response returns the webhook object with its `id`:
   "ok": true,
   "data": {
     "id": "wh_01ABCDEF",
-    "url": "https://your-app.com/webhooks/offerhub",
+    "url": "https://your-app.com/webhooks/wardwork",
     "events": ["escrow.created", "escrow.funded", "escrow.released", "escrow.disputed", "escrow.refunded"],
     "created_at": "2026-01-01T00:00:00.000Z"
   }
@@ -50,7 +50,7 @@ A successful response returns the webhook object with its `id`:
 
 ## Event Types
 
-WARDWORK emits the following webhook events. Subscribe only to the ones your integration needs.
+WardWork emits the following webhook events. Subscribe only to the ones your integration needs.
 
 | Event | Trigger |
 |-------|---------|
@@ -184,7 +184,7 @@ Emitted when the escrow is refunded to the buyer.
 
 ## Signature Verification
 
-Every webhook request includes an `X-WardWork-Signature` header. Verify it using your webhook secret and the raw request body to ensure the payload came from WARDWORK and was not modified.
+Every webhook request includes an `X-WardWork-Signature` header. Verify it using your webhook secret and the raw request body to ensure the payload came from WardWork and was not modified.
 
 The signature is the HMAC SHA-256 of the raw body, prefixed with `sha256=`.
 
@@ -209,7 +209,7 @@ function verifyWebhookSignature(
 }
 
 // Usage: read raw body before JSON parsing, then:
-// const isValid = verifyWebhookSignature(req.rawBody, req.headers["x-offerhub-signature"], secret);
+// const isValid = verifyWebhookSignature(req.rawBody, req.headers["x-wardwork-signature"], secret);
 ```
 
 <Callout type="danger">
@@ -222,7 +222,7 @@ function verifyWebhookSignature(
 
 ## Retry Logic
 
-WARDWORK retries failed webhook deliveries with exponential back-off. A delivery is considered failed if your endpoint returns a non-2xx status or does not respond within 10 seconds.
+WardWork retries failed webhook deliveries with exponential back-off. A delivery is considered failed if your endpoint returns a non-2xx status or does not respond within 10 seconds.
 
 | Attempt | Delay after previous attempt |
 |---------|------------------------------|
@@ -240,7 +240,7 @@ After 5 failed attempts the webhook subscription is disabled. Re-enable it from 
 
 ## Testing Locally
 
-Your development server is not reachable from the internet. Use a tunnel to expose it so WARDWORK can deliver webhooks.
+Your development server is not reachable from the internet. Use a tunnel to expose it so WardWork can deliver webhooks.
 
 ### Using a tunnel
 

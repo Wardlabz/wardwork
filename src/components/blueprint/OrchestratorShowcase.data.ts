@@ -23,7 +23,7 @@ export const detailCards: DetailCard[] = [
     callout: "The first gate guarantees the orchestrator never mixes custody states across counterparties.",
     method: "prepare()",
     docHref:
-      "https://github.com/WARDWORK/wardwork-monorepo/blob/main/docs/architecture/overview.md",
+      "https://github.com/Wardlabz/wardwork-monorepo/blob/main/docs/architecture/overview.md",
     docLabel: "Architecture overview",
   },
   {
@@ -32,7 +32,7 @@ export const detailCards: DetailCard[] = [
     eyebrow: "Bridge + settlement rail",
     icon: Cpu,
     summary:
-      "Trustlines and vault balances let WARDWORK route value from fiat on-ramp or crypto deposit into a stable USDC settlement layer.",
+      "Trustlines and vault balances let WardWork route value from fiat on-ramp or crypto deposit into a stable USDC settlement layer.",
     bullets: [
       "USDC on Stellar acts as the neutral settlement asset for payouts and cross-rail accounting.",
       "Bridge liquidity is staged in vault accounts so conversion and seller release stay deterministic.",
@@ -41,7 +41,7 @@ export const detailCards: DetailCard[] = [
     callout: "Liquidity is reserved before release, so the visible seller payout is backed by an available trustline path.",
     method: "authorize()",
     docHref:
-      "https://github.com/WARDWORK/wardwork-monorepo/blob/main/docs/architecture/payment-flows.md",
+      "https://github.com/Wardlabz/wardwork-monorepo/blob/main/docs/architecture/payment-flows.md",
     docLabel: "Payment flows",
   },
   {
@@ -59,7 +59,7 @@ export const detailCards: DetailCard[] = [
     callout: "The SDK turns complex backend choreography into a small set of explicit method calls and irreversible checkpoints.",
     method: "finalize()",
     docHref:
-      "https://github.com/WARDWORK/wardwork-monorepo/blob/main/docs/architecture/data-model.md",
+      "https://github.com/Wardlabz/wardwork-monorepo/blob/main/docs/architecture/data-model.md",
     docLabel: "Data model",
   },
 ];

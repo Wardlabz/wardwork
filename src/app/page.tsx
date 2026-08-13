@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 
 export const metadata: Metadata = {
-  title: "WARDWORK — Trustless Payments Orchestrator for Marketplaces",
+  title: "WardWork — Trustless Payments Orchestrator for Marketplaces",
   description:
-    "WARDWORK empowers marketplaces to provide secure, non-custodial escrow payments without building complex payment infrastructure from scratch.",
+    "WardWork empowers marketplaces to provide secure, non-custodial escrow payments without building complex payment infrastructure from scratch.",
   keywords: [
     "escrow",
     "marketplace payments",

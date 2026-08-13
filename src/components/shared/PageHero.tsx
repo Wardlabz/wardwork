@@ -62,9 +62,9 @@ export function PageHero({
                 backgroundClip: "text",
                 color: "transparent",
               }}
-              aria-label="WARDWORK"
+              aria-label="WardWork"
             >
-              WARDWORK
+              WardWork
             </div>
           </motion.div>
 

@@ -1,6 +1,6 @@
-# WARDWORK MCP Documentation Server
+# WardWork MCP Documentation Server
 
-A [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) server that exposes WARDWORK documentation to AI assistants like Claude, ChatGPT, and Cursor. This allows developers to query the official documentation directly from their AI assistant.
+A [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) server that exposes WardWork documentation to AI assistants like Claude, ChatGPT, and Cursor. This allows developers to query the official documentation directly from their AI assistant.
 
 ## Features
 
@@ -114,10 +114,10 @@ Add to your workspace `.vscode/mcp.json`:
 
 Once configured, you can ask your AI assistant questions like:
 
-- "Search WARDWORK docs for escrow implementation"
+- "Search WardWork docs for escrow implementation"
 - "Get the documentation page for deposits"
 - "List all available documentation sections"
-- "How does the balance system work in WARDWORK?"
+- "How does the balance system work in WardWork?"
 - "Show me the API reference for webhooks"
 
 ## Tools Reference
@@ -139,7 +139,7 @@ Lists all available documentation sections with their pages.
       {
         "title": "Installation",
         "slug": "installation",
-        "description": "How to install and set up WARDWORK"
+        "description": "How to install and set up WardWork"
       }
     ]
   }
@@ -181,10 +181,10 @@ Get full content of a specific documentation page.
 ```json
 {
   "title": "Getting Started",
-  "description": "Learn how WARDWORK works",
+  "description": "Learn how WardWork works",
   "section": "Getting Started",
   "slug": "getting-started",
-  "content": "# Getting Started\n\nWARDWORK is a non-custodial escrow..."
+  "content": "# Getting Started\n\nWardWork is a non-custodial escrow..."
 }
 ```
 
@@ -211,7 +211,7 @@ npm start
 ## Requirements
 
 - Node.js >= 18.0.0
-- The server must be run from within the WARDWORK repository (or have access to the docs directories)
+- The server must be run from within the WardWork repository (or have access to the docs directories)
 
 ## License
 

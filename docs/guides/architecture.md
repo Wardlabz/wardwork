@@ -1,6 +1,6 @@
 # Architecture Guide
 
-> System design, components, actors, and technical principles of the WARDWORK Orchestrator.
+> System design, components, actors, and technical principles of the WardWork Orchestrator.
 
 ---
 
@@ -29,7 +29,7 @@
 
 ## What Is the Orchestrator?
 
-The WARDWORK Orchestrator is a **self-hosted payments middleware** for marketplaces. It sits between your marketplace backend and the payment/blockchain infrastructure, abstracting away:
+The WardWork Orchestrator is a **self-hosted payments middleware** for marketplaces. It sits between your marketplace backend and the payment/blockchain infrastructure, abstracting away:
 
 - Stellar wallet management (invisible keypairs, signing)
 - Escrow smart contract deployment and management via Trustless Work
@@ -59,11 +59,11 @@ Your marketplace backend never directly touches Stellar or Trustless Work — it
 │  - Web/mobile frontend                                     │
 │  - Calls your own backend                                  │
 ├────────────────────────────────────────────────────────────┤
-│  Layer 4: @offerhub/sdk (NPM package)                      │
+│  Layer 4: @wardwork/sdk (NPM package)                      │
 │  - TypeScript client for the Orchestrator API              │
 │  - Type-safe wrappers around REST calls                    │
 ├────────────────────────────────────────────────────────────┤
-│  Layer 3: WARDWORK Orchestrator (this project)            │
+│  Layer 3: WardWork Orchestrator (this project)            │
 │  - REST API + BullMQ workers                               │
 │  - State machine, idempotency, audit log                   │
 │  - Abstracts payment providers                             │

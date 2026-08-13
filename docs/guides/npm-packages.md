@@ -1,6 +1,6 @@
 # npm Packages
 
-> The WARDWORK Orchestrator ships three npm packages. This guide explains what each one does, when to use it, and how to use it correctly.
+> The WardWork Orchestrator ships three npm packages. This guide explains what each one does, when to use it, and how to use it correctly.
 
 ---
 
@@ -9,8 +9,8 @@
 | Package | Who uses it | What it does |
 |---|---|---|
 | [`create-wardwork-orchestrator`](#create-wardwork-orchestrator) | DevOps / platform engineers | Interactive setup wizard — configures `.env`, runs migrations, bootstraps platform user |
-| [`@offerhub/sdk`](#offerhubsdk) | Marketplace backend developers | TypeScript client for the Orchestrator API |
-| [`@offerhub/cli`](#offerhubcli) | Platform administrators | Manage API keys and run maintenance tasks from the terminal |
+| [`@wardwork/sdk`](#wardworksdk) | Marketplace backend developers | TypeScript client for the Orchestrator API |
+| [`@wardwork/cli`](#wardworkcli) | Platform administrators | Manage API keys and run maintenance tasks from the terminal |
 
 ---
 
@@ -18,7 +18,7 @@
 
 ### What it is
 
-A one-time setup tool you run **inside a cloned WARDWORK Orchestrator repo** to configure your instance. It replaces manually editing `.env` files and running setup commands one by one.
+A one-time setup tool you run **inside a cloned WardWork Orchestrator repo** to configure your instance. It replaces manually editing `.env` files and running setup commands one by one.
 
 ### When to use it
 
@@ -38,8 +38,8 @@ A one-time setup tool you run **inside a cloned WARDWORK Orchestrator repo** to 
 
 ```bash
 # 1. Clone the Orchestrator
-git clone https://github.com/WARDWORK/WARDWORK.git
-cd WARDWORK
+git clone https://github.com/Wardlabz/wardwork.git
+cd WardWork
 
 # 2. Install dependencies
 npm install
@@ -64,7 +64,7 @@ The wizard will ask for:
 | Generate API key? | Optional — requires the server to be running |
 
 **What it does automatically:**
-1. Generates a secure `OFFERHUB_MASTER_KEY`
+1. Generates a secure `WARDWORK_MASTER_KEY`
 2. Generates a secure `WALLET_ENCRYPTION_KEY` (crypto mode only)
 3. Writes `.env` with all values filled in
 4. Runs `prisma migrate deploy`
@@ -80,31 +80,31 @@ The wizard will ask for:
 
 ---
 
-## `@offerhub/sdk`
+## `@wardwork/sdk`
 
 ### What it is
 
-The official TypeScript/JavaScript client for the WARDWORK Orchestrator API. Marketplace backends use it to create users, manage escrows, handle disputes, and query balances — without writing raw HTTP calls.
+The official TypeScript/JavaScript client for the WardWork Orchestrator API. Marketplace backends use it to create users, manage escrows, handle disputes, and query balances — without writing raw HTTP calls.
 
 ### When to use it
 
-- Building the backend of a marketplace that integrates with WARDWORK
+- Building the backend of a marketplace that integrates with WardWork
 - Any Node.js or TypeScript service that needs to talk to the Orchestrator API
 
 ### How to install it
 
 ```bash
-npm install @offerhub/sdk
+npm install @wardwork/sdk
 ```
 
 ### How to use it
 
 ```typescript
-import { WardWorkSDK } from '@offerhub/sdk';
+import { WardWorkSDK } from '@wardwork/sdk';
 
 const sdk = new WardWorkSDK({
   baseUrl: 'https://your-orchestrator.com',
-  apiKey: process.env.OFFERHUB_API_KEY,
+  apiKey: process.env.WARDWORK_API_KEY,
 });
 
 // Create a user (auto-creates Stellar wallet in crypto mode)
@@ -145,7 +145,7 @@ await sdk.orders.release(order.data.id);
 ### Error handling
 
 ```typescript
-import { WardWorkSDK, WardWorkError, NotFoundError, ValidationError } from '@offerhub/sdk';
+import { WardWorkSDK, WardWorkError, NotFoundError, ValidationError } from '@wardwork/sdk';
 
 try {
   const order = await sdk.orders.get('ord_nonexistent');
@@ -172,7 +172,7 @@ try {
 
 ---
 
-## `@offerhub/cli`
+## `@wardwork/cli`
 
 ### What it is
 
@@ -188,42 +188,42 @@ A command-line tool for platform administrators to manage API keys and run maint
 
 ```bash
 # Use directly without installing
-npx @offerhub/cli <command>
+npx @wardwork/cli <command>
 
 # Or install globally
-npm install -g @offerhub/cli
+npm install -g @wardwork/cli
 ```
 
 ### Configuration
 
 ```bash
 # Point the CLI at your Orchestrator instance
-offerhub config set
+wardwork config set
 
 # Or pass flags directly
-offerhub --url https://your-orchestrator.com --key wwk_live_xxx <command>
+wardwork --url https://your-orchestrator.com --key wwk_live_xxx <command>
 ```
 
 ### Common commands
 
 ```bash
 # List all API keys
-offerhub keys list
+wardwork keys list
 
 # Create a new API key
-offerhub keys create --name "My Marketplace" --scopes read,write
+wardwork keys create --name "My Marketplace" --scopes read,write
 
 # Revoke a key
-offerhub keys revoke key_xxx
+wardwork keys revoke key_xxx
 
 # Show current config
-offerhub config show
+wardwork config show
 ```
 
 ### How to do it right
 
 - Use the CLI for **administration only** — not for marketplace integration (use the SDK for that).
-- Restrict CLI access to platform engineers — it uses the `OFFERHUB_MASTER_KEY` or a key with `support` scope.
+- Restrict CLI access to platform engineers — it uses the `WARDWORK_MASTER_KEY` or a key with `support` scope.
 - Rotate API keys whenever a team member leaves or a key may have been exposed.
 - In production, prefer creating keys via the API directly (`POST /api/v1/auth/api-keys`) in your CI/CD pipeline rather than manually via CLI.
 
@@ -236,10 +236,10 @@ I'm setting up a new Orchestrator instance
   → npx create-wardwork-orchestrator
 
 I'm building a marketplace that uses the Orchestrator
-  → npm install @offerhub/sdk
+  → npm install @wardwork/sdk
 
 I'm an admin managing API keys or running maintenance
-  → npx @offerhub/cli
+  → npx @wardwork/cli
 ```
 
 ---

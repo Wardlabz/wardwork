@@ -5,7 +5,7 @@ order: 1
 section: Guides
 ---
 
-This guide walks you through your first API calls with WARDWORK Orchestrator. By the end, you'll have created a user, checked their balance, and understand the basic flow.
+This guide walks you through your first API calls with WardWork Orchestrator. By the end, you'll have created a user, checked their balance, and understand the basic flow.
 
 <Callout type="tip">
   Make sure you've completed the [Installation](/docs/installation) first and have your API key ready.
@@ -48,7 +48,7 @@ Response:
 ```
 
 <Callout type="note">
-  `externalUserId` is your system's user ID. Use it to link WARDWORK users to your marketplace users.
+  `externalUserId` is your system's user ID. Use it to link WardWork users to your marketplace users.
 </Callout>
 
 ## Step 2: Get Deposit Address
@@ -207,7 +207,7 @@ The seller's `available` balance is now credited with `50.00`.
 The same flow with the SDK:
 
 ```typescript
-import { WardWorkSDK } from '@offerhub/sdk';
+import { WardWorkSDK } from '@wardwork/sdk';
 
 const sdk = new WardWorkSDK({
   apiUrl: 'http://localhost:4000',

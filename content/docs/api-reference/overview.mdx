@@ -1,11 +1,11 @@
 ---
 title: API Reference
-description: Complete REST API reference for WARDWORK — endpoints, parameters, and response schemas.
+description: Complete REST API reference for WardWork — endpoints, parameters, and response schemas.
 order: 1
 section: API Reference
 ---
 
-The WARDWORK Orchestrator exposes a RESTful JSON API. All endpoints are prefixed with `/api/v1`.
+The WardWork Orchestrator exposes a RESTful JSON API. All endpoints are prefixed with `/api/v1`.
 
 ## Base URL
 
@@ -35,7 +35,7 @@ Create an API key using your master key:
 
 ```bash
 curl -X POST http://localhost:4000/api/v1/auth/api-keys \
-  -H "Authorization: Bearer YOUR_OFFERHUB_MASTER_KEY" \
+  -H "Authorization: Bearer YOUR_WARDWORK_MASTER_KEY" \
   -H "Content-Type: application/json" \
   -d '{"name": "My Marketplace", "scopes": ["read", "write"]}'
 ```
@@ -271,7 +271,7 @@ Returns a deposit address for the user to fund their account.
 
 ## Webhooks
 
-Receive real-time event notifications from WARDWORK via HTTP webhooks.
+Receive real-time event notifications from WardWork via HTTP webhooks.
 
 See the [Webhooks documentation](/docs/api-reference/webhooks) for complete details on:
 - Payload structures

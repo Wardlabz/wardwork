@@ -1,11 +1,11 @@
 ---
 title: Orchestrator
-description: Understand WARDWORK's core payment orchestration architecture and how it processes transactions.
+description: Understand WardWork's core payment orchestration architecture and how it processes transactions.
 order: 1
 section: Guides
 ---
 
-The Orchestrator is the central engine of WARDWORK. It coordinates every step of a transaction — from the moment a buyer deposits USDC to the moment a seller withdraws funds — enforcing rules, managing state, and communicating with the Stellar blockchain so your marketplace never has to.
+The Orchestrator is the central engine of WardWork. It coordinates every step of a transaction — from the moment a buyer deposits USDC to the moment a seller withdraws funds — enforcing rules, managing state, and communicating with the Stellar blockchain so your marketplace never has to.
 
 <Callout variant="tip">
   This guide covers the internal architecture. If you just want to make your first API call, go to [Quick Start](/docs/guide/quick-start) instead.
@@ -39,7 +39,7 @@ flowchart TB
 
     Backend -->|REST API| Orchestrator
 
-    subgraph Orchestrator["WARDWORK Orchestrator"]
+    subgraph Orchestrator["WardWork Orchestrator"]
         Ledger[Balance Ledger]
         Escrow[Escrow Engine State Machine]
         SSE[SSE Event Stream]
@@ -89,7 +89,7 @@ const order = await client.orders.create({
 The Orchestrator signs and submits a Stellar transaction that locks the USDC into a Soroban smart contract via Trustless Work. The escrow state moves to `FUNDED`.
 
 <Callout variant="note">
-  At this point funds are held by the smart contract — not by WARDWORK. The Orchestrator cannot unilaterally move them. Only valid contract calls can release, dispute, or refund.
+  At this point funds are held by the smart contract — not by WardWork. The Orchestrator cannot unilaterally move them. Only valid contract calls can release, dispute, or refund.
 </Callout>
 
 ### 4. Work is Delivered

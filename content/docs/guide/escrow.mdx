@@ -1,15 +1,15 @@
 ---
 title: Escrow Guide
-description: How blockchain-based escrow works in WARDWORK — fund locking, release flows, and dispute handling.
+description: How blockchain-based escrow works in WardWork — fund locking, release flows, and dispute handling.
 order: 3
 section: Guides
 ---
 
 <Callout type="note">
-  This is the public API/SDK guide for integrators. For internal implementation detail (Orchestrator state machine, signer roles), see [`docs/guides/escrow.md`](https://github.com/WARDWORK/wardwork-monorepo/blob/main/docs/guides/escrow.md) in the repo.
+  This is the public API/SDK guide for integrators. For internal implementation detail (Orchestrator state machine, signer roles), see [`docs/guides/escrow.md`](https://github.com/Wardlabz/wardwork-monorepo/blob/main/docs/guides/escrow.md) in the repo.
 </Callout>
 
-Escrow is the core security mechanism in WARDWORK. When a buyer pays for a service, funds are locked in a Stellar smart contract until the work is delivered and approved. Neither party can unilaterally access the funds — the contract enforces fair resolution.
+Escrow is the core security mechanism in WardWork. When a buyer pays for a service, funds are locked in a Stellar smart contract until the work is delivered and approved. Neither party can unilaterally access the funds — the contract enforces fair resolution.
 
 <Callout type="tip">
   Make sure you understand the [Order Lifecycle](/docs/guide/orders) before diving into escrow mechanics.
@@ -17,12 +17,12 @@ Escrow is the core security mechanism in WARDWORK. When a buyer pays for a servi
 
 ## How Escrow Works
 
-WARDWORK uses [Trustless Work](https://trustlesswork.com) smart contracts on the Stellar blockchain for non-custodial escrow. This means:
+WardWork uses [Trustless Work](https://trustlesswork.com) smart contracts on the Stellar blockchain for non-custodial escrow. This means:
 
-1. **Funds are on-chain** — Not in WARDWORK's database
+1. **Funds are on-chain** — Not in WardWork's database
 2. **Contract enforces rules** — Release requires proper signatures
 3. **Transparent** — Anyone can verify escrow state on Stellar
-4. **Non-custodial** — WARDWORK cannot access funds without proper authorization
+4. **Non-custodial** — WardWork cannot access funds without proper authorization
 
 ### Escrow Participants
 
@@ -30,7 +30,7 @@ WARDWORK uses [Trustless Work](https://trustlesswork.com) smart contracts on the
 |------|-------------|
 | **Buyer** | Deposits funds into escrow |
 | **Seller** | Receives funds when work is approved |
-| **Platform** | WARDWORK's signer for dispute resolution |
+| **Platform** | WardWork's signer for dispute resolution |
 | **Arbiter** | Trustless Work's contract for on-chain enforcement |
 
 ## Escrow Lifecycle
@@ -222,7 +222,7 @@ curl -X POST http://localhost:4000/api/v1/disputes/dsp_abc123/resolve \
 The SDK simplifies escrow operations:
 
 ```typescript
-import { WardWorkSDK } from '@offerhub/sdk';
+import { WardWorkSDK } from '@wardwork/sdk';
 
 const sdk = new WardWorkSDK({
   apiUrl: 'http://localhost:4000',
@@ -274,7 +274,7 @@ events.on('order.disputed', (data) => {
 
 ## On-Chain vs Off-Chain Balance
 
-WARDWORK tracks two types of balances:
+WardWork tracks two types of balances:
 
 ### Off-Chain Balance
 

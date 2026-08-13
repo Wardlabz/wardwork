@@ -1,5 +1,5 @@
 ---
-name: Feature WARDWORK
+name: Feature WardWork
 about: Feature
 title: ''
 labels: ''
@@ -24,8 +24,8 @@ assignees: ''
 
 ## 🔧 Context AI
 
-- [DOCS](https://github.com/WARDWORK/wardwork/tree/main/docs)
-- [DOCS](https://github.com/WARDWORK/wardwork-monorepo/tree/main/docs)
+- [DOCS](https://github.com/Wardlabz/wardwork/tree/main/docs)
+- [DOCS](https://github.com/Wardlabz/wardwork-monorepo/tree/main/docs)
 
 ## 📋 Additional Notes
 

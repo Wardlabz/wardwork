@@ -2,22 +2,22 @@ import type { Metadata } from "next";
 import { ContactForm } from "./ContactForm";
 import { buildPageMetadata } from "@/lib/seo";
 
-// Title was "Contact Sales | WARDWORK", which the root layout's "%s | WARDWORK"
-// template rendered as "Contact Sales | WARDWORK | WARDWORK".
+// Title was "Contact Sales | WardWork", which the root layout's "%s | WardWork"
+// template rendered as "Contact Sales | WardWork | WardWork".
 export const metadata: Metadata = buildPageMetadata({
   title: "Contact Sales",
   description:
-    "Contact WARDWORK sales for enterprise inquiries — tell us about your company, needs, and we'll reach out to discuss enterprise integrations and support.",
+    "Contact WardWork sales for enterprise inquiries — tell us about your company, needs, and we'll reach out to discuss enterprise integrations and support.",
   keywords: [
     "contact",
     "sales",
     "enterprise",
     "support",
     "integrations",
-    "WARDWORK",
+    "WardWork",
   ],
   path: "/contact",
-  ogImageAlt: "Contact WARDWORK Sales — enterprise integrations and support",
+  ogImageAlt: "Contact WardWork Sales — enterprise integrations and support",
 });
 
 export default function ContactPage() {

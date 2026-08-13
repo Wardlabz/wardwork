@@ -1,6 +1,6 @@
 # Frontend Architecture
 
-This document outlines the architecture, patterns, and structure of the WARDWORK frontend application.
+This document outlines the architecture, patterns, and structure of the WardWork frontend application.
 
 ## Technology Stack
 
@@ -448,7 +448,7 @@ import Image from 'next/image';
 
 <Image
   src="/logo.png"
-  alt="WARDWORK"
+  alt="WardWork"
   width={200}
   height={50}
   priority

@@ -17,11 +17,11 @@ export const tabs: CodeTab[] = [
     description:
       "Service contract creation and budget funding on the server side.",
     docHref:
-      "https://github.com/WARDWORK/wardwork-monorepo/blob/main/docs/api/overview.md",
+      "https://github.com/Wardlabz/wardwork-monorepo/blob/main/docs/api/overview.md",
     docLabel: "API Reference",
-    code: `import { WardWork } from "@offerhub/sdk";
+    code: `import { WardWork } from "@wardwork/sdk";
 
-const oh = new WardWork({ apiKey: process.env.OFFERHUB_API_KEY! });
+const oh = new WardWork({ apiKey: process.env.WARDWORK_API_KEY! });
 
 // Create a milestone-based service contract
 const contract = await oh.contracts.create({
@@ -53,11 +53,11 @@ console.log("Contract funded:", escrow.status);
     description:
       "Milestone approval from the client side — releases the matching payment.",
     docHref:
-      "https://github.com/WARDWORK/wardwork-monorepo/blob/main/docs/sdk/integration-guide.md",
+      "https://github.com/Wardlabz/wardwork-monorepo/blob/main/docs/sdk/integration-guide.md",
     docLabel: "SDK Guide",
-    code: `import { WardWork } from "@offerhub/sdk";
+    code: `import { WardWork } from "@wardwork/sdk";
 
-const oh = new WardWork({ apiKey: process.env.OFFERHUB_API_KEY });
+const oh = new WardWork({ apiKey: process.env.WARDWORK_API_KEY });
 
 // Provider completes milestone 1 — client approves
 const approval = await oh.milestones.approve(

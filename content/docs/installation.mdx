@@ -1,11 +1,11 @@
 ---
 title: Installation
-description: Set up WARDWORK Orchestrator locally with Node.js, PostgreSQL, and Redis.
+description: Set up WardWork Orchestrator locally with Node.js, PostgreSQL, and Redis.
 order: 2
 section: Getting Started
 ---
 
-This guide walks you through setting up the WARDWORK Orchestrator for local development. You can also use the SDK without running your own instance - see [Using the SDK](#using-the-sdk-only) below.
+This guide walks you through setting up the WardWork Orchestrator for local development. You can also use the SDK without running your own instance - see [Using the SDK](#using-the-sdk-only) below.
 
 ## Prerequisites
 
@@ -24,7 +24,7 @@ Before you begin, make sure you have:
 
 ### Step 1 - Clone the Repository
 
-<CommandLine>git clone https://github.com/WARDWORK/WARDWORK-Orchestrator.git && cd WARDWORK-Orchestrator</CommandLine>
+<CommandLine>git clone https://github.com/Wardlabz/wardwork-Orchestrator.git && cd WardWork-Orchestrator</CommandLine>
 
 ### Step 2 - Install Dependencies
 
@@ -54,8 +54,8 @@ NODE_ENV=development
 PORT=4000
 
 # Database (Docker defaults)
-DATABASE_URL=postgresql://offerhub:offerhub_password@localhost:5432/offerhub_db
-DIRECT_URL=postgresql://offerhub:offerhub_password@localhost:5432/offerhub_db
+DATABASE_URL=postgresql://wardwork:wardwork_password@localhost:5432/wardwork_db
+DIRECT_URL=postgresql://wardwork:wardwork_password@localhost:5432/wardwork_db
 
 # Redis (Docker default)
 REDIS_URL=redis://localhost:6379
@@ -65,7 +65,7 @@ PAYMENT_PROVIDER=crypto
 WALLET_ENCRYPTION_KEY=your-32-byte-hex-key
 
 # Master Key (for creating API keys)
-OFFERHUB_MASTER_KEY=your-secure-master-key
+WARDWORK_MASTER_KEY=your-secure-master-key
 
 # Trustless Work (get from trustlesswork.com)
 TRUSTLESS_API_KEY=your_trustless_api_key
@@ -123,14 +123,14 @@ You should see:
 
 ## Option 2: Using the SDK Only
 
-If you want to integrate with an existing WARDWORK Orchestrator instance (hosted by you or a partner), you only need the SDK:
+If you want to integrate with an existing WardWork Orchestrator instance (hosted by you or a partner), you only need the SDK:
 
-<CommandLine>npm install @offerhub/sdk</CommandLine>
+<CommandLine>npm install @wardwork/sdk</CommandLine>
 
 Then configure it in your code:
 
 ```typescript
-import { WardWorkSDK } from '@offerhub/sdk';
+import { WardWorkSDK } from '@wardwork/sdk';
 
 const sdk = new WardWorkSDK({
   apiUrl: 'https://your-orchestrator-url.com',
@@ -158,7 +158,7 @@ Once the server is running, create an API key using your master key:
 
 ```bash
 curl -X POST http://localhost:4000/api/v1/auth/api-keys \
-  -H "Authorization: Bearer YOUR_OFFERHUB_MASTER_KEY" \
+  -H "Authorization: Bearer YOUR_WARDWORK_MASTER_KEY" \
   -H "Content-Type: application/json" \
   -d '{"name": "My Marketplace", "scopes": ["read", "write"]}'
 ```

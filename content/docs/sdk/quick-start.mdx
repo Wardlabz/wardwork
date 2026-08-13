@@ -1,30 +1,30 @@
 ---
 title: SDK Quick Start
-description: Get started with the WARDWORK TypeScript SDK in minutes.
+description: Get started with the WardWork TypeScript SDK in minutes.
 order: 1
 section: SDK
 ---
 
-The WARDWORK SDK provides a type-safe TypeScript client for integrating with the Orchestrator API. It handles authentication, retries, and provides typed errors for better error handling.
+The WardWork SDK provides a type-safe TypeScript client for integrating with the Orchestrator API. It handles authentication, retries, and provides typed errors for better error handling.
 
 ## Installation
 
-<CommandLine>npm install @offerhub/sdk</CommandLine>
+<CommandLine>npm install @wardwork/sdk</CommandLine>
 
 Or with yarn:
 
-<CommandLine>yarn add @offerhub/sdk</CommandLine>
+<CommandLine>yarn add @wardwork/sdk</CommandLine>
 
 ## Configuration
 
 ### Initialize the SDK
 
 ```typescript
-import { WardWorkSDK } from '@offerhub/sdk';
+import { WardWorkSDK } from '@wardwork/sdk';
 
 const sdk = new WardWorkSDK({
-  apiUrl: process.env.OFFERHUB_API_URL,    // e.g., http://localhost:4000
-  apiKey: process.env.OFFERHUB_API_KEY,    // e.g., wwk_live_xxx
+  apiUrl: process.env.WARDWORK_API_URL,    // e.g., http://localhost:4000
+  apiKey: process.env.WARDWORK_API_KEY,    // e.g., wwk_live_xxx
   timeout: 30000,                           // Optional: request timeout (default: 30s)
   retryAttempts: 3,                         // Optional: retry count (default: 3)
 });
@@ -35,8 +35,8 @@ const sdk = new WardWorkSDK({
 Add to your `.env` file:
 
 ```env
-OFFERHUB_API_URL=http://localhost:4000
-OFFERHUB_API_KEY=wwk_live_your_api_key_here
+WARDWORK_API_URL=http://localhost:4000
+WARDWORK_API_KEY=wwk_live_your_api_key_here
 ```
 
 <Callout type="danger">
@@ -146,7 +146,7 @@ import {
   ValidationError,
   InvalidTransitionError,
   WardWorkError
-} from '@offerhub/sdk';
+} from '@wardwork/sdk';
 
 try {
   await sdk.orders.reserve('ord_123');
@@ -170,7 +170,7 @@ try {
 The SDK is fully typed. You get autocomplete and type checking:
 
 ```typescript
-import type { User, Order, Balance } from '@offerhub/sdk';
+import type { User, Order, Balance } from '@wardwork/sdk';
 
 async function processOrder(user: User): Promise<Order> {
   const balance: Balance = await sdk.balance.get(user.id);

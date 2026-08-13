@@ -24,7 +24,7 @@ const features = [
           icon: Mail,
           title: "Report Accessibility Issues",
           description:
-               "Encountered an accessibility barrier? Email support@offerhub.io with details about the issue. We respond within 2 business days and work to resolve problems as quickly as possible.",
+               "Encountered an accessibility barrier? Email support@wardwork.io with details about the issue. We respond within 2 business days and work to resolve problems as quickly as possible.",
           iconColor: "#149A9B",
      },
 ];
@@ -56,8 +56,8 @@ const contactMethods = [
      {
           method: "Email",
           description: "Primary method for detailed accessibility reports",
-          value: "support@offerhub.io",
-          href: "mailto:support@offerhub.io?subject=Accessibility%20Issue%20Report",
+          value: "support@wardwork.io",
+          href: "mailto:support@wardwork.io?subject=Accessibility%20Issue%20Report",
      },
      {
           method: "Telegram",
@@ -69,7 +69,7 @@ const contactMethods = [
      {
           method: "Discord",
           description: "Community support in #support channel",
-          value: "WARDWORK Community Server",
+          value: "WardWork Community Server",
           href: "https://discord.gg/yH4vBNWwc",
           external: true,
      },
@@ -77,7 +77,7 @@ const contactMethods = [
           method: "GitHub Issues",
           description: "For technical accessibility problems",
           value: "Label with 'accessibility' tag",
-          href: "https://github.com/WARDWORK/wardwork-monorepo/issues",
+          href: "https://github.com/Wardlabz/wardwork-monorepo/issues",
           external: true,
      },
 ];
@@ -104,7 +104,7 @@ export default function AccessibilityPage() {
                          <p
                               className="mt-4 text-lg sm:text-xl font-medium max-w-2xl mx-auto px-2 text-content-secondary leading-relaxed"
                          >
-                              WARDWORK is committed to ensuring digital accessibility for all users, including those with disabilities. We continuously work to meet WCAG 2.1 Level AA standards.
+                              WardWork is committed to ensuring digital accessibility for all users, including those with disabilities. We continuously work to meet WCAG 2.1 Level AA standards.
                          </p>
                          <div className="mt-8 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-bg-elevated shadow-neu-raised-sm text-xs font-bold text-content-secondary">
                               Last updated: <span className="text-theme-primary">May 27, 2026</span>
@@ -149,7 +149,7 @@ export default function AccessibilityPage() {
                                    Accessibility <span className="text-theme-primary">Features</span>
                               </h2>
                               <p className="text-lg font-medium text-content-secondary max-w-3xl leading-relaxed">
-                                   We provide multiple accessibility features to ensure all users can interact with WARDWORK effectively.
+                                   We provide multiple accessibility features to ensure all users can interact with WardWork effectively.
                               </p>
                          </div>
 
@@ -287,7 +287,7 @@ export default function AccessibilityPage() {
                                    Legal <span className="text-theme-primary">Compliance</span>
                               </h2>
                               <p className="text-lg font-medium text-content-secondary max-w-3xl leading-relaxed">
-                                   WARDWORK complies with or works toward compliance with the following accessibility standards and regulations.
+                                   WardWork complies with or works toward compliance with the following accessibility standards and regulations.
                               </p>
                          </div>
 
@@ -333,7 +333,7 @@ export default function AccessibilityPage() {
                               Our team is here to help. Contact us with any accessibility concerns or suggestions for improvement.
                          </p>
                          <a
-                              href="mailto:support@offerhub.io?subject=Accessibility%20Question"
+                              href="mailto:support@wardwork.io?subject=Accessibility%20Question"
                               className="inline-flex items-center gap-2 px-8 py-3 rounded-xl bg-theme-primary text-white font-bold text-sm uppercase tracking-wider hover:bg-theme-primary-hover transition-colors shadow-lg"
                          >
                               <Mail size={18} />

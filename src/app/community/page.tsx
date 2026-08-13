@@ -18,17 +18,17 @@ export const revalidate = 600;
 export const metadata: Metadata = buildPageMetadata({
   title: "Community",
   description:
-    "Join the WARDWORK open-source community. Explore contributors, open issues, recent pull requests, and learn how to get involved.",
+    "Join the WardWork open-source community. Explore contributors, open issues, recent pull requests, and learn how to get involved.",
   keywords: [
     "community",
     "open source",
     "contributors",
     "GitHub",
-    "WARDWORK",
+    "WardWork",
     "contribute",
   ],
   path: "/community",
-  ogImageAlt: "WARDWORK Community — contributors, issues, and pull requests",
+  ogImageAlt: "WardWork Community — contributors, issues, and pull requests",
 });
 
 export default async function CommunityPage() {

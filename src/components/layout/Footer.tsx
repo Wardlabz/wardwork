@@ -38,10 +38,10 @@ const navColumns = [
 ];
 
 const socialLinks = [
-  { href: "https://x.com/offerhub_", icon: Twitter, label: "X" },
+  { href: "https://x.com/wardwork_", icon: Twitter, label: "X" },
   { href: "https://t.me/wardwork_contributors", icon: Send, label: "Telegram" },
   { href: "https://discord.gg/yH4vBNWwc", icon: Disc3, label: "Discord" },
-  { href: "https://github.com/WARDWORK", icon: Github, label: "GitHub" },
+  { href: "https://github.com/Wardlabz", icon: Github, label: "GitHub" },
 ];
 
 export function Footer() {
@@ -81,10 +81,10 @@ export function Footer() {
                 <Image
                   src={
                     resolvedTheme === "dark"
-                      ? "/WARDWORK-logo-to-darkmode.png"
-                      : "/WARDWORK-logo.png"
+                      ? "/WardWork-logo-to-darkmode.png"
+                      : "/WardWork-logo.png"
                   }
-                  alt="WARDWORK"
+                  alt="WardWork"
                   width={160}
                   height={42}
                   className="h-9 w-auto object-contain"
@@ -157,7 +157,7 @@ export function Footer() {
 
           <div className="mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-2 border-t border-theme-border">
             <p className="text-xs text-content-muted">
-              © {new Date().getFullYear()} WARDWORK. All rights reserved.
+              © {new Date().getFullYear()} WardWork. All rights reserved.
             </p>
 
             <p className="text-xs text-content-muted">
@@ -184,7 +184,7 @@ export function Footer() {
               "linear-gradient(to bottom, black 0%, black 30%, transparent 75%)",
           }}
         >
-          _WARDWORK
+          _WardWork
         </div>
       </div>
     </footer>

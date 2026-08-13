@@ -1,6 +1,6 @@
 # Security Best Practices for Platform Integrators
 
-> Concrete guidance for developers integrating WARDWORK into their own marketplaces — covering API key management, webhook validation, wallet security, escrow verification, and blockchain-specific attack mitigations.
+> Concrete guidance for developers integrating WardWork into their own marketplaces — covering API key management, webhook validation, wallet security, escrow verification, and blockchain-specific attack mitigations.
 
 > **Looking for the public API guide?** This is the internal engineering reference (Orchestrator implementation detail). For the external API/SDK guide aimed at integrators, see [`content/docs/guide/security.mdx`](../../content/docs/guide/security.mdx).
 
@@ -19,7 +19,7 @@
 
 ## API Key Management
 
-WARDWORK API keys follow the format `wwk_live_xxx` (production) and `wwk_test_xxx` (sandbox). A leaked live key gives full control over all payment operations, including releasing escrow funds and initiating withdrawals.
+WardWork API keys follow the format `wwk_live_xxx` (production) and `wwk_test_xxx` (sandbox). A leaked live key gives full control over all payment operations, including releasing escrow funds and initiating withdrawals.
 
 ### Storage
 
@@ -27,13 +27,13 @@ WARDWORK API keys follow the format `wwk_live_xxx` (production) and `wwk_test_xx
 
 ```bash
 # Store keys in environment variables — never hardcoded
-OFFER_HUB_API_KEY=wwk_live_abc123...
+WARDWORK_API_KEY=wwk_live_abc123...
 ```
 
 ```typescript
 // Read from the environment at runtime
-const apiKey = process.env.OFFER_HUB_API_KEY;
-if (!apiKey) throw new Error('OFFER_HUB_API_KEY is not set');
+const apiKey = process.env.WARDWORK_API_KEY;
+if (!apiKey) throw new Error('WARDWORK_API_KEY is not set');
 ```
 
 ❌ **DON'T:**
@@ -52,7 +52,7 @@ const response = await fetch('/api/orders', {
 // Never commit keys to version control
 // .env.example — show structure only, no real values
 {
-  "OFFER_HUB_API_KEY": "wwk_live_REPLACE_ME"
+  "WARDWORK_API_KEY": "wwk_live_REPLACE_ME"
 }
 ```
 
@@ -85,18 +85,18 @@ Never use a `write` or `support` scoped key from a context that only needs `read
 
 ### API Key Transport
 
-API keys must **only** travel server-to-server. Your marketplace backend calls WARDWORK; your frontend never does.
+API keys must **only** travel server-to-server. Your marketplace backend calls WardWork; your frontend never does.
 
 ```
-❌ Browser → WARDWORK API (exposes key to any user with DevTools)
-✅ Browser → Your Backend → WARDWORK API
+❌ Browser → WardWork API (exposes key to any user with DevTools)
+✅ Browser → Your Backend → WardWork API
 ```
 
 ---
 
 ## Webhook Signature Validation
 
-WARDWORK signs every webhook payload with an HMAC-SHA256 signature using a secret you configure. **Always validate this signature.** Without validation, any actor who knows your webhook URL can send spoofed events — such as a fake `escrow.released` event — and trick your system into delivering services without payment.
+WardWork signs every webhook payload with an HMAC-SHA256 signature using a secret you configure. **Always validate this signature.** Without validation, any actor who knows your webhook URL can send spoofed events — such as a fake `escrow.released` event — and trick your system into delivering services without payment.
 
 ### How Signatures Work
 
@@ -141,8 +141,8 @@ function verifyWebhookSignature(
 }
 
 // Express middleware example
-app.post('/webhooks/offerhub', express.raw({ type: 'application/json' }), (req, res) => {
-  const signature = req.headers['x-offerhub-signature'] as string;
+app.post('/webhooks/wardwork', express.raw({ type: 'application/json' }), (req, res) => {
+  const signature = req.headers['x-wardwork-signature'] as string;
 
   if (!verifyWebhookSignature(req.body, signature, process.env.WEBHOOK_SECRET!)) {
     return res.status(401).json({ error: 'Invalid signature' });
@@ -207,7 +207,7 @@ await redis.setex(`webhook:processed:${event.id}`, 3600, '1');
 
 ## Wallet Private Key Management
 
-WARDWORK manages Stellar invisible wallets for your users. Private keys are encrypted at rest with AES-256-GCM. As a platform integrator, you interact with the Orchestrator's API — you should **never** handle raw private keys directly.
+WardWork manages Stellar invisible wallets for your users. Private keys are encrypted at rest with AES-256-GCM. As a platform integrator, you interact with the Orchestrator's API — you should **never** handle raw private keys directly.
 
 ### What the Orchestrator Handles
 
@@ -242,7 +242,7 @@ await db.users.update({ stellarSecretKey: rawKey }); // Must be encrypted
 
 ### If You Deploy Your Own Orchestrator Instance
 
-If you self-host WARDWORK, you are responsible for the encryption key used to protect wallet private keys:
+If you self-host WardWork, you are responsible for the encryption key used to protect wallet private keys:
 
 ```bash
 # Must be a high-entropy random value — never a human-readable string
@@ -265,7 +265,7 @@ For the Orchestrator's platform wallet (used to sign dispute resolutions), consi
 
 ## Escrow Integration Security
 
-The escrow flow is the highest-risk operation in WARDWORK. A bug here can result in funds being released to the wrong party or funds being permanently locked.
+The escrow flow is the highest-risk operation in WardWork. A bug here can result in funds being released to the wrong party or funds being permanently locked.
 
 ### Verify State Before Acting
 
@@ -274,7 +274,7 @@ Always verify the escrow and order state via the API before triggering a resolut
 ```typescript
 // ✅ Always double-check state before releasing
 async function releaseEscrow(orderId: string, requestedBy: string) {
-  const order = await offerHubClient.orders.get(orderId);
+  const order = await wardWorkClient.orders.get(orderId);
 
   // Verify the order is in a releasable state
   if (order.status !== 'IN_PROGRESS') {
@@ -291,7 +291,7 @@ async function releaseEscrow(orderId: string, requestedBy: string) {
     throw new Error('Escrow is not in FUNDED state');
   }
 
-  return offerHubClient.orders.release(orderId, { requestedBy });
+  return wardWorkClient.orders.release(orderId, { requestedBy });
 }
 ```
 
@@ -314,7 +314,7 @@ All state-changing operations must use idempotency keys to prevent double-releas
 ```typescript
 const idempotencyKey = `release-${orderId}-${requestedBy}-${Date.now()}`;
 
-await offerHubClient.orders.release(orderId, {
+await wardWorkClient.orders.release(orderId, {
   requestedBy,
   idempotencyKey,
 });
@@ -334,7 +334,7 @@ const server = new Horizon.Server('https://horizon.stellar.org');
 // Verify the contract holds the expected amount before releasing
 async function verifyEscrowOnChain(contractId: string, expectedAmount: string) {
   // Query the Trustless Work contract state
-  // Compare against WARDWORK's reported escrow amount
+  // Compare against WardWork's reported escrow amount
   // Alert if there is a mismatch — indicates possible data inconsistency
 }
 ```
@@ -343,7 +343,7 @@ async function verifyEscrowOnChain(contractId: string, expectedAmount: string) {
 
 ## Security Headers and CSP
 
-If you are building a web frontend on top of WARDWORK, configure security headers to protect your users.
+If you are building a web frontend on top of WardWork, configure security headers to protect your users.
 
 ### Recommended HTTP Security Headers
 
@@ -424,7 +424,7 @@ Content-Security-Policy: script-src 'unsafe-inline' 'unsafe-eval' *
 
 ### CORS on Your Proxy Backend
 
-Your marketplace backend proxies calls to WARDWORK. Configure CORS restrictively:
+Your marketplace backend proxies calls to WardWork. Configure CORS restrictively:
 
 ```typescript
 // Only allow requests from your own frontend domain
@@ -440,15 +440,15 @@ app.use(cors({
 
 ## Blockchain-Specific Attack Vectors
 
-WARDWORK operates on the Stellar blockchain and uses Soroban smart contracts for escrow. Understand these attack vectors specific to blockchain payment orchestration.
+WardWork operates on the Stellar blockchain and uses Soroban smart contracts for escrow. Understand these attack vectors specific to blockchain payment orchestration.
 
 ### Replay Attacks
 
 **What it is:** A signed Stellar transaction is intercepted and resubmitted to process the same payment twice.
 
-**How WARDWORK mitigates it:** Stellar transactions include a sequence number tied to the source account. A transaction can only be processed once — replaying it will fail with `tx_bad_seq`.
+**How WardWork mitigates it:** Stellar transactions include a sequence number tied to the source account. A transaction can only be processed once — replaying it will fail with `tx_bad_seq`.
 
-**What you must do:** Use idempotency keys on all WARDWORK API calls. If a release call succeeds but your network connection drops before you receive the response, retrying with the same idempotency key returns the original result instead of triggering a second release.
+**What you must do:** Use idempotency keys on all WardWork API calls. If a release call succeeds but your network connection drops before you receive the response, retrying with the same idempotency key returns the original result instead of triggering a second release.
 
 ```typescript
 // Idempotency key must be deterministic per operation — not random per retry
@@ -459,7 +459,7 @@ const key = `release:${orderId}:${buyerId}`;
 
 **What it is:** An attacker monitors a pending transaction and submits a competing transaction with a higher fee to be processed first.
 
-**Relevance to WARDWORK:** Stellar uses a FIFO queue within each ledger cycle, not a fee-priority auction like Ethereum. Front-running in the Ethereum sense is not applicable.
+**Relevance to WardWork:** Stellar uses a FIFO queue within each ledger cycle, not a fee-priority auction like Ethereum. Front-running in the Ethereum sense is not applicable.
 
 **Residual risk:** A malicious actor with Orchestrator database access could attempt to trigger a release before the buyer approves. Mitigation: enforce strict role-based access control on your Orchestrator deployment and enable database audit logging.
 
@@ -467,20 +467,20 @@ const key = `release:${orderId}:${buyerId}`;
 
 **What it is:** A contract function calls an external contract, which calls back into the original function before it finishes — leading to double-spending.
 
-**Relevance to WARDWORK:** Trustless Work's Soroban contracts are designed to prevent reentrancy. The Orchestrator never calls back into itself during a transaction signing sequence.
+**Relevance to WardWork:** Trustless Work's Soroban contracts are designed to prevent reentrancy. The Orchestrator never calls back into itself during a transaction signing sequence.
 
-**What you must do:** Do not build custom Soroban contract logic that interacts with the WARDWORK escrow contracts unless you have conducted a formal security audit of the reentrancy surface.
+**What you must do:** Do not build custom Soroban contract logic that interacts with the WardWork escrow contracts unless you have conducted a formal security audit of the reentrancy surface.
 
 ### Balance Desynchronization
 
-**What it is:** WARDWORK's off-chain balance (PostgreSQL) diverges from the on-chain USDC balance (Stellar ledger). This can happen if a blockchain transaction is submitted but the database update fails, or vice versa.
+**What it is:** WardWork's off-chain balance (PostgreSQL) diverges from the on-chain USDC balance (Stellar ledger). This can happen if a blockchain transaction is submitted but the database update fails, or vice versa.
 
 **How to detect it:**
 
 ```typescript
 // Periodically reconcile your critical accounts
 async function reconcileBalance(userId: string) {
-  const offChainBalance = await offerHubClient.balances.get(userId);
+  const offChainBalance = await wardWorkClient.balances.get(userId);
   const onChainBalance = await stellarHorizon.loadAccount(wallet.publicKey);
 
   const usdc = onChainBalance.balances.find(b => b.asset_code === 'USDC');
@@ -500,7 +500,7 @@ async function reconcileBalance(userId: string) {
 
 ```typescript
 // ✅ Always fetch from the API — never from user-supplied input
-const { data } = await offerHubClient.wallet.getDepositAddress(userId);
+const { data } = await wardWorkClient.wallet.getDepositAddress(userId);
 showToUser(data.address);
 ```
 

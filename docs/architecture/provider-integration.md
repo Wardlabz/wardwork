@@ -4,7 +4,7 @@ This document details the integration with external payment providers: Trustless
 
 ## Provider Abstraction
 
-WARDWORK uses the **Strategy Pattern** to abstract payment providers, allowing seamless switching between crypto-native and fiat rails.
+WardWork uses the **Strategy Pattern** to abstract payment providers, allowing seamless switching between crypto-native and fiat rails.
 
 ### PaymentProvider Interface
 

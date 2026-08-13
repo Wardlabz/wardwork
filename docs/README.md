@@ -1,10 +1,10 @@
-# WARDWORK Documentation
+# WardWork Documentation
 
-Welcome to the WARDWORK documentation. This comprehensive guide covers all aspects of the project, from the Orchestrator API to the frontend architecture.
+Welcome to the WardWork documentation. This comprehensive guide covers all aspects of the project, from the Orchestrator API to the frontend architecture.
 
 ## Documentation Overview
 
-WARDWORK documentation is intentionally split by **audience**, not duplicated by accident:
+WardWork documentation is intentionally split by **audience**, not duplicated by accident:
 
 | Location | Audience | Purpose | Format |
 |----------|----------|---------|--------|
@@ -38,7 +38,7 @@ Both `/docs/` and `/content/docs/` are indexed by the standalone [`mcp/`](../mcp
 - [Provider Integration](./architecture/provider-integration.md) - External service integrations
 
 ### Guides (Internal)
-- [Overview](./guides/overview.md) - Introduction to WARDWORK capabilities
+- [Overview](./guides/overview.md) - Introduction to WardWork capabilities
 - [Core Concepts](./guides/core-concepts.md) - Key concepts and terminology
 - [Architecture](./guides/architecture.md) - Technical architecture guide
 - [Standards](./guides/standards.md) - Code and API standards
@@ -87,7 +87,7 @@ Both `/docs/` and `/content/docs/` are indexed by the standalone [`mcp/`](../mcp
 The public-facing documentation is available in `/content/docs/` and rendered at [wardwork.tech/docs](https://wardwork.tech/docs).
 
 ### Getting Started
-- [Introduction](/content/docs/getting-started.mdx) - What is WARDWORK
+- [Introduction](/content/docs/getting-started.mdx) - What is WardWork
 - [Installation](/content/docs/installation.mdx) - Setup and installation
 - [Configuration](/content/docs/configuration.mdx) - Environment variables
 
